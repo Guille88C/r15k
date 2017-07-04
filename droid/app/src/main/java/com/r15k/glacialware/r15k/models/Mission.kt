@@ -8,6 +8,7 @@ class Mission {
     var title : String get set
     var description : String get set
     var image : String get set
+    var completed : Boolean get set
 
 
     constructor() {
@@ -15,12 +16,14 @@ class Mission {
         this.title = ""
         this.description = ""
         this.image = ""
+        this.completed = false
     }
 
-    constructor(id : Int, title : String, description : String, image : String) {
+    constructor(id : Int, title : String, description : String, image : String, completed : Boolean) {
         this.id = id
         this.title = title
         this.description = description
         this.image = image
+        this.completed = completed
     }
 }
