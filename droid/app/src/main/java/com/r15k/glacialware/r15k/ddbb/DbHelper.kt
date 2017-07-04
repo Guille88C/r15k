@@ -8,20 +8,24 @@ import com.r15k.glacialware.r15k.general.*
 /**
  * Created by Tanuki on 04/07/2017.
  */
-class DataBaseHelper constructor(context: Context?) : SQLiteOpenHelper(context, DDBB_NAME, null, DDBB_VERSION) {
+
+
+
+class DbHelper constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
 
 
     override fun onCreate(p0: SQLiteDatabase?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        p0?.execSQL(DB_CREATE_MISSION)
     }
 
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        p0?.execSQL(DB_DELETE_MISSION)
+        onCreate(p0)
     }
 
     override fun onDowngrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        onUpgrade(p0, p1, p2)
     }
 }
