@@ -14,5 +14,7 @@ class SplashActivity : AppCompatActivity() {
 
         var intent = Intent(this, MainActivity :: class.java)
         this.startActivity(intent)
+
+        this.finish()
     }
 }
