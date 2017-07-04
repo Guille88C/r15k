@@ -13,8 +13,6 @@ import com.r15k.glacialware.r15k.general.*
 
 class DbHelper constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
-
-
     override fun onCreate(p0: SQLiteDatabase?) {
         p0?.execSQL(DB_CREATE_MISSION)
     }
