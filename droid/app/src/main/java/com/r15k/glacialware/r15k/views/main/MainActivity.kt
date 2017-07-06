@@ -13,11 +13,6 @@ class MainActivity : GenericRootActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        this.setContentView(com.r15k.glacialware.r15k.R.layout.activity_main)
-
-        this.init()
-        this.initDB()
     }
 
     override fun onDestroy() {
@@ -26,8 +21,13 @@ class MainActivity : GenericRootActivity() {
         super.onDestroy()
     }
 
-    private fun init() {
+    override fun inflateLayout() {
+        this.setContentView(com.r15k.glacialware.r15k.R.layout.activity_main)
+    }
+
+    override fun init() {
         textView.text = "preparing view... be patient... don't worry, be happy :D :D"
+        this.initDB()
     }
 
     private fun initDB() {
