@@ -15,11 +15,13 @@ class DbHelper constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME
 
     override fun onCreate(p0: SQLiteDatabase?) {
         p0?.execSQL(DB_CREATE_MISSION)
+        p0?.execSQL(DB_CREATE_PLAYER)
     }
 
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
         p0?.execSQL(DB_DELETE_MISSION)
+        p0?.execSQL(DB_DELETE_PLAYER)
         onCreate(p0)
     }
 

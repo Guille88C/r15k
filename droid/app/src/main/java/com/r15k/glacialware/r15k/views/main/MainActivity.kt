@@ -2,6 +2,9 @@ package com.r15k.glacialware.r15k.views.main
 
 import android.os.Bundle
 import com.r15k.glacialware.r15k.ddbb.DbManager
+import com.r15k.glacialware.r15k.models.Game
+import com.r15k.glacialware.r15k.models.Mission
+import com.r15k.glacialware.r15k.models.Player
 import com.r15k.glacialware.r15k.views.generic.GenericRootActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -31,12 +34,30 @@ class MainActivity : GenericRootActivity() {
     }
 
     private fun initDB() {
+
+        var players : MutableList<Player> = mutableListOf()
+        var i : Int = 0
+        while (i < 4) {
+
+            val missions : MutableList<Mission> = mutableListOf()
+            var j : Int = 0
+            while (j < 2) {
+
+                val mission : Mission = Mission(j, "title " + j, "description " + j, "", false, i)
+                missions.add(mission)
+                j++
+
+            }
+
+            val player : Player = Player(i, "player " + i, missions, false)
+            players.add(player)
+            i ++
+
+        }
+
+        val game : Game = Game(players)
+
         dbManager = DbManager(this)
-        dbManager.saveMission(
-                "Mission test",
-                "This is my first mission",
-                "",
-                true
-        )
+        dbManager.saveGame(game)
     }
 }

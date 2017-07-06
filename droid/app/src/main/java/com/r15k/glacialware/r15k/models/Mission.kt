@@ -9,7 +9,7 @@ class Mission {
     var description : String get set
     var image : String get set
     var completed : Boolean get set
-
+    var idPlayer : Int get set
 
     constructor() {
         this.id = 0
@@ -17,13 +17,16 @@ class Mission {
         this.description = ""
         this.image = ""
         this.completed = false
+        this.idPlayer = -1
     }
 
-    constructor(id : Int, title : String, description : String, image : String, completed : Boolean) {
+    constructor(id : Int, title : String, description : String, image : String, completed : Boolean, idPlayer : Int) {
         this.id = id
         this.title = title
         this.description = description
         this.image = image
         this.completed = completed
+        this.idPlayer = idPlayer
     }
+
 }
