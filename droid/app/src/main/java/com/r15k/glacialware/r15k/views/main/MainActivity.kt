@@ -1,17 +1,21 @@
 package com.r15k.glacialware.r15k.views.main
 
 import android.os.Bundle
+import android.view.View
 import com.r15k.glacialware.r15k.ddbb.DbManager
 import com.r15k.glacialware.r15k.models.Game
 import com.r15k.glacialware.r15k.models.Mission
 import com.r15k.glacialware.r15k.models.Player
+import com.r15k.glacialware.r15k.rooting.navigateTo
+import com.r15k.glacialware.r15k.views.TestActivity
 import com.r15k.glacialware.r15k.views.generic.GenericRootActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Created by Guille on 01/07/2017.
  */
-class MainActivity : GenericRootActivity() {
+class MainActivity : GenericRootActivity(), View.OnClickListener {
+
     lateinit var dbManager : DbManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +34,12 @@ class MainActivity : GenericRootActivity() {
 
     override fun init() {
         textView.text = "preparing view... be patient... don't worry, be happy :D :D"
+        testButton.setOnClickListener(this)
         this.initDB()
+    }
+
+    override fun onClick(p0: View?) {
+        navigateTo(this, TestActivity :: class.java)
     }
 
     private fun initDB() {
