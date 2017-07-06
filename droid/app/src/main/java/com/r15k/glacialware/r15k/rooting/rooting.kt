@@ -1,6 +1,5 @@
 package com.r15k.glacialware.r15k.rooting
 
-import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import com.r15k.glacialware.r15k.R
