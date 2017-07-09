@@ -2,6 +2,7 @@ package com.r15k.glacialware.r15k.views.main
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.ActionBar
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
@@ -64,6 +65,7 @@ class MainActivity : GenericRootActivity(), View.OnClickListener {
     override fun init() {
         this.initToolbar()
         this.initMenu()
+        this.initFragment()
         this.initDB()
     }
     // ==== ---- ====
@@ -75,15 +77,22 @@ class MainActivity : GenericRootActivity(), View.OnClickListener {
     // ==== ---- ====
 
     // ==== PRIVATE ====
+    private fun initFragment() {
+        val s : String = PlayersFragment.TAG
+        val ft : FragmentTransaction = supportFragmentManager.beginTransaction()
+        ft.replace(R.id.activity_main_content_frame, PlayersFragment.newInstance())
+        ft.commit()
+    }
+
     private fun initToolbar() {
         this.setSupportActionBar(myToolbar)
     }
 
     private fun initMenu() {
-        val list : ArrayList<String> = ArrayList()
-        list.add("Option 1")
-        list.add("Option 2")
-        list.add("Option 3")
+        val list : ArrayList<com.r15k.glacialware.r15k.views.main.MenuItem> = ArrayList()
+        list.add(com.r15k.glacialware.r15k.views.main.MenuItem("__Add player"))
+        list.add(com.r15k.glacialware.r15k.views.main.MenuItem("__Remove player"))
+        list.add(com.r15k.glacialware.r15k.views.main.MenuItem("__Start game"))
         val menuAdapter : MenuAdapter = MenuAdapter(this, R.layout.view_drawer_menu_main_item, list)
         leftDrawer.adapter = menuAdapter
 

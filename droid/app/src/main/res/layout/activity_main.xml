@@ -22,17 +22,18 @@
 
         <!-- The main content view -->
         <FrameLayout
-            android:id="@+id/contentFrame"
+            android:id="@+id/activity_main_content_frame"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="@android:color/white"/>
         <!-- The navigation drawer -->
         <ListView android:id="@+id/leftDrawer"
             android:layout_width="240dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:choiceMode="singleChoice"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="0dp"
+            android:divider="@android:color/white"
+            android:dividerHeight="1dp"
             android:background="#111"/>
     </android.support.v4.widget.DrawerLayout>
 </LinearLayout>

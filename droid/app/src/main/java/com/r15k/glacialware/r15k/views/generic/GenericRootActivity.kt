@@ -8,7 +8,7 @@ import com.r15k.glacialware.r15k.rooting.navigateBackAnimated
 /**
  * Created by Guille on 04/07/2017.
  */
-open abstract class GenericRootActivity constructor(private var anim: Boolean = false) : AppCompatActivity() {
+abstract class GenericRootActivity constructor(private var anim: Boolean = false) : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
