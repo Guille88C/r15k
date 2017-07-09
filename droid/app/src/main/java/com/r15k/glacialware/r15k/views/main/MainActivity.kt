@@ -5,25 +5,30 @@ import android.os.Bundle
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.ActionBar
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView
 import com.r15k.glacialware.r15k.R
 import com.r15k.glacialware.r15k.ddbb.DbManager
 import com.r15k.glacialware.r15k.models.Game
 import com.r15k.glacialware.r15k.models.Mission
 import com.r15k.glacialware.r15k.models.Player
+import com.r15k.glacialware.r15k.presenter.main.MainPresenter
 import com.r15k.glacialware.r15k.rooting.navigateTo
 import com.r15k.glacialware.r15k.views.TestActivity
+import com.r15k.glacialware.r15k.views.addPlayer.AddPlayerActivity
 import com.r15k.glacialware.r15k.views.generic.GenericRootActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Created by Guille on 01/07/2017.
  */
-class MainActivity : GenericRootActivity(), View.OnClickListener {
+class MainActivity : GenericRootActivity(), View.OnClickListener, AdapterView.OnItemClickListener {
     // ==== ATTRIBUTES ====
     lateinit var dbManager : DbManager
     lateinit var mDrawerToggle : ActionBarDrawerToggle
+    lateinit var mPresenter : MainPresenter
     // ==== ---- ====
 
     // ==== LIFE CYCLE
@@ -63,6 +68,8 @@ class MainActivity : GenericRootActivity(), View.OnClickListener {
     }
 
     override fun init() {
+        this.mPresenter = MainPresenter(this)
+
         this.initToolbar()
         this.initMenu()
         this.initFragment()
@@ -74,25 +81,31 @@ class MainActivity : GenericRootActivity(), View.OnClickListener {
     override fun onClick(p0: View?) {
         navigateTo(this, TestActivity :: class.java)
     }
+
+    override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        val menuOption : MainPresenter.MenuOption = this.mPresenter.getMenuOption(p2)
+        when (menuOption) {
+            MainPresenter.MenuOption.ADD_PLAYER -> navigateTo(this, AddPlayerActivity :: class.java)
+            MainPresenter.MenuOption.START_GAME -> {}
+            MainPresenter.MenuOption.NONE -> {}
+        }
+    }
     // ==== ---- ====
 
     // ==== PRIVATE ====
     private fun initFragment() {
-        val s : String = PlayersFragment.TAG
         val ft : FragmentTransaction = supportFragmentManager.beginTransaction()
         ft.replace(R.id.activity_main_content_frame, PlayersFragment.newInstance())
         ft.commit()
     }
 
     private fun initToolbar() {
-        this.setSupportActionBar(myToolbar)
+        if (myToolbar != null)
+            this.setSupportActionBar(myToolbar as Toolbar)
     }
 
     private fun initMenu() {
-        val list : ArrayList<com.r15k.glacialware.r15k.views.main.MenuItem> = ArrayList()
-        list.add(com.r15k.glacialware.r15k.views.main.MenuItem("__Add player"))
-        list.add(com.r15k.glacialware.r15k.views.main.MenuItem("__Remove player"))
-        list.add(com.r15k.glacialware.r15k.views.main.MenuItem("__Start game"))
+        val list : ArrayList<com.r15k.glacialware.r15k.views.main.MenuItem> = this.mPresenter.getMenuData()
         val menuAdapter : MenuAdapter = MenuAdapter(this, R.layout.view_drawer_menu_main_item, list)
         leftDrawer.adapter = menuAdapter
 
@@ -102,6 +115,8 @@ class MainActivity : GenericRootActivity(), View.OnClickListener {
             (this.supportActionBar as ActionBar).setDisplayHomeAsUpEnabled(true)
             (this.supportActionBar as ActionBar).setHomeButtonEnabled(true)
         }
+
+        leftDrawer.onItemClickListener = this
     }
 
     private fun initDB() {

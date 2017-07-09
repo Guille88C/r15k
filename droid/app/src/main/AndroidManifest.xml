@@ -27,5 +27,9 @@
             android:name=".views.TestActivity"
             android:label="Test"/>
 
+        <activity
+            android:name=".views.addPlayer.AddPlayerActivity"
+            android:label="Add players"/>
+
     </application>
 </manifest>
