@@ -21,7 +21,10 @@ abstract class GenericRootFragment : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        this.init()
     }
 
     abstract fun inflateView(inflater: LayoutInflater,container: ViewGroup) : View
+    abstract fun init()
 }

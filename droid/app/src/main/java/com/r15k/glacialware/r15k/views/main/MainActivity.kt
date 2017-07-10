@@ -94,9 +94,7 @@ class MainActivity : GenericRootActivity(), View.OnClickListener, AdapterView.On
 
     // ==== PRIVATE ====
     private fun initFragment() {
-        val ft : FragmentTransaction = supportFragmentManager.beginTransaction()
-        ft.replace(R.id.activity_main_content_frame, PlayersFragment.newInstance())
-        ft.commit()
+        navigateTo(supportFragmentManager, PlayersFragment.newInstance(), PlayersFragment.TAG, R.id.activity_main_content_frame, true, false)
     }
 
     private fun initToolbar() {

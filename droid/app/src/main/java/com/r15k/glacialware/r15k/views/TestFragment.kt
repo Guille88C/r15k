@@ -1,4 +1,4 @@
-package com.r15k.glacialware.r15k.views.main
+package com.r15k.glacialware.r15k.views
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,16 +8,16 @@ import com.r15k.glacialware.r15k.R
 import com.r15k.glacialware.r15k.views.generic.GenericRootFragment
 
 /**
- * Created by Guille on 09/07/2017.
+ * Created by Guille on 10/07/2017.
  */
-class PlayersFragment : GenericRootFragment() {
+class TestFragment : GenericRootFragment() {
     companion object {
         @JvmStatic
         val TAG : String = this :: class.java.canonicalName
 
         @JvmStatic
-        fun newInstance() : PlayersFragment {
-            val f = PlayersFragment()
+        fun newInstance() : TestFragment {
+            val f = TestFragment()
             val args = Bundle()
             f.arguments = args
             return f
@@ -25,7 +25,7 @@ class PlayersFragment : GenericRootFragment() {
     }
 
     override fun inflateView(inflater: LayoutInflater, container: ViewGroup): View {
-        return inflater.inflate(R.layout.fragment_players, container, false)
+        return inflater.inflate(R.layout.fragment_test, container, false)
     }
 
     override fun init() {

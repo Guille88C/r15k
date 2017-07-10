@@ -23,7 +23,7 @@ abstract class GenericRootActivity constructor(private var anim: Boolean = false
     override fun onBackPressed() {
         super.onBackPressed()
 
-        if (anim) {
+        if (anim && this.supportFragmentManager.backStackEntryCount == 0) {
             navigateBackAnimated(this)
         }
     }
