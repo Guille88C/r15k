@@ -100,6 +100,11 @@ class MainActivity : GenericRootActivity(), View.OnClickListener, AdapterView.On
     private fun initToolbar() {
         if (myToolbar != null)
             this.setSupportActionBar(myToolbar as Toolbar)
+
+        if (this.supportActionBar != null) {
+            (this.supportActionBar as ActionBar).setDisplayHomeAsUpEnabled(true)
+            (this.supportActionBar as ActionBar).setHomeButtonEnabled(true)
+        }
     }
 
     private fun initMenu() {
@@ -109,10 +114,6 @@ class MainActivity : GenericRootActivity(), View.OnClickListener, AdapterView.On
 
         this.mDrawerToggle = ActionBarDrawerToggle(this, drawerLayout, 0, 0)
         drawerLayout.addDrawerListener(this.mDrawerToggle)
-        if (this.supportActionBar != null) {
-            (this.supportActionBar as ActionBar).setDisplayHomeAsUpEnabled(true)
-            (this.supportActionBar as ActionBar).setHomeButtonEnabled(true)
-        }
 
         leftDrawer.onItemClickListener = this
     }
