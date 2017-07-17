@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">R15k</string>
+
+    <string name="add_players">Add players</string>
+    <string name="start_game">Start game</string>
+
+    <!--MENU-->
+    <string-array name="menu_items">
+        <item>@string/add_players</item>
+        <item>@string/start_game</item>
+    </string-array>
+
 </resources>
