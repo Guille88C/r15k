@@ -12,7 +12,7 @@ import com.r15k.glacialware.r15k.models.Player
  */
 class DbManager constructor(context : Context) {
 
-    val helper : DbHelper = DbHelper(context)
+    private val helper : DbHelper = DbHelper(context)
 
     fun close() {
         helper.close()
