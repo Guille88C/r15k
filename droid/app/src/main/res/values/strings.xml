@@ -2,12 +2,19 @@
     <string name="app_name">R15k</string>
 
     <string name="add_players">Add players</string>
+    <string name="edit_cards">Edit cards</string>
     <string name="start_game">Start game</string>
 
     <!--MENU-->
-    <string-array name="menu_items">
+    <string-array name="text_menu_items">
         <item>@string/add_players</item>
-        <item>@string/start_game</item>
+        <item>@string/edit_cards</item>
+        <item>@string/edit_cards</item>
     </string-array>
+    <integer-array name="drawable_menu_items">
+        <item>@drawable/default_menu_item</item>
+        <item>@drawable/default_menu_item</item>
+        <item>@drawable/default_menu_item</item>
+    </integer-array>
 
 </resources>

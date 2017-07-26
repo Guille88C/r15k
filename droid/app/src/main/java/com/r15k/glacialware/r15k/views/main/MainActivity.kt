@@ -1,6 +1,7 @@
 package com.r15k.glacialware.r15k.views.main
 
 import android.content.res.Configuration
+import android.content.res.TypedArray
 import android.os.Bundle
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBar
@@ -98,8 +99,10 @@ class MainActivity : GenericRootActivity(), View.OnClickListener, AdapterView.On
     }
 
     private fun initMenu() {
-        val menuItems : Array<String> = resources.getStringArray(R.array.menu_items)
-        val menuAdapter : MenuAdapter = MenuAdapter(this, R.layout.view_drawer_menu_main_item, arrayListOf(MenuItem(menuItems[0]), MenuItem(menuItems[1])))
+        val textItems : Array<String> = resources.getStringArray(R.array.text_menu_items)
+        val drawableItems : TypedArray = resources.obtainTypedArray(R.array.drawable_menu_items)
+        val menuAdapter : MenuAdapter = MenuAdapter(this, Array(textItems.size, { i -> MenuItem(textItems[i], drawableItems.getResourceId(0, R.drawable.background_splash))}))
+        drawableItems.recycle()
         leftDrawer.adapter = menuAdapter
 
         this.mDrawerToggle = ActionBarDrawerToggle(this, drawerLayout, 0, 0)
