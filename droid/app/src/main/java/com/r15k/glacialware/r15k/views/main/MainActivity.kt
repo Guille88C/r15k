@@ -101,7 +101,7 @@ class MainActivity : GenericRootActivity(), View.OnClickListener, AdapterView.On
     private fun initMenu() {
         val textItems : Array<String> = resources.getStringArray(R.array.text_menu_items)
         val drawableItems : TypedArray = resources.obtainTypedArray(R.array.drawable_menu_items)
-        val menuAdapter : MenuAdapter = MenuAdapter(this, Array(textItems.size, { i -> MenuItem(textItems[i], drawableItems.getResourceId(0, R.drawable.background_splash))}))
+        val menuAdapter : MenuAdapter = MenuAdapter(this, Array(textItems.size, { i -> MenuItem(textItems[i], drawableItems.getResourceId(0, R.drawable.default_menu_item))}))
         drawableItems.recycle()
         leftDrawer.adapter = menuAdapter
 
