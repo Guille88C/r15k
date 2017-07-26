@@ -9,7 +9,7 @@
     <string-array name="text_menu_items">
         <item>@string/add_players</item>
         <item>@string/edit_cards</item>
-        <item>@string/edit_cards</item>
+        <item>@string/start_game</item>
     </string-array>
     <integer-array name="drawable_menu_items">
         <item>@drawable/default_menu_item</item>
