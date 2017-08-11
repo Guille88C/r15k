@@ -1,4 +1,4 @@
-package com.r15k.glacialware.r15k.ddbb
+package com.r15k.glacialware.r15k.datastore.ddbb
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase

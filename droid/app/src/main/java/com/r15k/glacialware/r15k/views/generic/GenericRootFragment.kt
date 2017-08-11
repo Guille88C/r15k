@@ -11,20 +11,10 @@ import android.view.ViewGroup
  */
 abstract class GenericRootFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        super.onCreateView(inflater, container, savedInstanceState)
-
-        if (inflater != null && container != null)
-            return this.inflateView(inflater, container)
-
-        return null
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        this.init()
     }
-
-    abstract fun inflateView(inflater: LayoutInflater,container: ViewGroup) : View
-    abstract fun init()
 }

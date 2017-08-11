@@ -1,11 +1,11 @@
-package com.r15k.glacialware.r15k.ddbb
+package com.r15k.glacialware.r15k.datastore.ddbb
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
-import com.r15k.glacialware.r15k.models.Mission
-import com.r15k.glacialware.r15k.models.Player
+import com.r15k.glacialware.r15k.entities.Mission
+import com.r15k.glacialware.r15k.entities.Player
 
 /**
  * Created by Tanuki on 04/07/2017.

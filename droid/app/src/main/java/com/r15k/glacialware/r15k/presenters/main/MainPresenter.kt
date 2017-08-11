@@ -1,4 +1,4 @@
-package com.r15k.glacialware.r15k.presenter.main
+package com.r15k.glacialware.r15k.presenters.main
 
 /**
  * Created by Tanuki on 17/07/2017.

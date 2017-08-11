@@ -29,7 +29,11 @@
 
         <activity
             android:name=".views.addPlayer.AddPlayerActivity"
-            android:label="@string/add_players"/>
+            android:label="@string/add_players" />
+
+        <activity
+            android:name=".views.addPlayer.EditCardActivity"
+            android:label="@string/edit_cards" />
 
     </application>
 </manifest>

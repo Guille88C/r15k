@@ -1,4 +1,4 @@
-package com.r15k.glacialware.r15k.ddbb
+package com.r15k.glacialware.r15k.datastore.ddbb
 
 /**
  * Created by Tanuki on 04/07/2017.

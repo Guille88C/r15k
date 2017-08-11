@@ -12,21 +12,18 @@ import kotlinx.android.synthetic.main.activity_main.*
 /**
  * Created by Guille on 09/07/2017.
  */
-class AddPlayerActivity : GenericRootActivity(true) {
-
+class EditCardActivity : GenericRootActivity(true) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.setContentView(R.layout.activity_add_player)
+        this.setContentView(R.layout.activity_edit_card)
 
         this.initToolbar()
         this.initFragment()
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item != null) {
-            when (item.itemId) {
-                android.R.id.home -> this.onBackPressed()
-            }
+        when (item?.itemId) {
+            android.R.id.home -> this.onBackPressed()
         }
 
         return super.onOptionsItemSelected(item)
@@ -46,6 +43,6 @@ class AddPlayerActivity : GenericRootActivity(true) {
     }
 
     private fun initFragment() {
-        navigateTo(supportFragmentManager, AddPlayerFragment.newInstance(), AddPlayerFragment.TAG, R.id.activity_add_player_content_frame, true, false)
+        navigateTo(supportFragmentManager, EditCardFragment.newInstance(), EditCardFragment.TAG, R.id.frame_content, true, false)
     }
 }

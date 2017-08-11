@@ -1,34 +1,26 @@
-package com.r15k.glacialware.r15k.presenter.main
+package com.r15k.glacialware.r15k.presenters.main
 
 import android.support.v4.widget.DrawerLayout
 import android.view.View
-import com.r15k.glacialware.r15k.R
-import com.r15k.glacialware.r15k.rooting.navigateTo
-import com.r15k.glacialware.r15k.views.TestActivity
-import com.r15k.glacialware.r15k.views.addPlayer.AddPlayerActivity
 import com.r15k.glacialware.r15k.views.main.MainActivity
 import com.r15k.glacialware.r15k.views.main.MainView
-import com.r15k.glacialware.r15k.views.main.MenuItem
+import com.r15k.glacialware.r15k.wireframes.main.MainWireframe
+import com.r15k.glacialware.r15k.wireframes.main.MainWireframeImpl
 
 /**
  * Created by Guille on 09/07/2017.
  */
 class MainPresenterImpl(private val view : MainView) : MainPresenter {
-
-    enum class MenuOption {
-        NONE,
-        ADD_PLAYER,
-        START_GAME
+    companion object {
+        private const val ADD_PLAYER : Int = 0
+        private const val EDIT_CARD : Int = 1
+        private const val START_GAME : Int = 2
     }
 
 
 
 
-    private fun getMenuOption(pos : Int) : MenuOption {
-        if (pos == 0) return MenuOption.ADD_PLAYER
-        else if (pos == 1) return MenuOption.START_GAME
-        else return MenuOption.NONE
-    }
+    private val wireframe : MainWireframe? = MainWireframeImpl(view as? MainActivity)
 
 
 
@@ -42,7 +34,7 @@ class MainPresenterImpl(private val view : MainView) : MainPresenter {
     }
 
     override fun onClick() {
-        view.navigateToTest()
+        wireframe?.goToTest()
     }
 
     override fun onItemClick(pos : Int) {
@@ -55,11 +47,10 @@ class MainPresenterImpl(private val view : MainView) : MainPresenter {
             }
 
             override fun onDrawerClosed(drawerView: View?) {
-                val menuOption : MainPresenterImpl.MenuOption = getMenuOption(pos)
-                when (menuOption) {
-                    MainPresenterImpl.MenuOption.ADD_PLAYER -> view.navigateToAddPlayer()
-                    MainPresenterImpl.MenuOption.START_GAME -> {}
-                    MainPresenterImpl.MenuOption.NONE -> {}
+                when (pos) {
+                    ADD_PLAYER -> wireframe?.goToAddPlayer()
+                    EDIT_CARD -> wireframe?.goToEditCard()
+                    START_GAME -> {}
                 }
                 view.removeDrawerListener(this)
             }
