@@ -2,6 +2,7 @@ package com.r15k.glacialware.r15k.presenters.main
 
 import android.support.v4.widget.DrawerLayout
 import android.view.View
+import com.r15k.glacialware.r15k.R
 import com.r15k.glacialware.r15k.views.main.MainActivity
 import com.r15k.glacialware.r15k.views.main.MainView
 import com.r15k.glacialware.r15k.wireframes.main.MainWireframe
@@ -24,6 +25,11 @@ class MainPresenterImpl(private val view : MainView) : MainPresenter {
 
 
 
+
+    override fun initPresenter() {
+        view.initDrawerStrings(R.array.text_menu_items)
+        wireframe?.startFragment()
+    }
 
     override fun onBackPressed() {
         if (view.isDrawerOpen()) {

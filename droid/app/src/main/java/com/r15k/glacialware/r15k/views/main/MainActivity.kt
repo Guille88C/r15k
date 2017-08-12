@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 /**
  * Created by Guille on 01/07/2017.
  */
-class MainActivity : GenericRootActivity(), View.OnClickListener, AdapterView.OnItemClickListener, MainView {
+class MainActivity : GenericRootActivity(), MainView {
 
     // ==== ATTRIBUTES ====
     private lateinit var mDrawerToggle : ActionBarDrawerToggle
@@ -35,11 +35,11 @@ class MainActivity : GenericRootActivity(), View.OnClickListener, AdapterView.On
         super.onCreate(savedInstanceState)
         setContentView(com.r15k.glacialware.r15k.R.layout.activity_main)
 
-        initFragment()
         initToolbar()
         initMenu()
 
-        this.mPresenter = MainPresenterImpl(this)
+        mPresenter = MainPresenterImpl(this)
+        mPresenter.initPresenter()
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
@@ -70,12 +70,6 @@ class MainActivity : GenericRootActivity(), View.OnClickListener, AdapterView.On
 
 
     // ==== INIT FUNCTIONS ====
-    private fun initFragment() {
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.activity_main_content_frame, PlayersFragment.newInstance())
-                .commit()
-    }
-
     private fun initToolbar() {
         if (myToolbar != null)
             this.setSupportActionBar(myToolbar as Toolbar)
@@ -87,54 +81,60 @@ class MainActivity : GenericRootActivity(), View.OnClickListener, AdapterView.On
     }
 
     private fun initMenu() {
-        val textItems : Array<String> = resources.getStringArray(R.array.text_menu_items)
-        val drawableItems : TypedArray = resources.obtainTypedArray(R.array.drawable_menu_items)
-        val menuAdapter : MenuAdapter = MenuAdapter(this, Array(textItems.size, { i -> MenuItem(textItems[i], drawableItems.getResourceId(0, R.drawable.default_menu_item))}))
-        drawableItems.recycle()
-        leftDrawer.adapter = menuAdapter
-
         this.mDrawerToggle = ActionBarDrawerToggle(this, drawerLayout, 0, 0)
         drawerLayout.addDrawerListener(this.mDrawerToggle)
 
-        leftDrawer.onItemClickListener = this
+        leftDrawer.onItemClickListener = object : AdapterView.OnItemClickListener{
+            override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                mPresenter.onItemClick(p2)
+            }
+        }
     }
     //==== ---- ====
 
 
 
 
-    // ==== LISTENERS ====
-    override fun onClick(p0: View?) {
-        mPresenter.onClick()
-    }
-
-    override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        mPresenter.onItemClick(p2)
-    }
-    // ==== ---- ====
-
-
-
-
     //==== MAIN VIEW FUNCTIONS ====
+    override fun initDrawerStrings(res: Int) {
+        if (isCreated()) {
+            val textItems : Array<String> = resources.getStringArray(res)
+            val drawableItems : TypedArray = resources.obtainTypedArray(R.array.drawable_menu_items)
+            val menuAdapter : MenuAdapter = MenuAdapter(this@MainActivity, Array(textItems.size, { i -> MenuItem(textItems[i], drawableItems.getResourceId(0, R.drawable.default_menu_item))}))
+            drawableItems.recycle()
+            leftDrawer.adapter = menuAdapter
+        }
+    }
+
     override fun closeDrawer() {
-        drawerLayout.closeDrawer(Gravity.START)
+        if (isCreated()) {
+            drawerLayout.closeDrawer(Gravity.START)
+        }
     }
 
     override fun isDrawerOpen() : Boolean {
-        return drawerLayout.isDrawerOpen(Gravity.START)
+        if (isCreated()) {
+            return drawerLayout.isDrawerOpen(Gravity.START)
+        }
+        return false
     }
 
     override fun addDrawerListener(listener : DrawerLayout.DrawerListener) {
-        drawerLayout.addDrawerListener(listener)
+        if (isCreated()) {
+            drawerLayout.addDrawerListener(listener)
+        }
     }
 
     override fun removeDrawerListener(listener : DrawerLayout.DrawerListener) {
-        drawerLayout.removeDrawerListener(listener)
+        if (isCreated()) {
+            drawerLayout.removeDrawerListener(listener)
+        }
     }
 
     override fun superOnBackPressed() {
-        super.onBackPressed()
+        if (isCreated()) {
+            super.onBackPressed()
+        }
     }
     // ==== ---- ====
 
