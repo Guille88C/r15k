@@ -38,13 +38,14 @@ class PlayersFragment : GenericRootFragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         this.initPlayers()
     }
 
     fun initPlayers() {
-        val adapter = PlayersAdapter()
-        this.rvPlayers.adapter = adapter
+        // todo: add observer pattern (LiveData)
+
         this.rvPlayers.layoutManager = LinearLayoutManager(this.activity)
+        val adapter = PlayersAdapter(mPlayersVM.ListPlayers.value!!)
+        this.rvPlayers.adapter = adapter
     }
 }

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 26
@@ -37,6 +38,9 @@ dependencies {
     // ----
     // model
     implementation project(':model')
+    // ----
+    // data binding
+    kapt 'com.android.databinding:compiler:3.0.0'
     // ----
 }
 repositories {
