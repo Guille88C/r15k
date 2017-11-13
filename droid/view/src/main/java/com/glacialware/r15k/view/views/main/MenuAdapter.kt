@@ -12,7 +12,7 @@ import com.glacialware.r15k.view.R
 /**
  * Created by Guille on 07/07/2017.
  */
-class MenuAdapter(context : Context,private var items : Array<MenuItem>) : ArrayAdapter<MenuItem>(context, R.layout.view_drawer_menu_main_item) {
+class MenuAdapter(context : Context,private var items : Array<MenuItem>) : ArrayAdapter<MenuItem>(context, R.layout.view_main_drawer_menu_item) {
 
     private class ViewHolder {
         lateinit var nameOption : TextView
@@ -30,7 +30,7 @@ class MenuAdapter(context : Context,private var items : Array<MenuItem>) : Array
         val viewHolder : ViewHolder
         if (convertView == null) {
             viewHolder = ViewHolder()
-            view = LayoutInflater.from(this.context).inflate(R.layout.view_drawer_menu_main_item, parent, false)
+            view = LayoutInflater.from(this.context).inflate(R.layout.view_main_drawer_menu_item, parent, false)
             if (view != null) {
                 viewHolder.nameOption = view.findViewById(R.id.drawer_menu_main_row_name_option_tv)
                 viewHolder.image = view.findViewById(R.id.imageView)

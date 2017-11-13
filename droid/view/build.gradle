@@ -35,6 +35,9 @@ dependencies {
     // view model
     implementation project(':viewmodel')
     // ----
+    // model
+    implementation project(':model')
+    // ----
 }
 repositories {
     mavenCentral()
