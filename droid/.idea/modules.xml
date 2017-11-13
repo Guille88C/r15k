@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://D:\development\android\r15k\droid\view\app.iml" filepath="D:\development\android\r15k\droid\view\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/droid.iml" filepath="$PROJECT_DIR$/droid.iml" />
       <module fileurl="file://$PROJECT_DIR$/model/model.iml" filepath="$PROJECT_DIR$/model/model.iml" />
       <module fileurl="file://$PROJECT_DIR$/view/view.iml" filepath="$PROJECT_DIR$/view/view.iml" />
