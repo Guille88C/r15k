@@ -24,7 +24,7 @@ class PlayersViewModel : ViewModel {
         // ----
 
         // player 2
-        val player2 = Player(1, "player 1", listMission, false)
+        val player2 = Player(1, "player 2", listMission, false)
         listPlayers.add(player2)
         // ----
 
