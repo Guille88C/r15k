@@ -2,6 +2,7 @@ package com.glacialware.r15k.model.room
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
+import android.arch.persistence.room.Ignore
 import android.arch.persistence.room.PrimaryKey
 import com.glacialware.r15k.view.entities.Mission
 
@@ -19,8 +20,8 @@ data class Player (
         @ColumnInfo(name = "nick")
         val nick : String,
 
-        @ColumnInfo(name = "list_missions")
-        var lMissions : ArrayList<Mission>,
+//        @Ignore
+//        var lMissions : List<Mission>,
 
         @ColumnInfo(name = "is_dead")
         var isDead : Boolean

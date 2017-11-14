@@ -2,6 +2,7 @@ package com.glacialware.r15k.model.room
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
+import android.arch.persistence.room.Ignore
 import android.arch.persistence.room.PrimaryKey
 import com.glacialware.r15k.view.entities.Player
 
@@ -14,8 +15,8 @@ import com.glacialware.r15k.view.entities.Player
 data class Game (
         @PrimaryKey
         @ColumnInfo(name = "id")
-        val id : Int,
+        val id : Int
 
-        @ColumnInfo(name = "list_players")
-        val lPlayers : ArrayList<Player>
+//        @Ignore
+//        val lPlayers : List<Player>
 )

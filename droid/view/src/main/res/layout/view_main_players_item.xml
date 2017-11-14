@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="player" type="com.glacialware.r15k.view.entities.Player"/>
+        <variable name="player" type="com.glacialware.r15k.model.room.Player"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

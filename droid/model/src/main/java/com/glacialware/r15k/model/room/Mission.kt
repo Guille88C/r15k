@@ -30,8 +30,8 @@ data class Mission (
         val image : String,
 
         @ColumnInfo(name = "completed")
-        var completed : Boolean,
+        val completed : Boolean,
 
         @ColumnInfo(name="id_player")
-        var idPlayer : Int
+        val idPlayer : Int
 )

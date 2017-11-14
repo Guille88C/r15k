@@ -4,14 +4,14 @@ import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.glacialware.r15k.model.room.Player
 import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.databinding.ViewMainPlayersItemBinding
-import com.glacialware.r15k.view.entities.Player
 
 /**
  * Created by Guille on 13/11/2017.
  */
-class PlayersAdapter(val lPlayers : ArrayList<Player>) : RecyclerView.Adapter<PlayersAdapter.PlayersVH>() {
+class PlayersAdapter(val lPlayers : List<Player>) : RecyclerView.Adapter<PlayersAdapter.PlayersVH>() {
     class PlayersVH(val binding : ViewMainPlayersItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(player : Player) {
             binding.player = player

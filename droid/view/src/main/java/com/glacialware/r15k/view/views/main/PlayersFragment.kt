@@ -6,8 +6,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.glacialware.r15k.model.room.Player
 import com.glacialware.r15k.view.R
-import com.glacialware.r15k.view.entities.Player
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
 import com.glacialware.r15k.viewmodel.views.main.PlayersViewModel
 import kotlinx.android.synthetic.main.fragment_players.*
@@ -40,11 +40,12 @@ class PlayersFragment : GenericRootFragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        this.mPlayersVM.init()
         this.initPlayersObserver()
     }
 
     fun initPlayersObserver() {
-        this.mPlayersVM.ListPlayers.observe(
+        this.mPlayersVM.lPlayers.observe(
                 {
                     this.lifecycle
                 },
@@ -63,7 +64,7 @@ class PlayersFragment : GenericRootFragment() {
 //        })
     }
 
-    fun initPlayers(lItems : ArrayList<Player>) {
+    fun initPlayers(lItems : List<Player>) {
         this.rvPlayers.layoutManager = LinearLayoutManager(this.activity)
         val adapter = PlayersAdapter(lItems)
         this.rvPlayers.adapter = adapter
