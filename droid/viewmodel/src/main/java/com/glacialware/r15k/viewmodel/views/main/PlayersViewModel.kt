@@ -1,12 +1,9 @@
 package com.glacialware.r15k.viewmodel.views.main
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.*
 import com.glacialware.r15k.model.room.AppDatabase
-import com.glacialware.r15k.model.room.Mission
 import com.glacialware.r15k.model.room.Player
-import com.glacialware.r15k.model.room.PlayerMission
 import com.glacialware.r15k.viewmodel.model.di.AppDatabaseComponent
 import com.glacialware.r15k.viewmodel.model.di.AppDatabaseModule
 import com.glacialware.r15k.viewmodel.model.di.DaggerAppDatabaseComponent
@@ -17,7 +14,7 @@ import javax.inject.Inject
 /**
  * Created by Guille on 13/11/2017.
  */
-class PlayersViewModel(app: Application) : AndroidViewModel(app) {
+class PlayersViewModel : AndroidViewModel, LifecycleObserver {
     @field:[Inject]
     lateinit var database: AppDatabase
 
@@ -28,23 +25,19 @@ class PlayersViewModel(app: Application) : AndroidViewModel(app) {
                 .build()
     }
 
-    fun init() {
+    constructor(app: Application) : super(app){
         databaseComponent.inject(this)
+    }
 
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    fun checkPlayers() {
         doAsync {
-
-//            database.createFakeData()
-            database.clearAllTables()
             val listPlayers = database.playerDao().getAll()
 
             uiThread {
-                test(listPlayers)
+                lPlayers.value = listPlayers
             }
         }
-    }
-
-    fun test(listPlayers: List<Player>) {
-        lPlayers.value = listPlayers
     }
 
     val lPlayers : MutableLiveData<List<Player>> = MutableLiveData()

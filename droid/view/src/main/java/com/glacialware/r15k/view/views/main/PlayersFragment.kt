@@ -33,14 +33,13 @@ class PlayersFragment : GenericRootFragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         this.mPlayersVM = ViewModelProviders.of(this).get(PlayersViewModel::class.java)
+        this.lifecycle.addObserver(this.mPlayersVM)
 
         return inflater?.inflate(R.layout.fragment_players, container, false)
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        this.mPlayersVM.init()
         this.initPlayersObserver()
     }
 
