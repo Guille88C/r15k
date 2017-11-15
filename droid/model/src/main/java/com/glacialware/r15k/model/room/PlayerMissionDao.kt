@@ -15,4 +15,7 @@ interface PlayerMissionDao {
 
     @Query("select * from player_mission")
     fun getAll() : List<PlayerMission>
+
+    @Query("delete from player_mission")
+    fun clear()
 }

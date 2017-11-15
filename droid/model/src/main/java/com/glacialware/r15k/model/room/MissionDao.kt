@@ -15,4 +15,7 @@ interface MissionDao {
 
     @Query("select * from mission")
     fun getAll() : List<Mission>
+
+    @Query("delete from mission")
+    fun clear()
 }

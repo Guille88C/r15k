@@ -10,8 +10,8 @@ import android.arch.persistence.room.ForeignKey
 @Entity(
     tableName = "player_mission",
     foreignKeys = arrayOf(
-        ForeignKey(entity = Player::class, parentColumns = arrayOf("id"), childColumns = arrayOf("id_player")),
-        ForeignKey(entity = Mission::class, parentColumns = arrayOf("id"), childColumns = arrayOf("id_mission"))
+        ForeignKey(entity = Player::class, parentColumns = arrayOf("id"), childColumns = arrayOf("id_player"), onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE),
+        ForeignKey(entity = Mission::class, parentColumns = arrayOf("id"), childColumns = arrayOf("id_mission"), onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE)
     ),
     primaryKeys = arrayOf("id_player", "id_mission")
 )

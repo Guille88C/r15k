@@ -14,5 +14,5 @@ import javax.inject.Singleton
 class AppDatabaseModule(private val context: Context) {
     @Singleton
     @Provides
-    fun databaseInstance() : AppDatabase = Room.inMemoryDatabaseBuilder(context.applicationContext, AppDatabase::class.java).build()
+    fun databaseInstance() : AppDatabase = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "r15k_ddbb").build()
 }

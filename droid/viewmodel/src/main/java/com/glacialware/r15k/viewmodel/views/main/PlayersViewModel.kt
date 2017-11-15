@@ -32,21 +32,9 @@ class PlayersViewModel(app: Application) : AndroidViewModel(app) {
         databaseComponent.inject(this)
 
         doAsync {
-            val mission1 = Mission(0, "mission title 1", "mission desc 1", "image 1", false)
-            val mission2 = Mission(1, "mission title 2", "mission desc 2", "image 2", false)
-            database.missionDao().insert(mission1)
-            database.missionDao().insert(mission2)
 
-            val playerRoom1 = Player(0, "player 1", false)
-            val playerRoom2 = Player(1, "player 2", false)
-            database.playerDao().insert(playerRoom1)
-            database.playerDao().insert(playerRoom2)
-
-            val playerMission1 = PlayerMission(0, 1)
-            val playerMission2 = PlayerMission(1, 0)
-            database.playerMissionDao().insert(playerMission1)
-            database.playerMissionDao().insert(playerMission2)
-
+//            database.createFakeData()
+            database.clearAllTables()
             val listPlayers = database.playerDao().getAll()
 
             uiThread {

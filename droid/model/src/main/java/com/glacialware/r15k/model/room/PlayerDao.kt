@@ -15,4 +15,7 @@ interface PlayerDao {
 
     @Query("select * from player")
     fun getAll() : List<Player>
+
+    @Query("delete from player")
+    fun clear()
 }
