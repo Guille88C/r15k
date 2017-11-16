@@ -9,13 +9,13 @@ import android.arch.persistence.room.*
     tableName = "player"
 )
 data class Player (
-    @PrimaryKey
-    @ColumnInfo(name = "id")
-    val id : Int,
-
     @ColumnInfo(name = "nick")
     val nick : String,
 
     @ColumnInfo(name = "is_dead")
     val isDead : Boolean
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    var id : Int = 0
+}

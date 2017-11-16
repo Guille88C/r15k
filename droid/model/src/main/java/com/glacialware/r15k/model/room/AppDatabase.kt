@@ -31,8 +31,8 @@ abstract class AppDatabase : RoomDatabase() {
         missionDao().insert(mission1)
         missionDao().insert(mission2)
 
-        val playerRoom1 = Player(0, "player 1", false)
-        val playerRoom2 = Player(1, "player 2", false)
+        val playerRoom1 = Player("player 1", false)
+        val playerRoom2 = Player("player 2", false)
         playerDao().insert(playerRoom1)
         playerDao().insert(playerRoom2)
 

@@ -44,6 +44,8 @@ class PlayersFragment : GenericRootFragment() {
     }
 
     fun initPlayersObserver() {
+        // todo: user observableField in view model instead of observing live data.
+
         this.mPlayersVM.lPlayers.observe(
                 {
                     this.lifecycle

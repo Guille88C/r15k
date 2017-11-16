@@ -1,16 +1,22 @@
 package com.glacialware.r15k.viewmodel.views.addPlayer
 
-import android.arch.lifecycle.LifecycleObserver
-import android.arch.lifecycle.ViewModel
+import android.app.Application
 import android.databinding.ObservableField
+import android.view.View
+import com.glacialware.r15k.model.room.Player
+import com.glacialware.r15k.viewmodel.views.GeneralDatabaseViewModel
+import org.jetbrains.anko.doAsync
 
 /**
  * Created by Guille on 15/11/2017.
  */
-class AddPlayerViewModel : ViewModel(), LifecycleObserver {
+class AddPlayerViewModel(app : Application) : GeneralDatabaseViewModel(app) {
+
     val namePlayer : ObservableField<String> = ObservableField("")
 
-    fun addPlayer() {
-
+    fun onAddPlayerClick(view : View) {
+        doAsync {
+            database.playerDao().insert(Player(namePlayer.get(), false))
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.glacialware.r15k.viewmodel.model.di
 
+import com.glacialware.r15k.viewmodel.views.GeneralDatabaseViewModel
 import com.glacialware.r15k.viewmodel.views.main.PlayersViewModel
 import dagger.Component
 import javax.inject.Singleton
@@ -12,5 +13,5 @@ import javax.inject.Singleton
         modules = arrayOf(AppDatabaseModule::class)
 )
 interface AppDatabaseComponent {
-    fun inject(playersVM: PlayersViewModel)
+    fun inject(databaseVM: GeneralDatabaseViewModel)
 }
