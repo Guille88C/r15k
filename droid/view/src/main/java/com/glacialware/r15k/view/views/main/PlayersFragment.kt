@@ -30,6 +30,7 @@ class PlayersFragment : GenericRootFragment() {
     }
 
     lateinit var mPlayersVM : PlayersViewModel
+    var mPlayersAdapter : PlayersAdapter? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         this.mPlayersVM = ViewModelProviders.of(this).get(PlayersViewModel::class.java)
@@ -44,7 +45,6 @@ class PlayersFragment : GenericRootFragment() {
     }
 
     fun initPlayersObserver() {
-        // todo: user observableField in view model instead of observing live data.
 
         this.mPlayersVM.lPlayers.observe(
                 {
@@ -66,8 +66,13 @@ class PlayersFragment : GenericRootFragment() {
     }
 
     fun initPlayers(lItems : List<Player>) {
-        this.rvPlayers.layoutManager = LinearLayoutManager(this.activity)
-        val adapter = PlayersAdapter(lItems)
-        this.rvPlayers.adapter = adapter
+        if (mPlayersAdapter == null) {
+            this.rvPlayers.layoutManager = LinearLayoutManager(this.activity)
+            val adapter = PlayersAdapter(lItems)
+            this.rvPlayers.adapter = adapter
+        }
+        else {
+            mPlayersAdapter?.update(lItems)
+        }
     }
 }

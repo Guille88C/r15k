@@ -11,16 +11,15 @@ import org.jetbrains.anko.uiThread
  * Created by Guille on 13/11/2017.
  */
 class PlayersViewModel(app : Application) : GeneralDatabaseViewModel(app) {
+    val lPlayers : MutableLiveData<List<Player>> = MutableLiveData()
+
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun checkPlayers() {
         doAsync {
-            val listPlayers = database.playerDao().getAll()
-
+            val lItems = database.playerDao().getAll()
             uiThread {
-                lPlayers.value = listPlayers
+                lPlayers.value = lItems
             }
         }
     }
-
-    val lPlayers : MutableLiveData<List<Player>> = MutableLiveData()
 }
