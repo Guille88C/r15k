@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="add_player_title_name">Player name</string>
+    <string name="add_player_et_hint">Name</string>
+    <string name="add_player_add_button">Add player</string>
+</resources>

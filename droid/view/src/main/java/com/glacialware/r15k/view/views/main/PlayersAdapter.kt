@@ -12,7 +12,7 @@ import com.glacialware.r15k.view.databinding.ViewMainPlayersItemBinding
 /**
  * Created by Guille on 13/11/2017.
  */
-class PlayersAdapter(var lPlayers : List<Player>) : RecyclerView.Adapter<PlayersAdapter.PlayersVH>() {
+class PlayersAdapter(private var lPlayers : List<Player>) : RecyclerView.Adapter<PlayersAdapter.PlayersVH>() {
     class PlayersDiffCallback(val lOld : List<Player>, val lNew : List<Player>) : DiffUtil.Callback() {
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean = (lOld[oldItemPosition].id == lNew[newItemPosition].id)
         override fun getOldListSize(): Int = lOld.size
@@ -20,7 +20,7 @@ class PlayersAdapter(var lPlayers : List<Player>) : RecyclerView.Adapter<Players
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean = (lOld[oldItemPosition] == lNew[newItemPosition])
     }
 
-    class PlayersVH(val binding : ViewMainPlayersItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class PlayersVH(private val binding : ViewMainPlayersItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(player : Player) {
             binding.player = player
             binding.executePendingBindings()
@@ -33,9 +33,7 @@ class PlayersAdapter(var lPlayers : List<Player>) : RecyclerView.Adapter<Players
         return PlayersVH(itemBinding)
     }
 
-    override fun getItemCount(): Int {
-        return lPlayers.size
-    }
+    override fun getItemCount(): Int = lPlayers.size
 
     override fun onBindViewHolder(holder: PlayersAdapter.PlayersVH?, position: Int) {
         val player = this.lPlayers[position]

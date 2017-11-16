@@ -12,20 +12,22 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#333333">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/etPlayerName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:fontFamily="monospace"
+            android:hint="@string/add_player_et_hint"
             android:text="@={view_model.namePlayer}"
-            android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/tvPlayerNameTitle" />
 
         <Button
             android:id="@+id/addPlayerB"
@@ -34,11 +36,27 @@
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:text="Button"
+            android:fontFamily="monospace"
             android:onClick="@{(view) -> view_model.onAddPlayerClick(view)}"
+            android:text="@string/add_player_add_button"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPlayerNameTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="monospace"
+            android:text="@string/add_player_title_name"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 

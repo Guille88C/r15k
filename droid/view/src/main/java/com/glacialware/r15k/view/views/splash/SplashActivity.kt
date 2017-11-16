@@ -9,7 +9,7 @@ import com.glacialware.r15k.view.views.generic.GenericRootActivity
  * Created by Guille on 30/06/2017.
  */
 class SplashActivity : GenericRootActivity(), SplashView {
-    lateinit var presenter : SplashPresenter
+    private lateinit var presenter : SplashPresenter
 
 
 

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="add_player_toast_text">Player \'%1$s\' has been added.</string>
+</resources>
