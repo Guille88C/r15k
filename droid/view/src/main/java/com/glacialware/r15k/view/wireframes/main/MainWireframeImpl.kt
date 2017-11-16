@@ -7,6 +7,7 @@ import com.glacialware.r15k.view.views.addPlayer.AddPlayerActivity
 import com.glacialware.r15k.view.views.addPlayer.EditCardActivity
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import com.glacialware.r15k.view.views.main.PlayersFragment
+import com.glacialware.r15k.view.views.playerDetail.PlayerDetailActivity
 
 /**
  * Created by maric on 11/08/2017.

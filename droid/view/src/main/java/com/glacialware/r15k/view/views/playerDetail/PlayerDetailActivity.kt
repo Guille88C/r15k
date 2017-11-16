@@ -1,22 +1,19 @@
-package com.glacialware.r15k.view.views.addPlayer
+package com.glacialware.r15k.view.views.playerDetail
 
 import android.os.Bundle
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.glacialware.r15k.view.R
-import com.glacialware.r15k.view.wireframes.navigateTo
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
+import com.glacialware.r15k.view.wireframes.navigateTo
 import kotlinx.android.synthetic.main.activity_main.*
 
-/**
- * Created by Guille on 09/07/2017.
- */
-class AddPlayerActivity : GenericRootActivity(true) {
+class PlayerDetailActivity : GenericRootActivity(true) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.setContentView(R.layout.activity_generic_toolbar)
+        setContentView(R.layout.activity_generic_toolbar)
 
         this.initToolbar()
         this.initFragment()
@@ -46,6 +43,6 @@ class AddPlayerActivity : GenericRootActivity(true) {
     }
 
     private fun initFragment() {
-        navigateTo(supportFragmentManager, AddPlayerFragment.newInstance(), AddPlayerFragment.TAG, R.id.frame_content, true, false)
+        navigateTo(supportFragmentManager, PlayerDetailFragment.newInstance(), PlayerDetailFragment.TAG, R.id.frame_content, true, false)
     }
 }

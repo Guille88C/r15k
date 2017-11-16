@@ -2,6 +2,7 @@ package com.glacialware.r15k.view.presenters.main
 
 import android.support.v4.widget.DrawerLayout
 import android.view.View
+import com.glacialware.r15k.model.room.Player
 import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.views.main.MainActivity
 import com.glacialware.r15k.view.views.main.MainView
@@ -65,5 +66,4 @@ class MainPresenterImpl(private val view : MainView) : MainPresenter {
             }
         })
     }
-
 }

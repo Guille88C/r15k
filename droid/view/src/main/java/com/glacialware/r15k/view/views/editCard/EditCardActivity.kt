@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class EditCardActivity : GenericRootActivity(true) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.setContentView(R.layout.activity_edit_card)
+        this.setContentView(R.layout.activity_generic_toolbar)
 
         this.initToolbar()
         this.initFragment()

@@ -16,5 +16,7 @@
         <item>@drawable/default_menu_item</item>
         <item>@drawable/default_menu_item</item>
     </integer-array>
+    <string name="title_activity_player_detail">PlayerDetailActivity</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

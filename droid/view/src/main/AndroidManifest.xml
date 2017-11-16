@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.glacialware.r15k.view">
 
@@ -8,32 +9,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".views.splash.SplashActivity"
-            android:theme="@style/SplashTheme"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".views.main.MainActivity"
-            android:label="Main"/>
-
+            android:label="Main" />
         <activity
             android:name=".views.TestActivity"
-            android:label="Test"/>
-
+            android:label="Test" />
         <activity
             android:name=".views.addPlayer.AddPlayerActivity"
             android:label="@string/add_players" />
-
         <activity
             android:name=".views.addPlayer.EditCardActivity"
             android:label="@string/edit_cards" />
-
+        <activity
+            android:name=".views.playerDetail.PlayerDetailActivity"
+            android:label="@string/title_activity_player_detail"
+            android:theme="@style/AppTheme"></activity>
     </application>
+
 </manifest>

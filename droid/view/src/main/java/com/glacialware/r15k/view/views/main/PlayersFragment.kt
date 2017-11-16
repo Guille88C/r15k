@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.glacialware.r15k.model.room.Player
 import com.glacialware.r15k.view.R
+import com.glacialware.r15k.view.presenters.main.PlayersPresenter
+import com.glacialware.r15k.view.presenters.main.PlayersPresenterImpl
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
 import com.glacialware.r15k.viewmodel.views.main.PlayersViewModel
 import kotlinx.android.synthetic.main.fragment_players.*
@@ -15,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_players.*
 /**
  * Created by Guille on 09/07/2017.
  */
-class PlayersFragment : GenericRootFragment() {
+class PlayersFragment : GenericRootFragment(), IPlayerClick {
     companion object {
         @JvmStatic
         val TAG : String = this :: class.java.canonicalName
@@ -29,18 +31,23 @@ class PlayersFragment : GenericRootFragment() {
         }
     }
 
-    lateinit var mPlayersVM : PlayersViewModel
-    var mPlayersAdapter : PlayersAdapter? = null
+    private lateinit var presenter : PlayersPresenter
+    private lateinit var mPlayersVM : PlayersViewModel
+    private var mPlayersAdapter : PlayersAdapter? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        // view model
         this.mPlayersVM = ViewModelProviders.of(this).get(PlayersViewModel::class.java)
         this.lifecycle.addObserver(this.mPlayersVM)
+        // ----
 
         return inflater?.inflate(R.layout.fragment_players, container, false)
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        presenter = PlayersPresenterImpl(this)
         this.initPlayersObserver()
     }
 
@@ -68,11 +75,19 @@ class PlayersFragment : GenericRootFragment() {
     fun initPlayers(lItems : List<Player>) {
         if (mPlayersAdapter == null) {
             this.rvPlayers.layoutManager = LinearLayoutManager(this.activity)
-            val adapter = PlayersAdapter(lItems)
-            this.rvPlayers.adapter = adapter
+            this.mPlayersAdapter = PlayersAdapter(lItems as MutableList<Player>)
+            this.rvPlayers.adapter = this.mPlayersAdapter
+
+            this.mPlayersAdapter?.itemClick = this
         }
         else {
             mPlayersAdapter?.update(lItems)
+        }
+    }
+
+    override fun onPlayerClick(item: Player) {
+        if (presenter != null) {
+            presenter.onItemPlayerClick(item)
         }
     }
 }
