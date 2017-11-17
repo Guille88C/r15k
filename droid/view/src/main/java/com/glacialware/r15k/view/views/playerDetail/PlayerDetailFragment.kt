@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.databinding.FragmentPlayerDetailBinding
+import com.glacialware.r15k.view.presenters.playerDetail.PlayerDetailFragmentPresenter
+import com.glacialware.r15k.view.presenters.playerDetail.PlayerDetailFragmentPresenterImpl
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
 import com.glacialware.r15k.viewmodel.views.playerDetail.PlayerDetailViewModel
 
@@ -28,14 +30,11 @@ class PlayerDetailFragment : GenericRootFragment() {
         }
     }
 
-    lateinit var viewModel : PlayerDetailViewModel
+    private val presenter: PlayerDetailFragmentPresenter = PlayerDetailFragmentPresenterImpl(this)
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        this.viewModel = ViewModelProviders.of(this.activity).get(PlayerDetailViewModel::class.java)
-        if (inflater != null && this.viewModel.player != null) {
-            val binding = DataBindingUtil.inflate<FragmentPlayerDetailBinding>(inflater, R.layout.fragment_player_detail, container, false)
-            binding.player = viewModel.player
-            return binding.root
+        if (inflater != null && container != null) {
+            return presenter.initViewModel(inflater, container)
         }
         return null
     }
