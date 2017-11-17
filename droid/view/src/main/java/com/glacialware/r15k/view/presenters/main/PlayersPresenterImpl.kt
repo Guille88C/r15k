@@ -13,6 +13,6 @@ class PlayersPresenterImpl(private val view : PlayersFragment) : PlayersPresente
     private val wireframe : PlayersWireframe = PlayersWireframeImpl(view)
 
     override fun onItemPlayerClick(player: Player) {
-        wireframe?.goToPlayerDetail()
+        wireframe?.goToPlayerDetail(player)
     }
 }
