@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="player_detail_nick_title">Nick</string>
+    <string name="player_detail_nick_default">Player name</string>
+    <string name="player_detail_status_title">Status</string>
+    <string name="player_detail_status_dead">Dead</string>
+    <string name="player_detail_status_alive">Alive</string>
+    <string name="player_detail_delete_button">Delete</string>
+</resources>

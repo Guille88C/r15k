@@ -4,7 +4,7 @@
     <string name="add_players">Add players</string>
     <string name="edit_cards">Edit cards</string>
     <string name="start_game">Start game</string>
-
+    <string name="title_activity_player_detail">Player detail</string>
     <!--MENU-->
     <string-array name="text_menu_items">
         <item>@string/add_players</item>
@@ -16,7 +16,6 @@
         <item>@drawable/default_menu_item</item>
         <item>@drawable/default_menu_item</item>
     </integer-array>
-    <string name="title_activity_player_detail">PlayerDetailActivity</string>
     <string name="action_settings">Settings</string>
 
 </resources>

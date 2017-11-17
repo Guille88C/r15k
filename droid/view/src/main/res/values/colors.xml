@@ -6,4 +6,6 @@
 
     <!--splash-->
     <color name="color_splash_background">#555555</color>
+
+    <color name="color_dark_background">#333333</color>
 </resources>
