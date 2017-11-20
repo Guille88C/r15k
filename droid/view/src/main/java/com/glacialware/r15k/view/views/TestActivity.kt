@@ -8,8 +8,13 @@ import com.glacialware.r15k.view.views.generic.GenericRootActivity
  * Created by Guille on 06/07/2017.
  */
 class TestActivity : GenericRootActivity(true) {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun initFragment() {
+    }
+
+    override fun initViewModel() {
+    }
+
+    override fun initView() {
         this.setContentView(R.layout.activity_test)
     }
 }

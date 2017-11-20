@@ -1,6 +1,5 @@
 package com.glacialware.r15k.view.views.addPlayer
 
-import android.os.Bundle
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
@@ -13,12 +12,17 @@ import kotlinx.android.synthetic.main.activity_main.*
  * Created by Guille on 09/07/2017.
  */
 class EditCardActivity : GenericRootActivity(true) {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun initViewModel() {
+    }
+
+    override fun initView() {
         this.setContentView(R.layout.activity_generic_toolbar)
 
         this.initToolbar()
-        this.initFragment()
+    }
+
+    override fun initFragment() {
+        navigateTo(supportFragmentManager, EditCardFragment.newInstance(), EditCardFragment.TAG, R.id.frame_content, true, false)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -40,9 +44,5 @@ class EditCardActivity : GenericRootActivity(true) {
             (this.supportActionBar as ActionBar).setDisplayHomeAsUpEnabled(true)
             (this.supportActionBar as ActionBar).setHomeButtonEnabled(true)
         }
-    }
-
-    private fun initFragment() {
-        navigateTo(supportFragmentManager, EditCardFragment.newInstance(), EditCardFragment.TAG, R.id.frame_content, true, false)
     }
 }

@@ -1,28 +1,27 @@
 package com.glacialware.r15k.view.views.playerDetail
 
-import android.os.Bundle
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.presenters.playerDetail.PlayerDetailActivityPresenter
-import com.glacialware.r15k.view.presenters.playerDetail.PlayerDetailActivityPresenterImpl
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class PlayerDetailActivity : GenericRootActivity(true) {
+    private val presenter: PlayerDetailActivityPresenter = PlayerDetailActivityPresenter(this)
 
-    private val presenter: PlayerDetailActivityPresenter = PlayerDetailActivityPresenterImpl(this)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        presenter.initViewModel()
-
-        setContentView(R.layout.activity_generic_toolbar)
-
-        this.initToolbar()
+    override fun initFragment() {
         presenter.initFragment()
+    }
+
+    override fun initViewModel() {
+        presenter.initViewModel()
+    }
+
+    override fun initView() {
+        setContentView(R.layout.activity_generic_toolbar)
+        this.initToolbar()
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

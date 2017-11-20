@@ -9,21 +9,17 @@ import com.glacialware.r15k.view.views.generic.GenericRootActivity
  * Created by Guille on 30/06/2017.
  */
 class SplashActivity : GenericRootActivity(), SplashView {
-    private lateinit var presenter : SplashPresenter
+    private val presenter : SplashPresenter = SplashPreseterImpl(this)
 
-
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        presenter = SplashPreseterImpl(this)
-
-        presenter.endOnCreate()
+    override fun initFragment() {
     }
 
+    override fun initViewModel() {
+    }
 
-
+    override fun initView() {
+        presenter.endOnCreate()
+    }
 
     override fun finishView() {
         if (isCreated()) {

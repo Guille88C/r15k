@@ -24,22 +24,26 @@ class MainActivity : GenericRootActivity(), MainView {
 
     // ==== ATTRIBUTES ====
     private lateinit var mDrawerToggle : ActionBarDrawerToggle
-    private lateinit var mPresenter: MainPresenter
+    private val mPresenter: MainPresenter = MainPresenterImpl(this)
     // ==== ---- ====
 
 
 
 
     // ==== LIFE CYCLE
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun initFragment() {
+        mPresenter.initPresenter()
+    }
+
+    override fun initViewModel() {
+    }
+
+    override fun initView() {
         setContentView(com.glacialware.r15k.view.R.layout.activity_main)
 
+        initDrawerStrings(R.array.text_menu_items)
         initToolbar()
         initMenu()
-
-        mPresenter = MainPresenterImpl(this)
-        mPresenter.initPresenter()
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {

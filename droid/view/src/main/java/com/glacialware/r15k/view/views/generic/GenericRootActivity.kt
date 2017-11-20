@@ -15,6 +15,15 @@ abstract class GenericRootActivity constructor(private var anim: Boolean = false
         if (anim) {
             this.overridePendingTransition(R.anim.slide_in_enter, R.anim.slide_out_enter)
         }
+
+        // It is mandatory to initialize the view model before de view:
+        // 1. View model.
+        // 2. View.
+        // 3. Fragment.
+        // All activities have, at least, one fragment.
+        this.initViewModel()
+        this.initView()
+        this.initFragment()
     }
 
     override fun onBackPressed() {
@@ -25,10 +34,9 @@ abstract class GenericRootActivity constructor(private var anim: Boolean = false
         }
     }
 
+    abstract fun initFragment()
+    abstract fun initViewModel()
+    abstract fun initView()
 
-
-
-    fun isCreated() : Boolean {
-        return !isFinishing && !isDestroyed
-    }
+    fun isCreated() : Boolean = !isFinishing && !isDestroyed
 }

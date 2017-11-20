@@ -1,11 +1,10 @@
 package com.glacialware.r15k.view.views.addPlayer
 
-import android.os.Bundle
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.glacialware.r15k.view.R
-import com.glacialware.r15k.view.wireframes.navigateTo
+import com.glacialware.r15k.view.presenters.addPlayer.AddPlayerActivityPresenter
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -14,13 +13,7 @@ import kotlinx.android.synthetic.main.activity_main.*
  */
 class AddPlayerActivity : GenericRootActivity(true) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        this.setContentView(R.layout.activity_generic_toolbar)
-
-        this.initToolbar()
-        this.initFragment()
-    }
+    private val presenter = AddPlayerActivityPresenter(this)
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item != null) {
@@ -32,8 +25,18 @@ class AddPlayerActivity : GenericRootActivity(true) {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun initViewModel() {
+        presenter.initViewModel()
+    }
 
+    override fun initView() {
+        this.setContentView(R.layout.activity_generic_toolbar)
+        this.initToolbar()
+    }
 
+    override fun initFragment() {
+        presenter.initFragment()
+    }
 
     private fun initToolbar() {
         if (myToolbar != null)
@@ -43,9 +46,5 @@ class AddPlayerActivity : GenericRootActivity(true) {
             (this.supportActionBar as ActionBar).setDisplayHomeAsUpEnabled(true)
             (this.supportActionBar as ActionBar).setHomeButtonEnabled(true)
         }
-    }
-
-    private fun initFragment() {
-        navigateTo(supportFragmentManager, AddPlayerFragment.newInstance(), AddPlayerFragment.TAG, R.id.frame_content, true, false)
     }
 }

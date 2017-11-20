@@ -27,7 +27,7 @@ class MainPresenterImpl(private val view : MainView) : MainPresenter {
 
 
     override fun initPresenter() {
-        view.initDrawerStrings(R.array.text_menu_items)
+//        view.initDrawerStrings(R.array.text_menu_items)
         wireframe?.startFragment()
     }
 
