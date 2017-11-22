@@ -28,7 +28,7 @@ class PlayersAdapter(private var lPlayers : MutableList<Player>) : RecyclerView.
         constructor(binding: ViewMainPlayersItemBinding) : super(binding.root) {
             this.binding = binding
 
-            binding.root.setOnClickListener {
+            this.binding.root.setOnClickListener {
                 item ->
                 if (player != null && itemClick != null) {
                     itemClick?.onPlayerClick(player!!)

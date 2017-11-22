@@ -13,7 +13,6 @@ import android.view.View
 import android.widget.AdapterView
 import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.presenters.main.MainPresenter
-import com.glacialware.r15k.view.presenters.main.MainPresenterImpl
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -24,7 +23,7 @@ class MainActivity : GenericRootActivity(), MainView {
 
     // ==== ATTRIBUTES ====
     private lateinit var mDrawerToggle : ActionBarDrawerToggle
-    private val mPresenter: MainPresenter = MainPresenterImpl(this)
+    private val mPresenter = MainPresenter(this)
     // ==== ---- ====
 
 
@@ -32,10 +31,11 @@ class MainActivity : GenericRootActivity(), MainView {
 
     // ==== LIFE CYCLE
     override fun initFragment() {
-        mPresenter.initPresenter()
+        this.mPresenter.initFragment()
     }
 
     override fun initViewModel() {
+        this.mPresenter.initViewModel()
     }
 
     override fun initView() {
