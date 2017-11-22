@@ -2,6 +2,7 @@ package com.glacialware.r15k.view.views.main
 
 import android.arch.lifecycle.*
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -10,14 +11,13 @@ import com.glacialware.r15k.model.room.Player
 import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.presenters.main.PlayersPresenter
 import com.glacialware.r15k.view.presenters.main.PlayersPresenterImpl
-import com.glacialware.r15k.view.views.generic.GenericRootFragment
 import com.glacialware.r15k.viewmodel.views.main.PlayersViewModel
 import kotlinx.android.synthetic.main.fragment_players.*
 
 /**
  * Created by Guille on 09/07/2017.
  */
-class PlayersFragment : GenericRootFragment(), IPlayerClick {
+class PlayersFragment : Fragment(), IPlayerClick {
     companion object {
         @JvmStatic
         val TAG : String = this :: class.java.canonicalName
