@@ -45,6 +45,7 @@ dependencies {
     androidTestImplementation "android.arch.persistence.room:testing:$rootProject.roomVersion"
     // ----
 }
+
 repositories {
     mavenCentral()
 }
