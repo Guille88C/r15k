@@ -66,6 +66,10 @@ dependencies {
 
     // data binding
     kapt 'com.android.databinding:compiler:3.0.0'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     // ----
 
+}
+repositories {
+    mavenCentral()
 }
