@@ -20,8 +20,12 @@ class PlayerDetailFragmentPresenter(private val view: PlayerDetailFragment) : Ge
     override fun initViewModel(inflater: LayoutInflater, container: ViewGroup) : View? {
         this.viewModel = ViewModelProviders.of(view.activity).get(PlayerDetailViewModel::class.java)
         if (this.viewModel != null && this.viewModel?.player != null) {
+            this.viewModel?.playerDetailView = view
+
             val binding = DataBindingUtil.inflate<FragmentPlayerDetailBinding>(inflater, R.layout.fragment_player_detail, container, false)
             binding.player = viewModel?.player
+            binding.viewModel = this.viewModel
+            
             return binding.root
         }
         return null

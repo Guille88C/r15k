@@ -1,9 +1,6 @@
 package com.glacialware.r15k.model.room
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.OnConflictStrategy
-import android.arch.persistence.room.Query
+import android.arch.persistence.room.*
 
 /**
  * Created by Guille on 14/11/2017.
@@ -18,4 +15,7 @@ interface PlayerDao {
 
     @Query("delete from player")
     fun clear()
+
+    @Delete
+    fun delete(player: Player)
 }

@@ -8,6 +8,10 @@
         <variable
             name="player"
             type="com.glacialware.r15k.model.room.Player" />
+
+        <variable
+            name="view_model"
+            type="com.glacialware.r15k.viewmodel.views.playerDetail.PlayerDetailViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -102,6 +106,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:text="@string/player_detail_delete_button"
+            android:onClick="@{() -> view_model.deletePlayer()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
