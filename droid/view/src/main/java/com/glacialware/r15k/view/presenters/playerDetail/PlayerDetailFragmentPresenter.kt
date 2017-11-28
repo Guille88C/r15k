@@ -25,7 +25,7 @@ class PlayerDetailFragmentPresenter(private val view: PlayerDetailFragment) : Ge
             val binding = DataBindingUtil.inflate<FragmentPlayerDetailBinding>(inflater, R.layout.fragment_player_detail, container, false)
             binding.player = viewModel?.player
             binding.viewModel = this.viewModel
-            
+
             return binding.root
         }
         return null

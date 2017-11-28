@@ -15,6 +15,8 @@ import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.presenters.main.MainPresenter
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by Guille on 01/07/2017.
@@ -39,6 +41,7 @@ class MainActivity : GenericRootActivity(), MainView {
     }
 
     override fun initView() {
+        Fabric.with(this, Crashlytics())
         setContentView(com.glacialware.r15k.view.R.layout.activity_main)
 
         initDrawerStrings(R.array.text_menu_items)
