@@ -21,7 +21,7 @@ import io.fabric.sdk.android.Fabric;
 /**
 * Created by Guille on 01/07/2017.
 */
-class MainActivity : GenericRootActivity(), MainView {
+class MainActivity : GenericRootActivity() {
 
     // ==== ATTRIBUTES ====
     private lateinit var mDrawerToggle : ActionBarDrawerToggle
@@ -103,7 +103,7 @@ class MainActivity : GenericRootActivity(), MainView {
 
 
     //==== MAIN VIEW FUNCTIONS ====
-    override fun initDrawerStrings(res: Int) {
+    fun initDrawerStrings(res: Int) {
         if (isCreated()) {
             val textItems : Array<String> = resources.getStringArray(res)
             val drawableItems : TypedArray = resources.obtainTypedArray(R.array.drawable_menu_items)
@@ -113,32 +113,32 @@ class MainActivity : GenericRootActivity(), MainView {
         }
     }
 
-    override fun closeDrawer() {
+    fun closeDrawer() {
         if (isCreated()) {
             drawerLayout.closeDrawer(Gravity.START)
         }
     }
 
-    override fun isDrawerOpen() : Boolean {
+    fun isDrawerOpen() : Boolean {
         if (isCreated()) {
             return drawerLayout.isDrawerOpen(Gravity.START)
         }
         return false
     }
 
-    override fun addDrawerListener(listener : DrawerLayout.DrawerListener) {
+    fun addDrawerListener(listener : DrawerLayout.DrawerListener) {
         if (isCreated()) {
             drawerLayout.addDrawerListener(listener)
         }
     }
 
-    override fun removeDrawerListener(listener : DrawerLayout.DrawerListener) {
+    fun removeDrawerListener(listener : DrawerLayout.DrawerListener) {
         if (isCreated()) {
             drawerLayout.removeDrawerListener(listener)
         }
     }
 
-    override fun superOnBackPressed() {
+    fun superOnBackPressed() {
         if (isCreated()) {
             super.onBackPressed()
         }
