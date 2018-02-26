@@ -10,8 +10,8 @@ import retrofit2.Retrofit
 import javax.inject.Inject
 
 /**
- * Created by Guille on 28/11/2017.
- */
+* Created by Guille on 28/11/2017.
+*/
 class PlayerController : Callback<GenericGetAllResponse<Player>> {
     interface IPlayerResponse {
         fun successResponse(response: GenericGetAllResponse<Player>)

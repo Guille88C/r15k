@@ -5,8 +5,8 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.ForeignKey
 
 /**
- * Created by Guille on 15/11/2017.
- */
+* Created by Guille on 15/11/2017.
+*/
 @Entity(
     tableName = "player_mission",
     foreignKeys = arrayOf(

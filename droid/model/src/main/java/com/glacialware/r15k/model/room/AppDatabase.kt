@@ -4,8 +4,8 @@ import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
 
 /**
- * Created by Guille on 14/11/2017.
- */
+* Created by Guille on 14/11/2017.
+*/
 @Database(
     entities = arrayOf(Mission::class, Player::class, Game::class, PlayerMission::class, GamePlayer::class),
     version = 1

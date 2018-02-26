@@ -6,8 +6,8 @@ import com.glacialware.r15k.view.wireframes.splash.SplashWireframe
 import com.glacialware.r15k.view.wireframes.splash.SplashWireframeImpl
 
 /**
- * Created by maric on 11/08/2017.
- */
+* Created by maric on 11/08/2017.
+*/
 class SplashPresenter(private val view : SplashView) {
     private val wireframe : SplashWireframe = SplashWireframeImpl(view as Activity?)
 

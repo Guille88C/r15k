@@ -3,8 +3,8 @@ package com.glacialware.r15k.model.room
 import android.arch.persistence.room.*
 
 /**
- * Created by Guille on 14/11/2017.
- */
+* Created by Guille on 14/11/2017.
+*/
 @Dao
 interface PlayerDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

@@ -6,8 +6,8 @@ import dagger.Component
 import javax.inject.Singleton
 
 /**
- * Created by Guille on 28/11/2017.
- */
+* Created by Guille on 28/11/2017.
+*/
 @Singleton
 @Component (
     modules = arrayOf(ServiceModule::class)

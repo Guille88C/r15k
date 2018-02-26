@@ -9,8 +9,8 @@ import com.glacialware.r15k.view.wireframes.main.MainWireframe
 import com.glacialware.r15k.view.wireframes.main.MainWireframeImpl
 
 /**
- * Created by Guille on 09/07/2017.
- */
+* Created by Guille on 09/07/2017.
+*/
 class MainPresenter(private val view : MainView) : GenericActivityPresenter() {
     companion object {
         private const val ADD_PLAYER : Int = 0
@@ -41,14 +41,14 @@ class MainPresenter(private val view : MainView) : GenericActivityPresenter() {
 
     fun onItemClick(pos : Int) {
         view.closeDrawer()
-        view.addDrawerListener(object : DrawerLayout.DrawerListener{
+        view.addDrawerListener(object: DrawerLayout.DrawerListener {
             override fun onDrawerStateChanged(newState: Int) {
             }
 
-            override fun onDrawerSlide(drawerView: View?, slideOffset: Float) {
+            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
             }
 
-            override fun onDrawerClosed(drawerView: View?) {
+            override fun onDrawerClosed(drawerView: View) {
                 when (pos) {
                     ADD_PLAYER -> wireframe?.goToAddPlayer()
                     EDIT_CARD -> wireframe?.goToEditCard()
@@ -57,7 +57,7 @@ class MainPresenter(private val view : MainView) : GenericActivityPresenter() {
                 view.removeDrawerListener(this)
             }
 
-            override fun onDrawerOpened(drawerView: View?) {
+            override fun onDrawerOpened(drawerView: View) {
             }
         })
     }

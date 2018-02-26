@@ -10,8 +10,8 @@ import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.databinding.ViewMainPlayersItemBinding
 
 /**
- * Created by Guille on 13/11/2017.
- */
+* Created by Guille on 13/11/2017.
+*/
 class PlayersAdapter(private var lPlayers : MutableList<Player>) : RecyclerView.Adapter<PlayersAdapter.PlayersVH>(), IPlayerClick {
     class PlayersDiffCallback(val lOld : List<Player>, val lNew : List<Player>) : DiffUtil.Callback() {
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean = (lOld[oldItemPosition].id == lNew[newItemPosition].id)
@@ -29,7 +29,7 @@ class PlayersAdapter(private var lPlayers : MutableList<Player>) : RecyclerView.
             this.binding = binding
 
             this.binding.root.setOnClickListener {
-                item ->
+                _ ->
                 if (player != null && itemClick != null) {
                     itemClick?.onPlayerClick(player!!)
                 }

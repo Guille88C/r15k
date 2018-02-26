@@ -10,8 +10,8 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
 /**
- * Created by Guille on 13/11/2017.
- */
+* Created by Guille on 13/11/2017.
+*/
 class PlayersViewModel(app : Application) : GenericDatabaseViewModel(app), PlayerController.IPlayerResponse {
     private var shouldFetch = true
     private val playerController = PlayerController(this)

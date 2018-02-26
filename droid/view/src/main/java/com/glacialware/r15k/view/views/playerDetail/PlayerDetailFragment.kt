@@ -8,7 +8,7 @@ import com.glacialware.r15k.viewmodel.views.playerDetail.IPlayerDetailView
 /**
  * A placeholder fragment containing a simple view.
  */
-class PlayerDetailFragment : GenericRootFragment, IPlayerDetailView {
+class PlayerDetailFragment : GenericRootFragment(), IPlayerDetailView {
     companion object {
         @JvmStatic
         val TAG : String = this :: class.java.canonicalName
@@ -22,11 +22,11 @@ class PlayerDetailFragment : GenericRootFragment, IPlayerDetailView {
         }
     }
 
-    constructor() : super() {
+    init {
         this.presenter = PlayerDetailFragmentPresenter(this)
     }
 
     override fun finishDeletePlayer() {
-        this.activity.finish()
+        this.activity?.finish()
     }
 }

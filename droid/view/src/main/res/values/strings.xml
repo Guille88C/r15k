@@ -6,6 +6,7 @@
     <string name="start_game">Start game</string>
     <string name="title_activity_player_detail">Player detail</string>
     <!--MENU-->
+    <string name="menu_main_image_description">Image to show and hide the menu</string>
     <string-array name="text_menu_items">
         <item>@string/add_players</item>
         <item>@string/edit_cards</item>

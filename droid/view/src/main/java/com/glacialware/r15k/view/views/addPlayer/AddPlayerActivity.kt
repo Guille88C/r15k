@@ -9,8 +9,8 @@ import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
- * Created by Guille on 09/07/2017.
- */
+* Created by Guille on 09/07/2017.
+*/
 class AddPlayerActivity : GenericRootActivity(true) {
 
     private val presenter = AddPlayerActivityPresenter(this)

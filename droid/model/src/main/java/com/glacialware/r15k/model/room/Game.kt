@@ -5,8 +5,8 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 
 /**
- * Created by Guille on 14/11/2017.
- */
+* Created by Guille on 14/11/2017.
+*/
 @Entity(
     tableName = "game"
 )

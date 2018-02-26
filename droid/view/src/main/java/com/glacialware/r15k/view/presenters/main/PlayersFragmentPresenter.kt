@@ -16,8 +16,8 @@ import com.glacialware.r15k.viewmodel.views.main.PlayersViewModel
 import kotlinx.android.synthetic.main.fragment_players.*
 
 /**
- * Created by Guille on 16/11/2017.
- */
+* Created by Guille on 16/11/2017.
+*/
 class PlayersFragmentPresenter(private val view : PlayersFragment) : GenericFragmentPresenter() {
 
     private var viewModel: PlayersViewModel? = null
@@ -25,9 +25,11 @@ class PlayersFragmentPresenter(private val view : PlayersFragment) : GenericFrag
     private var mPlayersAdapter : PlayersAdapter? = null
 
     override fun initViewModel(inflater: LayoutInflater, container: ViewGroup): View? {
-        this.viewModel = ViewModelProviders.of(view.activity).get(PlayersViewModel::class.java)
-        if (this.viewModel != null) {
-            view.lifecycle.addObserver(this.viewModel!!)
+        if (view.activity != null) {
+            this.viewModel = ViewModelProviders.of(view.activity!!).get(PlayersViewModel::class.java)
+            if (this.viewModel != null) {
+                view.lifecycle.addObserver(this.viewModel!!)
+            }
         }
         return inflater.inflate(R.layout.fragment_players, container, false)
     }

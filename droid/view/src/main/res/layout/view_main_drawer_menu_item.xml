@@ -16,7 +16,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/menu_main_image_description"/>
 
     <TextView
         android:id="@+id/drawer_menu_main_row_name_option_tv"

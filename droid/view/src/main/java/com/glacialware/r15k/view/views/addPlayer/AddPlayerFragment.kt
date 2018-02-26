@@ -5,8 +5,8 @@ import com.glacialware.r15k.view.presenters.addPlayer.AddPlayerFragmentPresenter
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
 
 /**
- * Created by Guille on 10/07/2017.
- */
+* Created by Guille on 10/07/2017.
+*/
 class AddPlayerFragment : GenericRootFragment {
     companion object {
         @JvmStatic

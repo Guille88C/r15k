@@ -7,8 +7,8 @@ import com.glacialware.r15k.view.presenters.main.PlayersFragmentPresenter
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
 
 /**
- * Created by Guille on 09/07/2017.
- */
+* Created by Guille on 09/07/2017.
+*/
 class PlayersFragment : GenericRootFragment, IPlayerClick {
     companion object {
         @JvmStatic
@@ -27,7 +27,7 @@ class PlayersFragment : GenericRootFragment, IPlayerClick {
         this.presenter = PlayersFragmentPresenter(this)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         if (this.presenter != null && this.presenter is PlayersFragmentPresenter) {

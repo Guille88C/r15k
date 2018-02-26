@@ -6,8 +6,8 @@ import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.wireframes.navigateBackAnimated
 
 /**
- * Created by Guille on 04/07/2017.
- */
+* Created by Guille on 04/07/2017.
+*/
 abstract class GenericRootActivity constructor(private var anim: Boolean = false) : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

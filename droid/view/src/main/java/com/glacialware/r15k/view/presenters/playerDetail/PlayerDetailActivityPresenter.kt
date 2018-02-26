@@ -9,8 +9,8 @@ import com.glacialware.r15k.view.wireframes.playerDetail.PlayerDetailActivityWir
 import com.glacialware.r15k.viewmodel.views.playerDetail.PlayerDetailViewModel
 
 /**
- * Created by Guille on 17/11/2017.
- */
+* Created by Guille on 17/11/2017.
+*/
 class PlayerDetailActivityPresenter(private val view: PlayerDetailActivity) : GenericActivityPresenter() {
 
     private val wireframe: PlayerDetailActivityWireframe = PlayerDetailActivityWireframe(view)

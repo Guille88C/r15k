@@ -10,8 +10,8 @@ import retrofit2.Retrofit
 import javax.inject.Inject
 
 /**
- * Created by Guille on 28/11/2017.
- */
+* Created by Guille on 28/11/2017.
+*/
 class MissionController : Callback<GenericGetAllResponse<Mission>> {
     interface IMissionResponse {
         fun successResponse(response: GenericGetAllResponse<Mission>)

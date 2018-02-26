@@ -9,11 +9,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 /**
- * Created by Guille on 28/11/2017.
- */
+* Created by Guille on 28/11/2017.
+*/
 @Module
 class ServiceModule {
-    private val BASE_URL = "http://192.168.1.35/r15k/"
+    companion object {
+        private const val BASE_URL = "http://192.168.1.35/r15k/"
+    }
 
     @Singleton
     @Provides

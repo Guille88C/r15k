@@ -5,7 +5,7 @@ import android.databinding.DataBindingUtil
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.glacialware.r15k.view.Components.CustomToast
+import com.glacialware.r15k.view.components.CustomToast
 import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.databinding.FragmentAddPlayerBinding
 import com.glacialware.r15k.view.di.CustomToastComponent
@@ -17,14 +17,21 @@ import com.glacialware.r15k.viewmodel.views.addPlayer.AddPlayerViewModel
 import javax.inject.Inject
 
 /**
- * Created by Guille on 20/11/2017.
- */
+* Created by Guille on 20/11/2017.
+*/
 class AddPlayerFragmentPresenter(private val view: AddPlayerFragment) : GenericFragmentPresenter() {
     private val mCustomToastComponent: CustomToastComponent by lazy {
-        DaggerCustomToastComponent
-                .builder()
-                .customToastModule(CustomToastModule(view.activity))
-                .build()
+        if (view.activity != null) {
+            DaggerCustomToastComponent
+                    .builder()
+                    .customToastModule(CustomToastModule(view.activity!!))
+                    .build()
+        }
+        else {
+            DaggerCustomToastComponent
+                    .builder()
+                    .build()
+        }
     }
 
     @field:[Inject]
@@ -38,7 +45,9 @@ class AddPlayerFragmentPresenter(private val view: AddPlayerFragment) : GenericF
         mCustomToastComponent.inject(this)
         // ----
         // view model
-        viewModel = ViewModelProviders.of(view.activity).get(AddPlayerViewModel::class.java)
+        if (view.activity != null) {
+            viewModel = ViewModelProviders.of(view.activity!!).get(AddPlayerViewModel::class.java)
+        }
         if (viewModel != null) {
             viewModel?.setToast(mCustomToast)
             view.lifecycle.addObserver(viewModel!!)

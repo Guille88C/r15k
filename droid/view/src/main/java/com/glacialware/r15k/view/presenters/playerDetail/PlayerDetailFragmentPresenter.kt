@@ -12,21 +12,23 @@ import com.glacialware.r15k.view.views.playerDetail.PlayerDetailFragment
 import com.glacialware.r15k.viewmodel.views.playerDetail.PlayerDetailViewModel
 
 /**
- * Created by Guille on 17/11/2017.
- */
+* Created by Guille on 17/11/2017.
+*/
 class PlayerDetailFragmentPresenter(private val view: PlayerDetailFragment) : GenericFragmentPresenter() {
     private var viewModel: PlayerDetailViewModel? = null
 
     override fun initViewModel(inflater: LayoutInflater, container: ViewGroup) : View? {
-        this.viewModel = ViewModelProviders.of(view.activity).get(PlayerDetailViewModel::class.java)
-        if (this.viewModel != null && this.viewModel?.player != null) {
-            this.viewModel?.playerDetailView = view
+        if (view.activity != null) {
+            this.viewModel = ViewModelProviders.of(view.activity!!).get(PlayerDetailViewModel::class.java)
+            if (this.viewModel != null && this.viewModel?.player != null) {
+                this.viewModel?.playerDetailView = view
 
-            val binding = DataBindingUtil.inflate<FragmentPlayerDetailBinding>(inflater, R.layout.fragment_player_detail, container, false)
-            binding.player = viewModel?.player
-            binding.viewModel = this.viewModel
+                val binding = DataBindingUtil.inflate<FragmentPlayerDetailBinding>(inflater, R.layout.fragment_player_detail, container, false)
+                binding.player = viewModel?.player
+                binding.viewModel = this.viewModel
 
-            return binding.root
+                return binding.root
+            }
         }
         return null
     }

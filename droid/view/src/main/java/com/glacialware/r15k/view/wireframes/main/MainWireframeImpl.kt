@@ -4,13 +4,13 @@ import android.content.Intent
 import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.views.TestActivity
 import com.glacialware.r15k.view.views.addPlayer.AddPlayerActivity
-import com.glacialware.r15k.view.views.addPlayer.EditCardActivity
+import com.glacialware.r15k.view.views.editCard.EditCardActivity
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import com.glacialware.r15k.view.views.main.PlayersFragment
 
 /**
- * Created by maric on 11/08/2017.
- */
+* Created by maric on 11/08/2017.
+*/
 class MainWireframeImpl(private val activity : GenericRootActivity?) : MainWireframe {
     override fun startFragment() {
         activity?.supportFragmentManager?.beginTransaction()

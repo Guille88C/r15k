@@ -6,8 +6,8 @@ import com.glacialware.r15k.viewmodel.views.GenericDatabaseViewModel
 import org.jetbrains.anko.doAsync
 
 /**
- * Created by Guille on 17/11/2017.
- */
+* Created by Guille on 17/11/2017.
+*/
 class PlayerDetailViewModel(app: Application) : GenericDatabaseViewModel(app) {
     var player: Player? = null
     var playerDetailView: IPlayerDetailView? = null

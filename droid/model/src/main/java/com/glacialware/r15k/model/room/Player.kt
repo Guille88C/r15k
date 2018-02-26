@@ -4,8 +4,8 @@ import android.arch.persistence.room.*
 import java.io.Serializable
 
 /**
- * Created by Guille on 14/11/2017.
- */
+* Created by Guille on 14/11/2017.
+*/
 @Entity (
     tableName = "player"
 )

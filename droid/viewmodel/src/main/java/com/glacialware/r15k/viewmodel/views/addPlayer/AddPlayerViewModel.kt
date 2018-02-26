@@ -4,15 +4,15 @@ import android.app.Application
 import android.databinding.ObservableField
 import android.view.View
 import com.glacialware.r15k.model.room.Player
-import com.glacialware.r15k.viewmodel.Interfaces.ICustomToast
+import com.glacialware.r15k.viewmodel.interfaces.ICustomToast
 import com.glacialware.r15k.viewmodel.R
 import com.glacialware.r15k.viewmodel.views.GenericDatabaseViewModel
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
 /**
- * Created by Guille on 15/11/2017.
- */
+* Created by Guille on 15/11/2017.
+*/
 class AddPlayerViewModel(app : Application) : GenericDatabaseViewModel(app) {
 
     var iToast : ICustomToast? = null
@@ -23,7 +23,7 @@ class AddPlayerViewModel(app : Application) : GenericDatabaseViewModel(app) {
         this.iToast = component
     }
 
-    fun onAddPlayerClick(view : View) {
+    fun onAddPlayerClick(v: View) {
         doAsync {
             database.playerDao().insert(Player(namePlayer.get(), false))
             uiThread {

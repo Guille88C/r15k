@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="edit_card_image_description">Edit card image</string>
+    <string name="edit_card_title">Title</string>
+    <string name="edit_card_description">Description</string>
+</resources>

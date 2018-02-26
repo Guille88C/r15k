@@ -10,8 +10,8 @@ import com.glacialware.r15k.viewmodel.model.di.GeneralComponent
 import javax.inject.Inject
 
 /**
- * Created by Guille on 16/11/2017.
- */
+* Created by Guille on 16/11/2017.
+*/
 abstract class GenericDatabaseViewModel : AndroidViewModel, LifecycleObserver {
     @field:[Inject]
     protected lateinit var database: AppDatabase

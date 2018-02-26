@@ -10,8 +10,8 @@ import android.widget.TextView
 import com.glacialware.r15k.view.R
 
 /**
- * Created by Guille on 07/07/2017.
- */
+* Created by Guille on 07/07/2017.
+*/
 class MenuAdapter(context : Context,private var items : Array<MenuItem>) : ArrayAdapter<MenuItem>(context, R.layout.view_main_drawer_menu_item) {
 
     private class ViewHolder {

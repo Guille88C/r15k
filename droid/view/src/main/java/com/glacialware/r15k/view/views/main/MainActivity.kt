@@ -19,8 +19,8 @@ import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
 
 /**
- * Created by Guille on 01/07/2017.
- */
+* Created by Guille on 01/07/2017.
+*/
 class MainActivity : GenericRootActivity(), MainView {
 
     // ==== ATTRIBUTES ====

@@ -4,8 +4,8 @@ import com.glacialware.r15k.view.presenters.splash.SplashPresenter
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 
 /**
- * Created by Guille on 30/06/2017.
- */
+* Created by Guille on 30/06/2017.
+*/
 class SplashActivity : GenericRootActivity(), SplashView {
     private val presenter = SplashPresenter(this)
 

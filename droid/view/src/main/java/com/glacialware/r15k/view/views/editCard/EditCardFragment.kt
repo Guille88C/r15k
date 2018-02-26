@@ -1,4 +1,4 @@
-package com.glacialware.r15k.view.views.addPlayer
+package com.glacialware.r15k.view.views.editCard
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
 
 /**
- * Created by Guille on 10/07/2017.
- */
+* Created by Guille on 10/07/2017.
+*/
 class EditCardFragment : GenericRootFragment() {
     companion object {
         @JvmStatic
@@ -27,12 +27,11 @@ class EditCardFragment : GenericRootFragment() {
 
 
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(R.layout.fragment_edit_card, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_edit_card, container, false)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
     }
 }

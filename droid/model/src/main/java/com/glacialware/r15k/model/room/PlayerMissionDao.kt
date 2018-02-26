@@ -6,8 +6,8 @@ import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
 
 /**
- * Created by Guille on 15/11/2017.
- */
+* Created by Guille on 15/11/2017.
+*/
 @Dao
 interface PlayerMissionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

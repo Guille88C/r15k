@@ -5,8 +5,8 @@ import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 
 /**
- * Created by Guille on 06/07/2017.
- */
+* Created by Guille on 06/07/2017.
+*/
 class TestActivity : GenericRootActivity(true) {
     override fun initFragment() {
     }

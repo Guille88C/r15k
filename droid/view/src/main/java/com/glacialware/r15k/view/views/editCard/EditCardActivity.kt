@@ -1,4 +1,4 @@
-package com.glacialware.r15k.view.views.addPlayer
+package com.glacialware.r15k.view.views.editCard
 
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.Toolbar
@@ -9,8 +9,8 @@ import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
- * Created by Guille on 09/07/2017.
- */
+* Created by Guille on 09/07/2017.
+*/
 class EditCardActivity : GenericRootActivity(true) {
     override fun initViewModel() {
     }

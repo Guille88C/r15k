@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:fullBackupContent="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,13 +18,16 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".views.main.MainActivity"
-            android:label="Main" />
+            android:label="Main">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".views.TestActivity"
             android:label="Test" />
@@ -31,7 +35,7 @@
             android:name=".views.addPlayer.AddPlayerActivity"
             android:label="@string/add_players" />
         <activity
-            android:name=".views.addPlayer.EditCardActivity"
+            android:name=".views.editCard.EditCardActivity"
             android:label="@string/edit_cards" />
         <activity
             android:name=".views.playerDetail.PlayerDetailActivity"

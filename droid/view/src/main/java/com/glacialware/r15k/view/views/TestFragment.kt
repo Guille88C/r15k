@@ -8,8 +8,8 @@ import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
 
 /**
- * Created by Guille on 10/07/2017.
- */
+* Created by Guille on 10/07/2017.
+*/
 class TestFragment : GenericRootFragment() {
     companion object {
         @JvmStatic
@@ -25,13 +25,11 @@ class TestFragment : GenericRootFragment() {
     }
 
 
-
-
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(R.layout.fragment_test, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_test, container, false)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
 }

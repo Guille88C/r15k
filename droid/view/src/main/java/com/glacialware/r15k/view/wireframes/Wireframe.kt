@@ -8,8 +8,8 @@ import android.support.v7.app.AppCompatActivity
 import com.glacialware.r15k.view.R
 
 /**
- * Created by Guille on 06/07/2017.
- */
+* Created by Guille on 06/07/2017.
+*/
 fun navigateTo(activity : AppCompatActivity, cls : Class<*>) {
     val intent = Intent(activity, cls)
     activity.startActivity(intent)

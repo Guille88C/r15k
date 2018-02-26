@@ -6,8 +6,8 @@ import dagger.Component
 import javax.inject.Singleton
 
 /**
- * Created by Guille on 16/11/2017.
- */
+* Created by Guille on 16/11/2017.
+*/
 @Singleton
 @Component(
     modules = arrayOf(CustomToastModule::class)

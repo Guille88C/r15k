@@ -8,8 +8,8 @@ import dagger.Provides
 import javax.inject.Singleton
 
 /**
- * Created by Guille on 14/11/2017.
- */
+* Created by Guille on 14/11/2017.
+*/
 @Module
 class AppDatabaseModule(private val context: Context) {
     @Singleton

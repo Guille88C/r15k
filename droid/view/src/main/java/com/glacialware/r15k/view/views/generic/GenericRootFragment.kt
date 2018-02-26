@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import com.glacialware.r15k.view.presenters.GenericFragmentPresenter
 
 /**
- * Created by Guille on 09/07/2017.
- */
+* Created by Guille on 09/07/2017.
+*/
 abstract class GenericRootFragment: Fragment()  {
     protected var presenter: GenericFragmentPresenter? = null
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        if (presenter != null && inflater != null && container != null) {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        if (presenter != null && container != null) {
             return presenter?.initViewModel(inflater, container)
         }
 
