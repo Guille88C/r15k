@@ -55,10 +55,8 @@ class PlayersFragmentPresenter(private val view : PlayersFragment) : GenericFrag
     private fun initPlayers(lItems : List<Player>) {
         if (mPlayersAdapter == null) {
             view.rvPlayers.layoutManager = LinearLayoutManager(view.activity)
-            this.mPlayersAdapter = PlayersAdapter(lItems as MutableList<Player>)
+            this.mPlayersAdapter = PlayersAdapter(this, lItems as MutableList<Player>)
             view.rvPlayers.adapter = this.mPlayersAdapter
-
-            this.mPlayersAdapter?.itemClick = view
         }
         else {
             mPlayersAdapter?.update(lItems)

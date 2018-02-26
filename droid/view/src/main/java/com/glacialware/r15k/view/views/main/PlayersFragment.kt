@@ -9,7 +9,7 @@ import com.glacialware.r15k.view.views.generic.GenericRootFragment
 /**
 * Created by Guille on 09/07/2017.
 */
-class PlayersFragment : GenericRootFragment, IPlayerClick {
+class PlayersFragment : GenericRootFragment {
     companion object {
         @JvmStatic
         val TAG : String = this :: class.java.canonicalName
@@ -32,12 +32,6 @@ class PlayersFragment : GenericRootFragment, IPlayerClick {
 
         if (this.presenter != null && this.presenter is PlayersFragmentPresenter) {
             (this.presenter as PlayersFragmentPresenter).initPlayersObserver()
-        }
-    }
-
-    override fun onPlayerClick(item: Player) {
-        if (this.presenter != null && this.presenter is PlayersFragmentPresenter) {
-            (this.presenter as PlayersFragmentPresenter).onItemPlayerClick(item)
         }
     }
 }

@@ -1,57 +1,40 @@
 package com.glacialware.r15k.view.views.main
 
-import android.databinding.DataBindingUtil
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.glacialware.r15k.model.room.Player
-import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.databinding.ViewMainPlayersItemBinding
+import com.glacialware.r15k.view.presenters.main.PlayersFragmentPresenter
 
 /**
 * Created by Guille on 13/11/2017.
 */
-class PlayersAdapter(private var lPlayers : MutableList<Player>) : RecyclerView.Adapter<PlayersAdapter.PlayersVH>(), IPlayerClick {
-    class PlayersDiffCallback(val lOld : List<Player>, val lNew : List<Player>) : DiffUtil.Callback() {
+class PlayersAdapter(private val mPlayersPresenter: PlayersFragmentPresenter, private val lPlayers : MutableList<Player>) : RecyclerView.Adapter<PlayersAdapter.PlayersVH>() {
+    class PlayersDiffCallback(private val lOld : List<Player>, val lNew : List<Player>) : DiffUtil.Callback() {
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean = (lOld[oldItemPosition].id == lNew[newItemPosition].id)
         override fun getOldListSize(): Int = lOld.size
         override fun getNewListSize(): Int = lNew.size
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean = (lOld[oldItemPosition] == lNew[newItemPosition])
     }
 
-    class PlayersVH : RecyclerView.ViewHolder {
-        var itemClick : IPlayerClick? = null
-        private val binding: ViewMainPlayersItemBinding
+    class PlayersVH(private val mPlayersPresenter: PlayersFragmentPresenter, private val binding: ViewMainPlayersItemBinding) : RecyclerView.ViewHolder(binding.root) {
         private var player: Player? = null
-
-        constructor(binding: ViewMainPlayersItemBinding) : super(binding.root) {
-            this.binding = binding
-
-            this.binding.root.setOnClickListener {
-                _ ->
-                if (player != null && itemClick != null) {
-                    itemClick?.onPlayerClick(player!!)
-                }
-            }
-        }
 
         fun bind(player : Player) {
             binding.player = player
+            binding.presenter = mPlayersPresenter
             binding.executePendingBindings()
 
             this.player = player
         }
     }
 
-    var itemClick: IPlayerClick? = null
-
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PlayersAdapter.PlayersVH{
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PlayersAdapter.PlayersVH {
         val inflater = LayoutInflater.from(parent?.context)
-        val itemBinding = DataBindingUtil.inflate<ViewMainPlayersItemBinding>(inflater, R.layout.view_main_players_item, parent, false)
-        val playersVH = PlayersVH(itemBinding)
-        playersVH.itemClick = this
-        return playersVH
+        val itemBinding = ViewMainPlayersItemBinding.inflate(inflater, parent, false)
+        return PlayersVH(mPlayersPresenter, itemBinding)
     }
 
     override fun getItemCount(): Int = lPlayers.size
@@ -66,11 +49,5 @@ class PlayersAdapter(private var lPlayers : MutableList<Player>) : RecyclerView.
         lPlayers.clear()
         lPlayers.addAll(newList)
         diffResult.dispatchUpdatesTo(this)
-    }
-
-    override fun onPlayerClick(item: Player) {
-        if (itemClick != null) {
-            itemClick?.onPlayerClick(item)
-        }
     }
 }
