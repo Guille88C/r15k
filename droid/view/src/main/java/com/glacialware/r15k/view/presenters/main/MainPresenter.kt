@@ -11,9 +11,10 @@ import com.glacialware.r15k.view.wireframes.main.MainWireframe
 */
 class MainPresenter(private val view : MainActivity) : GenericActivityPresenter() {
     companion object {
-        private const val ADD_PLAYER : Int = 0
-        private const val EDIT_CARD : Int = 1
-        private const val START_GAME : Int = 2
+        private const val ADD_PLAYER = 0
+        private const val EDIT_CARD = 1
+        private const val START_GAME = 2
+        private const val TEST_ACTIVITY = 3
     }
 
     private val wireframe : MainWireframe? = MainWireframe(view as? MainActivity)
@@ -51,6 +52,7 @@ class MainPresenter(private val view : MainActivity) : GenericActivityPresenter(
                     ADD_PLAYER -> wireframe?.goToAddPlayer()
                     EDIT_CARD -> wireframe?.goToEditCard()
                     START_GAME -> {}
+                    TEST_ACTIVITY -> wireframe?.goToTestActivity()
                 }
                 view.removeDrawerListener(this)
             }

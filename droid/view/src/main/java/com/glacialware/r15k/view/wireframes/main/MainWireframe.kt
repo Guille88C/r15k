@@ -36,4 +36,9 @@ class MainWireframe(private val activity : GenericRootActivity?) {
         val intent = Intent(activity, EditCardActivity :: class.java)
         activity?.startActivity(intent)
     }
+
+    fun goToTestActivity() {
+        val intent = Intent(activity, TestActivity :: class.java)
+        activity?.startActivity(intent)
+    }
 }
