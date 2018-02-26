@@ -2,13 +2,10 @@
 
 buildscript {
     ext.kotlin_version = '1.2.21'
-    ext.roomVersion = '1.0.0'
-    ext.anko_version = '0.10.1'
     ext.databinding_version = '3.0.1'
-    ext.retrofit2_version = "2.3.0"
     ext.target_sdk_version = 27
     ext.min_sdk_version = 21
-    ext.firebase_version = "11.4.2"
+    ext.dagger_version = "2.12"
 
     repositories {
         google()

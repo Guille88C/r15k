@@ -58,7 +58,7 @@ dependencies {
     // ----
 
     // dagger 2
-    kapt 'com.google.dagger:dagger-compiler:2.12'
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
     // ----
 
     // fabric
@@ -68,8 +68,8 @@ dependencies {
     // ----
 
     // firebase
-    implementation "com.google.firebase:firebase-core:$firebase_version"
-    implementation "com.google.firebase:firebase-firestore:$firebase_version"
+    implementation "com.google.firebase:firebase-core:11.4.2"
+    implementation "com.google.firebase:firebase-firestore:11.4.2"
     // ----
 }
 
