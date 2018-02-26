@@ -5,7 +5,6 @@ import android.view.View
 import com.glacialware.r15k.view.presenters.GenericActivityPresenter
 import com.glacialware.r15k.view.views.main.MainActivity
 import com.glacialware.r15k.view.wireframes.main.MainWireframe
-import com.glacialware.r15k.view.wireframes.main.MainWireframeImpl
 
 /**
 * Created by Guille on 09/07/2017.
@@ -17,7 +16,7 @@ class MainPresenter(private val view : MainActivity) : GenericActivityPresenter(
         private const val START_GAME : Int = 2
     }
 
-    private val wireframe : MainWireframe? = MainWireframeImpl(view as? MainActivity)
+    private val wireframe : MainWireframe? = MainWireframe(view as? MainActivity)
 
     override fun initViewModel() {
     }

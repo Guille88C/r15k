@@ -11,7 +11,6 @@ import com.glacialware.r15k.view.presenters.GenericFragmentPresenter
 import com.glacialware.r15k.view.views.main.PlayersAdapter
 import com.glacialware.r15k.view.views.main.PlayersFragment
 import com.glacialware.r15k.view.wireframes.main.PlayersWireframe
-import com.glacialware.r15k.view.wireframes.main.PlayersWireframeImpl
 import com.glacialware.r15k.viewmodel.views.main.PlayersViewModel
 import kotlinx.android.synthetic.main.fragment_players.*
 
@@ -21,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_players.*
 class PlayersFragmentPresenter(private val view : PlayersFragment) : GenericFragmentPresenter() {
 
     private var viewModel: PlayersViewModel? = null
-    private val wireframe : PlayersWireframe = PlayersWireframeImpl(view)
+    private val wireframe : PlayersWireframe = PlayersWireframe(view)
     private var mPlayersAdapter : PlayersAdapter? = null
 
     override fun initViewModel(inflater: LayoutInflater, container: ViewGroup): View? {
