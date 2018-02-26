@@ -12,7 +12,7 @@ import javax.inject.Inject
 /**
 * Created by Guille on 16/11/2017.
 */
-abstract class GenericDatabaseViewModel : AndroidViewModel, LifecycleObserver {
+abstract class GenericDatabaseViewModel(app: Application) : AndroidViewModel(app), LifecycleObserver {
     @field:[Inject]
     protected lateinit var database: AppDatabase
 
@@ -23,7 +23,8 @@ abstract class GenericDatabaseViewModel : AndroidViewModel, LifecycleObserver {
                 .build()
     }
 
-    constructor(app: Application) : super(app){
+    init {
         serviceComponent.inject(this)
     }
+
 }

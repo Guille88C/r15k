@@ -31,21 +31,25 @@ kapt {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:27.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+//    implementation 'com.android.support:appcompat-v7:27.0.2'
+
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    // kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // ----
 
     // room
-    implementation "android.arch.persistence.room:runtime:$rootProject.roomVersion"
-    kapt "android.arch.persistence.room:compiler:$rootProject.roomVersion"
-    androidTestImplementation "android.arch.persistence.room:testing:$rootProject.roomVersion"
+    compile "android.arch.persistence.room:runtime:$roomVersion"
+    kapt "android.arch.persistence.room:compiler:$roomVersion"
+//    androidTestImplementation "android.arch.persistence.room:testing:$roomVersion"
     // ----
 
     // retrofit 2
-    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit2_version"
-    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofit2_version"
+    compile "com.squareup.retrofit2:retrofit:$retrofit2_version"
+    compile "com.squareup.retrofit2:converter-gson:$retrofit2_version"
     // ----
 
     // dagger 2

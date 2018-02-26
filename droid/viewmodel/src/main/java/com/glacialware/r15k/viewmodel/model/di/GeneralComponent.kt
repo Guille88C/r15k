@@ -9,7 +9,7 @@ import javax.inject.Singleton
 */
 @Singleton
 @Component (
-    modules = arrayOf(AppDatabaseModule::class)
+    modules = [(AppDatabaseModule::class)]
 )
 interface GeneralComponent {
     fun inject(databaseVM: GenericDatabaseViewModel)

@@ -10,7 +10,7 @@ import javax.inject.Singleton
 */
 @Singleton
 @Component (
-    modules = arrayOf(ServiceModule::class)
+    modules = [(ServiceModule::class)]
 )
 interface GeneralComponent {
     fun inject(controller: MissionController)
