@@ -11,13 +11,27 @@ import com.glacialware.r15k.view.presenters.main.PlayersFragmentPresenter
 /**
 * Created by Guille on 13/11/2017.
 */
-class PlayersAdapter(private val mPlayersPresenter: PlayersFragmentPresenter, private val lPlayers : MutableList<Player>) : RecyclerView.Adapter<PlayersAdapter.PlayersVH>() {
+class PlayersAdapter(private val mPlayersPresenter: PlayersFragmentPresenter,
+                     private val lPlayers : MutableList<Player>)
+    : RecyclerView.Adapter<PlayersAdapter.PlayersVH>() {
+
+    // ---- Diff ----
+
     class PlayersDiffCallback(private val lOld : List<Player>, val lNew : List<Player>) : DiffUtil.Callback() {
-        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean = (lOld[oldItemPosition].id == lNew[newItemPosition].id)
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean
+                = (lOld[oldItemPosition].id == lNew[newItemPosition].id)
+
         override fun getOldListSize(): Int = lOld.size
+
         override fun getNewListSize(): Int = lNew.size
-        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean = (lOld[oldItemPosition] == lNew[newItemPosition])
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean
+                = (lOld[oldItemPosition] == lNew[newItemPosition])
     }
+
+    // ---- END Diff ----
+
+    // ---- Holder ----
 
     class PlayersVH(private val mPlayersPresenter: PlayersFragmentPresenter, private val binding: ViewMainPlayersItemBinding) : RecyclerView.ViewHolder(binding.root) {
         private var player: Player? = null
@@ -30,6 +44,10 @@ class PlayersAdapter(private val mPlayersPresenter: PlayersFragmentPresenter, pr
             this.player = player
         }
     }
+
+    // ---- END Holder ----
+
+    // ---- Adapter ----
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PlayersAdapter.PlayersVH {
         val inflater = LayoutInflater.from(parent?.context)
@@ -44,10 +62,17 @@ class PlayersAdapter(private val mPlayersPresenter: PlayersFragmentPresenter, pr
         holder?.bind(player)
     }
 
+    // ---- END Adapter ----
+
+    // ---- Public ----
+
     fun update(newList : List<Player>) {
         val diffResult = DiffUtil.calculateDiff(PlayersDiffCallback(lPlayers, newList))
         lPlayers.clear()
         lPlayers.addAll(newList)
         diffResult.dispatchUpdatesTo(this)
     }
+
+    // ---- END Public ----
+
 }

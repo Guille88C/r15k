@@ -9,7 +9,14 @@ import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class PlayerDetailActivity : GenericRootActivity(true) {
+
+    // ---- Attributes ----
+
     private val presenter: PlayerDetailActivityPresenter = PlayerDetailActivityPresenter(this)
+
+    // ---- END Attributes ----
+
+    // ---- Activity ----
 
     override fun initFragment() {
         presenter.initFragment()
@@ -34,6 +41,10 @@ class PlayerDetailActivity : GenericRootActivity(true) {
         return super.onOptionsItemSelected(item)
     }
 
+    // ---- END Activity ----
+
+    // ---- Private ----
+
     private fun initToolbar() {
         if (myToolbar != null)
             this.setSupportActionBar(myToolbar as Toolbar)
@@ -43,4 +54,7 @@ class PlayerDetailActivity : GenericRootActivity(true) {
             (this.supportActionBar as ActionBar).setHomeButtonEnabled(true)
         }
     }
+
+    // ---- END Private ----
+
 }

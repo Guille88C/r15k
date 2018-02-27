@@ -11,15 +11,25 @@ import kotlinx.android.synthetic.main.activity_test.*
 * Created by Guille on 06/07/2017.
 */
 class TestActivity : GenericRootActivity(true) {
+
+    // ---- Companion ----
+
     companion object {
         private const val TITLE_KEY = "title"
         private const val AUTHOR_KEY = "author"
         private const val TAG = "InspiringTitle"
     }
 
+    // ---- END Companion ----
+
+    // ---- Attributes ----
+
     private val mDocRef = FirebaseFirestore.getInstance().document("sampleData/inspiration")
     private val db = FirebaseFirestore.getInstance()
 
+    // ---- END Attributes ----
+
+    // ---- Activity ----
 
     override fun initFragment() {
     }
@@ -30,16 +40,14 @@ class TestActivity : GenericRootActivity(true) {
     override fun initView() {
         this.setContentView(R.layout.activity_test)
 
-//        this.initSampledata()
         this.initMissions()
     }
 
-    override fun onStart() {
-        super.onStart()
-//        this.addSnapshotSampledata()
-    }
+    // ---- END Activity ----
 
-    fun initMissions() {
+    // ---- Private ----
+
+    private fun initMissions() {
         this.db.collection("missions").get().addOnCompleteListener(this,  {
             task ->
             if (task.isSuccessful) {
@@ -56,7 +64,7 @@ class TestActivity : GenericRootActivity(true) {
         })
     }
 
-    fun initSampledata() {
+    private fun initSampledata() {
         this.buttonSave.setOnClickListener { _ ->
             val titleText = this.editTextTitle.text.toString()
             val authorText = this.editTextAuthor.text.toString()
@@ -96,7 +104,7 @@ class TestActivity : GenericRootActivity(true) {
         }
     }
 
-    fun addSnapshotSampledata() {
+    private fun addSnapshotSampledata() {
         this.mDocRef.addSnapshotListener(this, { documentSnapshot, e ->
             if (documentSnapshot.exists()) {
                 val titleText = documentSnapshot.getString(TITLE_KEY)
@@ -109,4 +117,7 @@ class TestActivity : GenericRootActivity(true) {
             }
         })
     }
+
+    // ---- END Private ----
+
 }

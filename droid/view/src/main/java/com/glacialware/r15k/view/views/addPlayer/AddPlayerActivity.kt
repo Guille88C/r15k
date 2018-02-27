@@ -13,7 +13,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 */
 class AddPlayerActivity : GenericRootActivity(true) {
 
+    // ---- Attributes -----
+
     private val presenter = AddPlayerActivityPresenter(this)
+
+    // ---- END Attributes ----
+
+    // ---- Activity ----
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item != null) {
@@ -38,6 +44,10 @@ class AddPlayerActivity : GenericRootActivity(true) {
         presenter.initFragment()
     }
 
+    // ---- END Activity ----
+
+    // ---- Private ----
+
     private fun initToolbar() {
         if (myToolbar != null)
             this.setSupportActionBar(myToolbar as Toolbar)
@@ -47,4 +57,7 @@ class AddPlayerActivity : GenericRootActivity(true) {
             (this.supportActionBar as ActionBar).setHomeButtonEnabled(true)
         }
     }
+
+    // ---- END Private ----
+
 }

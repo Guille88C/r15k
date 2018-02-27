@@ -9,7 +9,10 @@ import com.glacialware.r15k.view.views.generic.GenericRootFragment
 /**
 * Created by Guille on 09/07/2017.
 */
-class PlayersFragment : GenericRootFragment {
+class PlayersFragment : GenericRootFragment() {
+
+    // ---- Companion ----
+
     companion object {
         @JvmStatic
         val TAG : String = this :: class.java.canonicalName
@@ -23,9 +26,9 @@ class PlayersFragment : GenericRootFragment {
         }
     }
 
-    constructor() : super() {
-        this.presenter = PlayersFragmentPresenter(this)
-    }
+    // ---- END Companion ----
+
+    // ---- Fragment ----
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,4 +37,15 @@ class PlayersFragment : GenericRootFragment {
             (this.presenter as PlayersFragmentPresenter).initPlayersObserver()
         }
     }
+
+    // ---- END Fragment ----
+
+    // ---- Constructor ----
+
+    init {
+        this.presenter = PlayersFragmentPresenter(this)
+    }
+
+    // ---- END Constructor ----
+
 }

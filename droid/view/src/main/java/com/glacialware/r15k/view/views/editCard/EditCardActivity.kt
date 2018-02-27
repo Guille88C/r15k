@@ -12,6 +12,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 * Created by Guille on 09/07/2017.
 */
 class EditCardActivity : GenericRootActivity(true) {
+
+    // ---- Activity ----
+
     override fun initViewModel() {
     }
 
@@ -33,8 +36,9 @@ class EditCardActivity : GenericRootActivity(true) {
         return super.onOptionsItemSelected(item)
     }
 
+    // ---- END Activity ----
 
-
+    // ---- Private ----
 
     private fun initToolbar() {
         if (myToolbar != null)
@@ -45,4 +49,6 @@ class EditCardActivity : GenericRootActivity(true) {
             (this.supportActionBar as ActionBar).setHomeButtonEnabled(true)
         }
     }
+
+    // ---- END Private ----
 }

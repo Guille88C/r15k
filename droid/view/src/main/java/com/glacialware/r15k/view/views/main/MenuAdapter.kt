@@ -14,10 +14,16 @@ import com.glacialware.r15k.view.R
 */
 class MenuAdapter(context : Context,private var items : Array<MenuItem>) : ArrayAdapter<MenuItem>(context, R.layout.view_main_drawer_menu_item) {
 
+    // ---- Holder ----
+
     private class ViewHolder {
         lateinit var nameOption : TextView
         lateinit var image : ImageView
     }
+
+    // ---- END Holder ----
+
+    // ---- Adapter ----
 
     override fun getCount(): Int {
         return this.items.size
@@ -47,4 +53,7 @@ class MenuAdapter(context : Context,private var items : Array<MenuItem>) : Array
 
         return view as View
     }
+
+    // ---- END Adapter ----
+
 }

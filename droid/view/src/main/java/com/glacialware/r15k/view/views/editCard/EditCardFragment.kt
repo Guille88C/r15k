@@ -11,6 +11,8 @@ import com.glacialware.r15k.view.views.generic.GenericRootFragment
 * Created by Guille on 10/07/2017.
 */
 class EditCardFragment : GenericRootFragment() {
+
+    // ---- Companion ----
     companion object {
         @JvmStatic
         val TAG : String = this :: class.java.canonicalName
@@ -24,14 +26,14 @@ class EditCardFragment : GenericRootFragment() {
         }
     }
 
+    // ---- END Companion ----
 
-
+    // ---- Fragment ----
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_edit_card, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
+    // ---- END Fragment ----
+
 }

@@ -7,7 +7,14 @@ import com.glacialware.r15k.view.views.generic.GenericRootActivity
 * Created by Guille on 30/06/2017.
 */
 class SplashActivity : GenericRootActivity() {
+
+    // ---- Attributes ----
+
     private val presenter = SplashPresenter(this)
+
+    // ---- END Attributes ----
+
+    // ---- Fragment ----
 
     override fun initFragment() {
     }
@@ -19,9 +26,16 @@ class SplashActivity : GenericRootActivity() {
         presenter.endOnCreate()
     }
 
+    // ---- END Fragment ----
+
+    // ---- Public ----
+
     fun finishView() {
         if (isCreated()) {
             finish()
         }
     }
+
+    // ---- END Public ----
+
 }

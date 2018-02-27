@@ -7,12 +7,13 @@ import com.glacialware.r15k.view.views.generic.GenericRootFragment
 /**
 * Created by Guille on 10/07/2017.
 */
-class AddPlayerFragment : GenericRootFragment {
+class AddPlayerFragment : GenericRootFragment() {
+
+    // ---- Companion ----
+
     companion object {
-        @JvmStatic
         val TAG : String = this :: class.java.canonicalName
 
-        @JvmStatic
         fun newInstance() : AddPlayerFragment {
             val f = AddPlayerFragment()
             val args = Bundle()
@@ -21,15 +22,14 @@ class AddPlayerFragment : GenericRootFragment {
         }
     }
 
-    constructor() : super(){
+    // ---- End Companion ----
+
+    // ---- Constructor ----
+
+    init {
         this.presenter = AddPlayerFragmentPresenter(this)
     }
 
-//    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        if (inflater != null && container != null) {
-//            return presenter.initViewModel(inflater, container)
-//        }
-//
-//        return null
-//    }
+    // ---- END Constructor ----
+
 }

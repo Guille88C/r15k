@@ -9,6 +9,9 @@ import com.glacialware.r15k.view.wireframes.navigateBackAnimated
 * Created by Guille on 04/07/2017.
 */
 abstract class GenericRootActivity constructor(private var anim: Boolean = false) : AppCompatActivity() {
+
+    // ---- Activity -----
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,9 +37,20 @@ abstract class GenericRootActivity constructor(private var anim: Boolean = false
         }
     }
 
+    // ---- END Activity ----
+
+    // ---- Abstract ----
+
     abstract fun initFragment()
     abstract fun initViewModel()
     abstract fun initView()
 
-    fun isCreated() : Boolean = !isFinishing && !isDestroyed
+    // ---- END Abstract ----
+
+    // ---- Protected ----
+
+    protected fun isCreated() : Boolean = !isFinishing && !isDestroyed
+
+    // ---- END Protected ----
+
 }

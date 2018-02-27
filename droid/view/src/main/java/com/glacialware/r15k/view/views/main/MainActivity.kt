@@ -23,15 +23,15 @@ import io.fabric.sdk.android.Fabric;
 */
 class MainActivity : GenericRootActivity() {
 
-    // ==== ATTRIBUTES ====
+    // ---- Attributes ----
+
     private lateinit var mDrawerToggle : ActionBarDrawerToggle
     private val mPresenter = MainPresenter(this)
-    // ==== ---- ====
 
+    // ---- END Attributes ----
 
+    // ---- Activity ----
 
-
-    // ==== LIFE CYCLE
     override fun initFragment() {
         this.mPresenter.initFragment()
     }
@@ -71,12 +71,11 @@ class MainActivity : GenericRootActivity() {
     override fun onBackPressed() {
         mPresenter.onBackPressed()
     }
-    // ==== ---- ====
 
+    // ---- END Activity ----
 
+    // ---- Private ----
 
-
-    // ==== INIT FUNCTIONS ====
     private fun initToolbar() {
         if (myToolbar != null)
             this.setSupportActionBar(myToolbar as Toolbar)
@@ -97,13 +96,8 @@ class MainActivity : GenericRootActivity() {
             }
         }
     }
-    //==== ---- ====
 
-
-
-
-    //==== MAIN VIEW FUNCTIONS ====
-    fun initDrawerStrings(res: Int) {
+    private fun initDrawerStrings(res: Int) {
         if (isCreated()) {
             val textItems : Array<String> = resources.getStringArray(res)
             val drawableItems : TypedArray = resources.obtainTypedArray(R.array.drawable_menu_items)
@@ -112,6 +106,10 @@ class MainActivity : GenericRootActivity() {
             leftDrawer.adapter = menuAdapter
         }
     }
+
+    // ---- END Private ----
+
+    // ---- Pubic ----
 
     fun closeDrawer() {
         if (isCreated()) {
@@ -143,6 +141,7 @@ class MainActivity : GenericRootActivity() {
             super.onBackPressed()
         }
     }
-    // ==== ---- ====
+
+    // ---- END Public ----
 
 }
