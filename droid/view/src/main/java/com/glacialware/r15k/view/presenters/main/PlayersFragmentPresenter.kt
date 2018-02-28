@@ -19,9 +19,15 @@ import kotlinx.android.synthetic.main.fragment_players.*
 */
 class PlayersFragmentPresenter(private val view : PlayersFragment) : GenericFragmentPresenter() {
 
+    // ---- Attributes ----
+
     private var viewModel: PlayersViewModel? = null
     private val wireframe : PlayersWireframe = PlayersWireframe(view)
     private var mPlayersAdapter : PlayersAdapter? = null
+
+    // ---- END Attributes ----
+
+    // ---- FragmentPresenter ----
 
     override fun initViewModel(inflater: LayoutInflater, container: ViewGroup): View? {
         if (view.activity != null) {
@@ -32,6 +38,10 @@ class PlayersFragmentPresenter(private val view : PlayersFragment) : GenericFrag
         }
         return inflater.inflate(R.layout.fragment_players, container, false)
     }
+
+    // ---- END FragmentPresenter ----
+
+    // ---- Public ----
 
     fun onItemPlayerClick(player: Player) {
         wireframe.goToPlayerDetail(player)
@@ -52,6 +62,10 @@ class PlayersFragmentPresenter(private val view : PlayersFragment) : GenericFrag
         }
     }
 
+    // ---- END Public ----
+
+    // ---- Private ----
+
     private fun initPlayers(lItems : List<Player>) {
         if (mPlayersAdapter == null) {
             view.rvPlayers.layoutManager = LinearLayoutManager(view.activity)
@@ -62,4 +76,7 @@ class PlayersFragmentPresenter(private val view : PlayersFragment) : GenericFrag
             mPlayersAdapter?.update(lItems)
         }
     }
+
+    // ---- END Private ----
+
 }

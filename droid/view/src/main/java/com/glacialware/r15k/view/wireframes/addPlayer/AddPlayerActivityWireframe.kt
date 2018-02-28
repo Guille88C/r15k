@@ -10,7 +10,13 @@ import com.glacialware.r15k.view.wireframes.navigateTo
 * Created by Guille on 20/11/2017.
 */
 class AddPlayerActivityWireframe(private val view: AddPlayerActivity) : GenericActivityWireframe() {
+
+    // ---- ActivityWireframe ----
+
     override fun initFragment() {
         navigateTo(view.supportFragmentManager, AddPlayerFragment.newInstance(), AddPlayerFragment.TAG, R.id.frame_content, true, false)
     }
+
+    // ---- END ActivityWireframe ----
+
 }

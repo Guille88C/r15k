@@ -13,8 +13,14 @@ import com.glacialware.r15k.viewmodel.views.playerDetail.PlayerDetailViewModel
 */
 class PlayerDetailActivityPresenter(private val view: PlayerDetailActivity) : GenericActivityPresenter() {
 
+    // ---- Attributes ----
+
     private val wireframe: PlayerDetailActivityWireframe = PlayerDetailActivityWireframe(view)
     private var viewModel : PlayerDetailViewModel? = null
+
+    // ---- END Attributes ----
+
+    // ---- ActivityPresenter ----
 
     override fun initViewModel() {
         this.viewModel = ViewModelProviders.of(view).get(PlayerDetailViewModel::class.java)
@@ -27,4 +33,7 @@ class PlayerDetailActivityPresenter(private val view: PlayerDetailActivity) : Ge
     override fun initFragment() {
         wireframe.initFragment()
     }
+
+    // ---- END ActivityPresenter ----
+
 }

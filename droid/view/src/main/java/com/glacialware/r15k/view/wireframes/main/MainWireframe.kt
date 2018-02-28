@@ -12,6 +12,8 @@ import com.glacialware.r15k.view.views.main.PlayersFragment
 * Created by maric on 11/08/2017.
 */
 class MainWireframe(private val activity : GenericRootActivity?) {
+
+    // ---- Public ----
     fun startFragment() {
         activity?.supportFragmentManager?.beginTransaction()
                 ?.replace(R.id.activity_main_content_frame, PlayersFragment.newInstance())
@@ -41,4 +43,7 @@ class MainWireframe(private val activity : GenericRootActivity?) {
         val intent = Intent(activity, TestActivity :: class.java)
         activity?.startActivity(intent)
     }
+
+    // ---- END Public ----
+
 }

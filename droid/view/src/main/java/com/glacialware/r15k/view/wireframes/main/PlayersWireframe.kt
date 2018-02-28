@@ -10,9 +10,14 @@ import com.glacialware.r15k.view.wireframes.PLAYER
 * Created by Guille on 16/11/2017.
 */
 class PlayersWireframe(private val fragment : PlayersFragment) {
+
+    // ---- Public ----
+
     fun goToPlayerDetail(player: Player) {
         val intent = Intent(fragment.activity, PlayerDetailActivity :: class.java)
         intent.putExtra(PLAYER, player)
         fragment.startActivity(intent)
     }
+
+    // ---- END Public ----
 }

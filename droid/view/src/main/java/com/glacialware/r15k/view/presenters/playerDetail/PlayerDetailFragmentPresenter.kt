@@ -15,7 +15,14 @@ import com.glacialware.r15k.viewmodel.views.playerDetail.PlayerDetailViewModel
 * Created by Guille on 17/11/2017.
 */
 class PlayerDetailFragmentPresenter(private val view: PlayerDetailFragment) : GenericFragmentPresenter() {
+
+    // ---- Attributes ----
+
     private var viewModel: PlayerDetailViewModel? = null
+
+    // ---- END Attributes ----
+
+    // ---- FragmentPresenter ----
 
     override fun initViewModel(inflater: LayoutInflater, container: ViewGroup) : View? {
         if (view.activity != null) {
@@ -32,4 +39,7 @@ class PlayerDetailFragmentPresenter(private val view: PlayerDetailFragment) : Ge
         }
         return null
     }
+
+    // ---- END FragmentPresenter ----
+
 }

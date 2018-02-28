@@ -20,6 +20,9 @@ import javax.inject.Inject
 * Created by Guille on 20/11/2017.
 */
 class AddPlayerFragmentPresenter(private val view: AddPlayerFragment) : GenericFragmentPresenter() {
+
+    // ---- Dagger ----
+
     private val mCustomToastComponent: CustomToastComponent by lazy {
         if (view.activity != null) {
             DaggerCustomToastComponent
@@ -37,9 +40,16 @@ class AddPlayerFragmentPresenter(private val view: AddPlayerFragment) : GenericF
     @field:[Inject]
     lateinit var mCustomToast : CustomToast
 
-    private var viewModel : AddPlayerViewModel? = null
+    // ---- END Dagger ----
 
+    // ---- Attributes ----
+
+    private var viewModel : AddPlayerViewModel? = null
     private var binding : FragmentAddPlayerBinding? = null
+
+    // ---- END Attributes ----
+
+    // ---- FragmentPresenter ----
 
     override fun initViewModel(inflater: LayoutInflater, container: ViewGroup): View? {// dagger
         mCustomToastComponent.inject(this)
@@ -63,4 +73,6 @@ class AddPlayerFragmentPresenter(private val view: AddPlayerFragment) : GenericF
 
         return null
     }
+
+    // ---- END FragmentPresenter ----
 }

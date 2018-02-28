@@ -1,7 +1,6 @@
 package com.glacialware.r15k.view.di
 
 import com.glacialware.r15k.view.presenters.addPlayer.AddPlayerFragmentPresenter
-import com.glacialware.r15k.view.views.addPlayer.AddPlayerFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -10,7 +9,7 @@ import javax.inject.Singleton
 */
 @Singleton
 @Component(
-    modules = arrayOf(CustomToastModule::class)
+    modules = [(CustomToastModule::class)]
 )
 interface CustomToastComponent {
     fun inject(addPlayer : AddPlayerFragmentPresenter)

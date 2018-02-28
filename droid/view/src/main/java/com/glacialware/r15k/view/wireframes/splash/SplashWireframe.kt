@@ -8,8 +8,14 @@ import com.glacialware.r15k.view.views.main.MainActivity
 * Created by maric on 11/08/2017.
 */
 class SplashWireframe(private val activity : Activity?) {
+
+    // ---- Public ----
+
     fun goToMain() {
         val intent = Intent(activity, MainActivity ::class.java)
         activity?.startActivity(intent)
     }
+
+    // ---- END Public ----
+
 }
