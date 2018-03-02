@@ -24,12 +24,12 @@ class AddPlayerFragment : GenericRootFragment() {
 
     // ---- End Companion ----
 
-    // ---- Constructor ----
+    // ---- Fragment ----
 
-    init {
+    override fun initPresenter() {
         this.presenter = AddPlayerFragmentPresenter(this)
     }
 
-    // ---- END Constructor ----
+    // ---- END Fragment ----
 
 }

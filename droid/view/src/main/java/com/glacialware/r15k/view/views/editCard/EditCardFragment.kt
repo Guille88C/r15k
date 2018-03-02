@@ -34,6 +34,10 @@ class EditCardFragment : GenericRootFragment() {
         return inflater.inflate(R.layout.fragment_edit_card, container, false)
     }
 
+    override fun initPresenter() {
+
+    }
+
     // ---- END Fragment ----
 
 }

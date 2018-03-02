@@ -35,6 +35,10 @@ class TestFragment : GenericRootFragment() {
         return inflater.inflate(R.layout.fragment_test, container, false)
     }
 
+    override fun initPresenter() {
+
+    }
+
     // ---- END Fragment ----
 
 }

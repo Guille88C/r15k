@@ -27,13 +27,13 @@ class PlayerDetailFragment : GenericRootFragment(), IPlayerDetailView {
 
     // ---- END Companion ----
 
-    // ---- Constructor ----
+    // ---- Fragment ----
 
-    init {
+    override fun initPresenter() {
         this.presenter = PlayerDetailFragmentPresenter(this)
     }
 
-    // ---- END Constructor ----
+    // ---- END Fragment ----
 
     // ---- IPlayerDetailView ----
 

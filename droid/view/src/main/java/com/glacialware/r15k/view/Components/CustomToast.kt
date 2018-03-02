@@ -7,8 +7,10 @@ import com.glacialware.r15k.viewmodel.interfaces.ICustomToast
 /**
 * Created by Guille on 16/11/2017.
 */
-class CustomToast(private val context : Context) : ICustomToast {
+class CustomToast(private val mContext : Context?) : ICustomToast {
     override fun startToast(sText: String) {
-        Toast.makeText(context, sText, Toast.LENGTH_LONG).show()
+        if (mContext != null) {
+            Toast.makeText(mContext, sText, Toast.LENGTH_LONG).show()
+        }
     }
 }

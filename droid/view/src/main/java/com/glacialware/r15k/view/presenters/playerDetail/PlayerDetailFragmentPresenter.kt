@@ -14,7 +14,7 @@ import com.glacialware.r15k.viewmodel.views.playerDetail.PlayerDetailViewModel
 /**
 * Created by Guille on 17/11/2017.
 */
-class PlayerDetailFragmentPresenter(private val view: PlayerDetailFragment) : GenericFragmentPresenter() {
+class PlayerDetailFragmentPresenter(private val view: PlayerDetailFragment) : GenericFragmentPresenter(view) {
 
     // ---- Attributes ----
 

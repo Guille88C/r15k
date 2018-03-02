@@ -38,14 +38,10 @@ class PlayersFragment : GenericRootFragment() {
         }
     }
 
-    // ---- END Fragment ----
-
-    // ---- Constructor ----
-
-    init {
+    override fun initPresenter() {
         this.presenter = PlayersFragmentPresenter(this)
     }
 
-    // ---- END Constructor ----
+    // ---- END Fragment ----
 
 }

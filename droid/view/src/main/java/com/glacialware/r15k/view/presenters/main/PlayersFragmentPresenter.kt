@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_players.*
 /**
 * Created by Guille on 16/11/2017.
 */
-class PlayersFragmentPresenter(private val view : PlayersFragment) : GenericFragmentPresenter() {
+class PlayersFragmentPresenter(private val view : PlayersFragment) : GenericFragmentPresenter(view) {
 
     // ---- Attributes ----
 
