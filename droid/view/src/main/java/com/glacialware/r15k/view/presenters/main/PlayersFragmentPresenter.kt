@@ -10,7 +10,7 @@ import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.presenters.GenericFragmentPresenter
 import com.glacialware.r15k.view.views.main.PlayersAdapter
 import com.glacialware.r15k.view.views.main.PlayersFragment
-import com.glacialware.r15k.view.wireframes.main.PlayersWireframe
+import com.glacialware.r15k.view.wireframes.main.PlayersFragmentWireframe
 import com.glacialware.r15k.viewmodel.views.main.PlayersViewModel
 import kotlinx.android.synthetic.main.fragment_players.*
 
@@ -22,7 +22,7 @@ class PlayersFragmentPresenter(private val view : PlayersFragment) : GenericFrag
     // ---- Attributes ----
 
     private var viewModel: PlayersViewModel? = null
-    private val wireframe : PlayersWireframe = PlayersWireframe(view)
+    private val wireframe : PlayersFragmentWireframe = PlayersFragmentWireframe(view)
     private var mPlayersAdapter : PlayersAdapter? = null
 
     // ---- END Attributes ----

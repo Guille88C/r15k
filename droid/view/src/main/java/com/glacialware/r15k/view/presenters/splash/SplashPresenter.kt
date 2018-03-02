@@ -2,7 +2,7 @@ package com.glacialware.r15k.view.presenters.splash
 
 import android.app.Activity
 import com.glacialware.r15k.view.views.splash.SplashActivity
-import com.glacialware.r15k.view.wireframes.splash.SplashWireframe
+import com.glacialware.r15k.view.wireframes.splash.SplashActivityWireframe
 
 /**
 * Created by maric on 11/08/2017.
@@ -11,7 +11,7 @@ class SplashPresenter(private val view : SplashActivity) {
 
     // ---- Attributes ----
 
-    private val wireframe : SplashWireframe = SplashWireframe(view as Activity?)
+    private val wireframe : SplashActivityWireframe = SplashActivityWireframe(view)
 
     // ---- END Attributes ----
 

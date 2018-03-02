@@ -7,15 +7,15 @@ import com.glacialware.r15k.view.views.addPlayer.AddPlayerActivity
 import com.glacialware.r15k.view.views.editCard.EditCardActivity
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import com.glacialware.r15k.view.views.main.PlayersFragment
+import com.glacialware.r15k.view.wireframes.generic.GenericActivityWireframe
 
 /**
 * Created by maric on 11/08/2017.
 */
-class MainWireframe(private val activity : GenericRootActivity?) {
+class MainActivityWireframe(view : GenericRootActivity) : GenericActivityWireframe(view) {
 
-    // ---- Public ----
-    fun startFragment() {
-        activity?.supportFragmentManager?.beginTransaction()
+    override fun initFragment() {
+        mActivity.supportFragmentManager?.beginTransaction()
                 ?.replace(R.id.activity_main_content_frame, PlayersFragment.newInstance())
                 ?.commit()
     }
@@ -25,23 +25,23 @@ class MainWireframe(private val activity : GenericRootActivity?) {
     }
 
     fun goToTest() {
-        val intent = Intent(activity, TestActivity ::class.java)
-        activity?.startActivity(intent)
+        val intent = Intent(mActivity, TestActivity ::class.java)
+        mActivity.startActivity(intent)
     }
 
     fun goToAddPlayer() {
-        val intent = Intent(activity, AddPlayerActivity :: class.java)
-        activity?.startActivity(intent)
+        val intent = Intent(mActivity, AddPlayerActivity :: class.java)
+        mActivity.startActivity(intent)
     }
 
     fun goToEditCard() {
-        val intent = Intent(activity, EditCardActivity :: class.java)
-        activity?.startActivity(intent)
+        val intent = Intent(mActivity, EditCardActivity :: class.java)
+        mActivity.startActivity(intent)
     }
 
     fun goToTestActivity() {
-        val intent = Intent(activity, TestActivity :: class.java)
-        activity?.startActivity(intent)
+        val intent = Intent(mActivity, TestActivity :: class.java)
+        mActivity.startActivity(intent)
     }
 
     // ---- END Public ----

@@ -4,7 +4,7 @@ import android.support.v4.widget.DrawerLayout
 import android.view.View
 import com.glacialware.r15k.view.presenters.GenericActivityPresenter
 import com.glacialware.r15k.view.views.main.MainActivity
-import com.glacialware.r15k.view.wireframes.main.MainWireframe
+import com.glacialware.r15k.view.wireframes.main.MainActivityWireframe
 
 /**
 * Created by Guille on 09/07/2017.
@@ -24,7 +24,7 @@ class MainPresenter(private val view : MainActivity) : GenericActivityPresenter(
 
     // ---- Attributes ----
 
-    private val wireframe : MainWireframe? = MainWireframe(view as? MainActivity)
+    private val wireframe : MainActivityWireframe? = MainActivityWireframe(view)
 
     // ---- END Attributes ----
 
@@ -34,7 +34,7 @@ class MainPresenter(private val view : MainActivity) : GenericActivityPresenter(
     }
 
     override fun initFragment() {
-        wireframe?.startFragment()
+        wireframe?.initFragment()
     }
 
     // ---- END ActivityPresenter ----
