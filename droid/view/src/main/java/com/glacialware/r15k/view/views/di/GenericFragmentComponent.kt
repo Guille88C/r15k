@@ -1,8 +1,6 @@
 package com.glacialware.r15k.view.views.di
 
 import com.glacialware.r15k.scopes.PerFragment
-import com.glacialware.r15k.view.presenters.di.GenericFragmentPresenterComponent
-import com.glacialware.r15k.view.presenters.di.GenericFragmentPresenterModule
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
 import dagger.Subcomponent
 
@@ -13,6 +11,4 @@ import dagger.Subcomponent
 @Subcomponent(modules = [(GenericFragmentModule::class)])
 interface GenericFragmentComponent {
     fun inject(fragment: GenericRootFragment)
-
-    fun with(module: GenericFragmentPresenterModule): GenericFragmentPresenterComponent
 }

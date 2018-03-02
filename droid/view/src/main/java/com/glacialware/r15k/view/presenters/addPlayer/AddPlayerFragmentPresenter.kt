@@ -33,7 +33,6 @@ class AddPlayerFragmentPresenter(view: AddPlayerFragment) : GenericFragmentPrese
             viewModel = ViewModelProviders.of(mView.activity!!).get(AddPlayerViewModel::class.java)
         }
         if (viewModel != null) {
-            viewModel?.setToast(mCustomToast)
             mView.lifecycle.addObserver(viewModel!!)
             // ----
             // data binding

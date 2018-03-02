@@ -1,8 +1,6 @@
 package com.glacialware.r15k.view.views.di
 
 import com.glacialware.r15k.scopes.PerActivity
-import com.glacialware.r15k.view.presenters.di.GenericActivityPresenterComponent
-import com.glacialware.r15k.view.presenters.di.GenericActivityPresenterModule
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import dagger.Subcomponent
 
@@ -15,5 +13,4 @@ interface GenericActivityComponent {
     fun inject(activity: GenericRootActivity)
 
     fun with(module: GenericFragmentModule): GenericFragmentComponent
-    fun with(module: GenericActivityPresenterModule): GenericActivityPresenterComponent
 }
