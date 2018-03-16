@@ -12,7 +12,7 @@ import org.jetbrains.anko.uiThread
 /**
 * Created by Guille on 13/11/2017.
 */
-class PlayersViewModel(app : Application) : GenericDatabaseViewModel(app), PlayerController.IPlayerResponse {
+class MainViewModel(app : Application) : GenericDatabaseViewModel(app), PlayerController.IPlayerResponse {
     private var shouldFetch = true
     private val playerController = PlayerController(this)
     val lPlayers : MutableLiveData<List<Player>> = MutableLiveData()

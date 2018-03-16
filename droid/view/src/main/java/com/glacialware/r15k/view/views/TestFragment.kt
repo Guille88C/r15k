@@ -31,11 +31,27 @@ class TestFragment : GenericRootFragment() {
 
     // ---- Fragment ----
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_test, container, false)
+    override fun initViewModel() {
+
     }
 
     override fun initPresenter() {
+
+    }
+
+    override fun initWireframe() {
+
+    }
+
+    override fun initView(inflater: LayoutInflater, container: ViewGroup?): View? {
+        return inflater.inflate(R.layout.fragment_test, container, false)
+    }
+
+    override fun clear() {
+
+    }
+
+    override fun initComponents() {
 
     }
 

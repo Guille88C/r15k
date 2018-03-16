@@ -1,11 +1,15 @@
 package com.glacialware.r15k.view.views.editCard
 
+import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.glacialware.r15k.view.R
+import com.glacialware.r15k.view.presenters.editCard.EditCardActivityPresenter
 import com.glacialware.r15k.view.wireframes.navigateTo
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
+import com.glacialware.r15k.view.wireframes.editCard.EditCardActivityWireframe
+import com.glacialware.r15k.viewmodel.views.editCard.EditCardViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -13,9 +17,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 */
 class EditCardActivity : GenericRootActivity(true) {
 
-    // ---- Activity ----
+    // ---- GenericRootActivity ----
 
     override fun initViewModel() {
+        mViewModel = ViewModelProviders.of(this).get(EditCardViewModel::class.java)
     }
 
     override fun initView() {
@@ -36,7 +41,15 @@ class EditCardActivity : GenericRootActivity(true) {
         return super.onOptionsItemSelected(item)
     }
 
-    // ---- END Activity ----
+    override fun initPresenter() {
+        mPresenter = EditCardActivityPresenter()
+    }
+
+    override fun initWireframe() {
+        mWireFrame = EditCardActivityWireframe(this)
+    }
+
+    // ---- END GenericRootActivity ----
 
     // ---- Private ----
 

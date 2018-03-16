@@ -23,7 +23,7 @@ class AddPlayerViewModel(app : Application) : GenericDatabaseViewModel(app) {
         this.iToast = component
     }
 
-    fun onAddPlayerClick(v: View) {
+    fun onAddPlayerClick() {
         doAsync {
             database.playerDao().insert(Player(namePlayer.get(), false))
             uiThread {

@@ -11,28 +11,28 @@ import com.glacialware.r15k.viewmodel.views.playerDetail.PlayerDetailViewModel
 /**
 * Created by Guille on 17/11/2017.
 */
-class PlayerDetailActivityPresenter(private val view: PlayerDetailActivity) : GenericActivityPresenter() {
+class PlayerDetailActivityPresenter : GenericActivityPresenter() {
 
     // ---- Attributes ----
 
-    private val wireframe: PlayerDetailActivityWireframe = PlayerDetailActivityWireframe(view)
-    private var viewModel : PlayerDetailViewModel? = null
+//    private val wireframe: PlayerDetailActivityWireframe = PlayerDetailActivityWireframe(view)
+//    private var viewModel : PlayerDetailViewModel? = null
 
     // ---- END Attributes ----
 
     // ---- ActivityPresenter ----
 
-    override fun initViewModel() {
-        this.viewModel = ViewModelProviders.of(view).get(PlayerDetailViewModel::class.java)
-        if (this.viewModel != null && view.intent.getSerializableExtra(PLAYER) is Player) {
-            val player = view.intent.getSerializableExtra(PLAYER) as Player
-            this.viewModel?.player = player
-        }
-    }
+//    override fun initViewModel() {
+//        this.viewModel = ViewModelProviders.of(view).get(PlayerDetailViewModel::class.java)
+//        if (this.viewModel != null && view.intent.getSerializableExtra(PLAYER) is Player) {
+//            val player = view.intent.getSerializableExtra(PLAYER) as Player
+//            this.viewModel?.player = player
+//        }
+//    }
 
-    override fun initFragment() {
-        wireframe.initFragment()
-    }
+//    override fun initFragment() {
+//        wireframe.initFragment()
+//    }
 
     // ---- END ActivityPresenter ----
 

@@ -7,8 +7,9 @@ import android.arch.persistence.room.RoomDatabase
 * Created by Guille on 14/11/2017.
 */
 @Database(
-    entities = arrayOf(Mission::class, Player::class, Game::class, PlayerMission::class, GamePlayer::class),
-    version = 1
+    entities = [Mission::class, Player::class, Game::class, PlayerMission::class, GamePlayer::class],
+    version = 1,
+    exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun missionDao() : MissionDao

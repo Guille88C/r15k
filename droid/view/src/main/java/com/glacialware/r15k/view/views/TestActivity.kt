@@ -31,6 +31,14 @@ class TestActivity : GenericRootActivity(true) {
 
     // ---- Activity ----
 
+    override fun initPresenter() {
+
+    }
+
+    override fun initWireframe() {
+
+    }
+
     override fun initFragment() {
     }
 

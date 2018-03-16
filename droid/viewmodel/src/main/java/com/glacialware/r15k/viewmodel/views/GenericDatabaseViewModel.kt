@@ -7,12 +7,13 @@ import com.glacialware.r15k.model.room.AppDatabase
 import com.glacialware.r15k.viewmodel.model.di.AppDatabaseModule
 import com.glacialware.r15k.viewmodel.model.di.DaggerGeneralComponent
 import com.glacialware.r15k.viewmodel.model.di.GeneralComponent
+import com.glacialware.r15k.viewmodel.views.generic.GenericViewModel
 import javax.inject.Inject
 
 /**
 * Created by Guille on 16/11/2017.
 */
-abstract class GenericDatabaseViewModel(app: Application) : AndroidViewModel(app), LifecycleObserver {
+abstract class GenericDatabaseViewModel(app: Application) : GenericViewModel(app) {
     @field:[Inject]
     protected lateinit var database: AppDatabase
 

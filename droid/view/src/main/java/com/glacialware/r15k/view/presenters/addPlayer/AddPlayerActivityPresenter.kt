@@ -7,23 +7,4 @@ import com.glacialware.r15k.view.wireframes.addPlayer.AddPlayerActivityWireframe
 /**
 * Created by Guille on 20/11/2017.
 */
-class AddPlayerActivityPresenter(view: AddPlayerActivity) : GenericActivityPresenter() {
-
-    // ---- Attributes ----
-
-    private val wireframe = AddPlayerActivityWireframe(view)
-
-    // ---- END Attributes ----
-
-    // ---- ActivityPresenter ----
-
-    override fun initViewModel() {
-    }
-
-    override fun initFragment() {
-        wireframe.initFragment()
-    }
-
-    // ---- END ActivityPresenter ----
-
-}
+class AddPlayerActivityPresenter: GenericActivityPresenter()

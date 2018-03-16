@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="presenter"
-            type="com.glacialware.r15k.view.presenters.main.PlayersFragmentPresenter" />
+            name="viewModel"
+            type="com.glacialware.r15k.viewmodel.views.main.MainViewModel" />
 
         <variable
             name="player"
@@ -20,7 +20,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:onClick="@{() -> presenter.onItemPlayerClick(player)}"
         app:cardBackgroundColor="@android:color/white">
 
         <TextView

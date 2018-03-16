@@ -1,29 +1,33 @@
 package com.glacialware.r15k.view.views.playerDetail
 
+import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.presenters.playerDetail.PlayerDetailActivityPresenter
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
+import com.glacialware.r15k.view.wireframes.playerDetail.PlayerDetailActivityWireframe
+import com.glacialware.r15k.viewmodel.views.playerDetail.PlayerDetailViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class PlayerDetailActivity : GenericRootActivity(true) {
 
-    // ---- Attributes ----
+    // ---- GenericRootActivity ----
 
-    private val presenter: PlayerDetailActivityPresenter = PlayerDetailActivityPresenter(this)
+    override fun initPresenter() {
+        mPresenter = PlayerDetailActivityPresenter()
+    }
 
-    // ---- END Attributes ----
-
-    // ---- Activity ----
+    override fun initWireframe() {
+        mWireFrame = PlayerDetailActivityWireframe(this)
+    }
 
     override fun initFragment() {
-        presenter.initFragment()
     }
 
     override fun initViewModel() {
-        presenter.initViewModel()
+        mViewModel = ViewModelProviders.of(this).get(PlayerDetailViewModel::class.java)
     }
 
     override fun initView() {
@@ -41,7 +45,7 @@ class PlayerDetailActivity : GenericRootActivity(true) {
         return super.onOptionsItemSelected(item)
     }
 
-    // ---- END Activity ----
+    // ---- END GenericRootActivity ----
 
     // ---- Private ----
 

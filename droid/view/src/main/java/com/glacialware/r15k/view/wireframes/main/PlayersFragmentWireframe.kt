@@ -16,7 +16,7 @@ class PlayersFragmentWireframe(view : PlayersFragment) : GenericFragmentWirefram
 
     fun goToPlayerDetail(player: Player) {
         val intent = Intent(mFragment.activity, PlayerDetailActivity :: class.java)
-        intent.putExtra(PLAYER, player)
+//        intent.putExtra(PLAYER, player)
         mFragment.startActivity(intent)
     }
 

@@ -1,41 +1,24 @@
 package com.glacialware.r15k.view.views.splash
 
-import com.glacialware.r15k.view.presenters.splash.SplashPresenter
-import com.glacialware.r15k.view.views.generic.GenericRootActivity
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import com.glacialware.r15k.view.wireframes.splash.SplashActivityWireframe
 
 /**
 * Created by Guille on 30/06/2017.
 */
-class SplashActivity : GenericRootActivity() {
+class SplashActivity : AppCompatActivity() {
 
-    // ---- Attributes ----
+    // ---- Activity ----
 
-    private val presenter = SplashPresenter(this)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    // ---- END Attributes ----
-
-    // ---- Fragment ----
-
-    override fun initFragment() {
+        val wireframe = SplashActivityWireframe(this)
+        wireframe.goToMain()
+        finish()
     }
 
-    override fun initViewModel() {
-    }
-
-    override fun initView() {
-        presenter.endOnCreate()
-    }
-
-    // ---- END Fragment ----
-
-    // ---- Public ----
-
-    fun finishView() {
-        if (isCreated()) {
-            finish()
-        }
-    }
-
-    // ---- END Public ----
+    // ---- END Activity ----
 
 }

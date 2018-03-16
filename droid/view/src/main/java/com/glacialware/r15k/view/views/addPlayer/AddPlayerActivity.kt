@@ -1,11 +1,14 @@
 package com.glacialware.r15k.view.views.addPlayer
 
+import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.presenters.addPlayer.AddPlayerActivityPresenter
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
+import com.glacialware.r15k.view.wireframes.addPlayer.AddPlayerActivityWireframe
+import com.glacialware.r15k.viewmodel.views.addPlayer.AddPlayerViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -13,13 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 */
 class AddPlayerActivity : GenericRootActivity(true) {
 
-    // ---- Attributes -----
-
-    private val presenter = AddPlayerActivityPresenter(this)
-
-    // ---- END Attributes ----
-
-    // ---- Activity ----
+    // ---- GenericRootActivity ----
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item != null) {
@@ -32,7 +29,7 @@ class AddPlayerActivity : GenericRootActivity(true) {
     }
 
     override fun initViewModel() {
-        presenter.initViewModel()
+        mViewModel = ViewModelProviders.of(this).get(AddPlayerViewModel::class.java)
     }
 
     override fun initView() {
@@ -40,11 +37,19 @@ class AddPlayerActivity : GenericRootActivity(true) {
         this.initToolbar()
     }
 
-    override fun initFragment() {
-        presenter.initFragment()
+    override fun initPresenter() {
+        mPresenter = AddPlayerActivityPresenter()
     }
 
-    // ---- END Activity ----
+    override fun initWireframe() {
+        mWireFrame = AddPlayerActivityWireframe(this)
+    }
+
+    override fun initFragment() {
+        mWireFrame.initFragment()
+    }
+
+    // ---- END GenericRootActivity ----
 
     // ---- Private ----
 

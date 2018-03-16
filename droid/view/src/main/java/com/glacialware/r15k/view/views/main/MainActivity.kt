@@ -1,5 +1,6 @@
 package com.glacialware.r15k.view.views.main
 
+import android.arch.lifecycle.ViewModelProviders
 import android.content.res.Configuration
 import android.content.res.TypedArray
 import android.os.Bundle
@@ -12,32 +13,52 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import com.glacialware.r15k.view.R
-import com.glacialware.r15k.view.presenters.main.MainPresenter
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
+import com.crashlytics.android.Crashlytics
+import com.glacialware.r15k.view.presenters.main.MainActivityPresenter
+import com.glacialware.r15k.view.wireframes.main.MainActivityWireframe
+import com.glacialware.r15k.viewmodel.views.main.MainViewModel
+import io.fabric.sdk.android.Fabric
 
 /**
 * Created by Guille on 01/07/2017.
 */
 class MainActivity : GenericRootActivity() {
 
+    // ---- Companion ----
+
+    companion object {
+        private const val ADD_PLAYER = 0
+        private const val EDIT_CARD = 1
+        private const val START_GAME = 2
+        private const val TEST_ACTIVITY = 3
+    }
+
+    // ---- END Companion ----
+
     // ---- Attributes ----
 
     private lateinit var mDrawerToggle : ActionBarDrawerToggle
-    private val mPresenter = MainPresenter(this)
 
     // ---- END Attributes ----
 
-    // ---- Activity ----
+    // ---- GenericRootActivity ----
+
+    override fun initWireframe() {
+        mWireFrame = MainActivityWireframe(this)
+    }
+
+    override fun initPresenter() {
+        mPresenter = MainActivityPresenter()
+    }
 
     override fun initFragment() {
-        this.mPresenter.initFragment()
+        mWireFrame.initFragment()
     }
 
     override fun initViewModel() {
-        this.mPresenter.initViewModel()
+        mViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
     }
 
     override fun initView() {
@@ -69,10 +90,15 @@ class MainActivity : GenericRootActivity() {
     }
 
     override fun onBackPressed() {
-        mPresenter.onBackPressed()
+        if (isDrawerOpen()) {
+            closeDrawer()
+        }
+        else {
+            superOnBackPressed()
+        }
     }
 
-    // ---- END Activity ----
+    // ---- END GenericRootActivity ----
 
     // ---- Private ----
 
@@ -90,10 +116,28 @@ class MainActivity : GenericRootActivity() {
         this.mDrawerToggle = ActionBarDrawerToggle(this, drawerLayout, 0, 0)
         drawerLayout.addDrawerListener(this.mDrawerToggle)
 
-        leftDrawer.onItemClickListener = object : AdapterView.OnItemClickListener{
-            override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                mPresenter.onItemClick(p2)
-            }
+        leftDrawer.onItemClickListener = AdapterView.OnItemClickListener { _, _, pos, _ ->
+            closeDrawer()
+            addDrawerListener(object: DrawerLayout.DrawerListener {
+                override fun onDrawerStateChanged(newState: Int) {
+                }
+
+                override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
+                }
+
+                override fun onDrawerClosed(drawerView: View) {
+                    when (pos) {
+                        ADD_PLAYER -> (mWireFrame as MainActivityWireframe).goToAddPlayer()
+                        EDIT_CARD -> (mWireFrame as MainActivityWireframe).goToEditCard()
+                        START_GAME -> {}
+                        TEST_ACTIVITY -> (mWireFrame as MainActivityWireframe).goToTestActivity()
+                    }
+                    removeDrawerListener(this)
+                }
+
+                override fun onDrawerOpened(drawerView: View) {
+                }
+            })
         }
     }
 
@@ -101,7 +145,7 @@ class MainActivity : GenericRootActivity() {
         if (isCreated()) {
             val textItems : Array<String> = resources.getStringArray(res)
             val drawableItems : TypedArray = resources.obtainTypedArray(R.array.drawable_menu_items)
-            val menuAdapter : MenuAdapter = MenuAdapter(this@MainActivity, Array(textItems.size, { i -> MenuItem(textItems[i], drawableItems.getResourceId(0, R.drawable.default_menu_item))}))
+            val menuAdapter = MenuAdapter(this@MainActivity, Array(textItems.size, { i -> MenuItem(textItems[i], drawableItems.getResourceId(0, R.drawable.default_menu_item))}))
             drawableItems.recycle()
             leftDrawer.adapter = menuAdapter
         }

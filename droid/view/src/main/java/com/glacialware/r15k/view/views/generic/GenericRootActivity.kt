@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.glacialware.r15k.RiskApplication
 import com.glacialware.r15k.view.R
+import com.glacialware.r15k.view.presenters.GenericActivityPresenter
 import com.glacialware.r15k.view.views.di.GenericActivityComponent
 import com.glacialware.r15k.view.views.di.GenericActivityModule
+import com.glacialware.r15k.view.wireframes.generic.GenericActivityWireframe
 import com.glacialware.r15k.view.wireframes.navigateBackAnimated
+import com.glacialware.r15k.viewmodel.views.generic.GenericViewModel
 
 /**
 * Created by Guille on 04/07/2017.
@@ -15,6 +18,9 @@ abstract class GenericRootActivity constructor(private var anim: Boolean = false
 
     // ---- Attributes ----
 
+    protected lateinit var mPresenter: GenericActivityPresenter
+    protected lateinit var mWireFrame: GenericActivityWireframe
+    protected lateinit var mViewModel: GenericViewModel
     var mComponent: GenericActivityComponent? = null
 
     // ---- END Attributes ----
@@ -28,16 +34,18 @@ abstract class GenericRootActivity constructor(private var anim: Boolean = false
             this.overridePendingTransition(R.anim.slide_in_enter, R.anim.slide_out_enter)
         }
 
-        // It is mandatory to initialize the view model before de view:
         // 0. Init dagger.
         // 1. View model.
         // 2. View.
-        // 3. Fragment.
-        // All activities have, at least, one fragment.
-        this.initDI()
-        this.initViewModel()
-        this.initView()
-        this.initFragment()
+        // 3. Presenter.
+        // 4. Wireframe
+        // 5. Fragment.
+        initDI()
+        initViewModel()
+        initView()
+        initPresenter()
+        initWireframe()
+        initFragment()
     }
 
     override fun onBackPressed() {
@@ -55,6 +63,8 @@ abstract class GenericRootActivity constructor(private var anim: Boolean = false
     abstract fun initFragment()
     abstract fun initViewModel()
     abstract fun initView()
+    abstract fun initPresenter()
+    abstract fun initWireframe()
 
     // ---- END Abstract ----
 
