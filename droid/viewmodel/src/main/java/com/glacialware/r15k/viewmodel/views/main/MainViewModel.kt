@@ -13,9 +13,20 @@ import org.jetbrains.anko.uiThread
 * Created by Guille on 13/11/2017.
 */
 class MainViewModel(app : Application) : GenericDatabaseViewModel(app), PlayerController.IPlayerResponse {
+    // ---- Attributes ----
+
     private var shouldFetch = true
     private val playerController = PlayerController(this)
+
+    // ---- END Attributes ----
+
+    // ---- Properties ----
+
     val lPlayers : MutableLiveData<List<Player>> = MutableLiveData()
+
+    // ---- END Properties ----
+
+    // ---- Lifecycle ----
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun checkPlayers() {
@@ -52,11 +63,25 @@ class MainViewModel(app : Application) : GenericDatabaseViewModel(app), PlayerCo
         }
     }
 
+    // ---- END Lifecycle ----
+
+    // ---- Private ----
+
     private fun fetch() {
         this.playerController.start()
     }
 
-    // ==== CALLBACK ====
+    // ---- END Private ----
+
+    // ---- Events ----
+
+    fun onPlayerClick(player: Player) {
+
+    }
+
+    // ---- END Events ----
+
+    // ---- PlayerController.IPlayerResponse ----
 
     override fun errorResponse(error: String) {
         // Dispatch error.
@@ -77,5 +102,5 @@ class MainViewModel(app : Application) : GenericDatabaseViewModel(app), PlayerCo
         }
     }
 
-    // ==== END CALLBACK ====
+    // ---- END PlayerController.IPlayerResponse ----
 }
