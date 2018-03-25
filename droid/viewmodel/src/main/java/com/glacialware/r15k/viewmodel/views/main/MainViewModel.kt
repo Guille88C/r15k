@@ -17,6 +17,7 @@ class MainViewModel(app : Application) : GenericDatabaseViewModel(app), PlayerCo
 
     private var shouldFetch = true
     private val playerController = PlayerController(this)
+    private var mPlayersView: PlayersView? = null
 
     // ---- END Attributes ----
 
@@ -65,6 +66,12 @@ class MainViewModel(app : Application) : GenericDatabaseViewModel(app), PlayerCo
 
     // ---- END Lifecycle ----
 
+    // ---- Public ----
+
+    private fun setView()
+
+    // ---- END Public ----
+
     // ---- Private ----
 
     private fun fetch() {
@@ -76,7 +83,7 @@ class MainViewModel(app : Application) : GenericDatabaseViewModel(app), PlayerCo
     // ---- Events ----
 
     fun onPlayerClick(player: Player) {
-
+        mPlayersView?.showPlayerDetail()
     }
 
     // ---- END Events ----
