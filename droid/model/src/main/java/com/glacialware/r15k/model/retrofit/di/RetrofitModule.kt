@@ -19,12 +19,12 @@ class RetrofitModule {
 
     @Singleton
     @Provides
-    fun retrofitInstance(): Retrofit = Retrofit.Builder()
+    fun provideRetrofitInstance(): Retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create(gsonInstance()))
+            .addConverterFactory(GsonConverterFactory.create(provideGsonInstance()))
             .build()
 
     @Singleton
     @Provides
-    fun gsonInstance(): Gson = GsonBuilder().setLenient().create()
+    fun provideGsonInstance(): Gson = GsonBuilder().setLenient().create()
 }

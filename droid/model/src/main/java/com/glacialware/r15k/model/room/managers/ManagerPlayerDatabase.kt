@@ -1,25 +1,24 @@
 package com.glacialware.r15k.model.room.managers
 
 import android.content.Context
-import com.glacialware.r15k.model.room.AppDatabase
 import com.glacialware.r15k.model.room.Player
 
-class ManagerPlayerDatabase(private val mContext: Context) {
+class ManagerPlayerDatabase(context: Context): ManagerBaseDatabase(context) {
     // ---- Public ----
     fun getAllPlayers(): List<Player> {
-        return AppDatabase.newInstance(mContext).playerDao().getAll()
+        return mDatabase.playerDao().getAll()
     }
 
     fun clearPlayers() {
-        AppDatabase.newInstance(mContext).playerDao().clear()
+        mDatabase.playerDao().clear()
     }
 
     fun insertPlayer(player: Player) {
-        AppDatabase.newInstance(mContext).playerDao().insert(player)
+        mDatabase.playerDao().insert(player)
     }
 
     fun deletePlayer(player: Player) {
-        AppDatabase.newInstance(mContext).playerDao().delete(player)
+        mDatabase.playerDao().delete(player)
     }
     // ---- END Public ----
 }

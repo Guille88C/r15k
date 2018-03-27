@@ -14,25 +14,6 @@ import android.content.Context
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
-    // ---- Companion ----
-
-    // Note: You should follow the singleton design pattern when instantiating an AppDatabase object, as each RoomDatabase instance is fairly expensive,
-    // and you rarely need access to multiple instances.
-    //
-    // https://developer.android.com/training/data-storage/room/index.html
-    companion object {
-        private var dataBase: AppDatabase? = null
-
-        fun newInstance(context: Context): AppDatabase {
-            if (dataBase == null) {
-                dataBase = Room.databaseBuilder(context, AppDatabase::class.java, "r15k_ddbb").build()
-            }
-            return dataBase!!
-        }
-    }
-
-    // ---- END Companion ----
-
     // ---- Abstract functions ----
 
     abstract fun missionDao() : MissionDao
