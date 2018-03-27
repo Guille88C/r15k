@@ -12,6 +12,7 @@ import javax.inject.Inject
 * Created by Guille on 16/11/2017.
 */
 abstract class GenericDatabaseViewModel(app: Application) : GenericViewModel(app) {
+    // ---- Dagger attributes ----
     @field:[Inject]
     protected lateinit var mDatabasePlayerManager: ManagerPlayerDatabase
 
@@ -21,9 +22,17 @@ abstract class GenericDatabaseViewModel(app: Application) : GenericViewModel(app
                 .appDatabaseModule(AppDatabaseModule(getApplication<Application>().applicationContext))
                 .build()
     }
+    // ---- END Dagger attributes ----
 
+    // ---- Builder ----
     init {
+        initDaggerComponent()
+    }
+    // ---- END Builder ----
+
+    // ---- Private ----
+    private fun initDaggerComponent() {
         serviceComponent.inject(this)
     }
-
+    // ---- END Private ----
 }

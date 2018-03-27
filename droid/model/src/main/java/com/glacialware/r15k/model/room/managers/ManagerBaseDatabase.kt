@@ -24,8 +24,16 @@ abstract class ManagerBaseDatabase(context: Context) {
     // ---- Builder ----
 
     init {
-        mComponent.inject(this)
+        initDaggerComponent()
     }
 
     // ---- END Builder ----
+
+    // ---- Private ----
+
+    private fun initDaggerComponent() {
+        mComponent.inject(this)
+    }
+
+    // ---- END Private ----
 }
