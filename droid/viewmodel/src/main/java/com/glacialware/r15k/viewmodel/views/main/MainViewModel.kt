@@ -3,8 +3,8 @@ package com.glacialware.r15k.viewmodel.views.main
 import android.app.Application
 import android.arch.lifecycle.*
 import com.glacialware.r15k.model.retrofit.GenericGetAllResponse
-import com.glacialware.r15k.model.retrofit.IPlayerResponse
-import com.glacialware.r15k.model.retrofit.managers.ManagerPlayer
+import com.glacialware.r15k.model.retrofit.response.IPlayerResponse
+import com.glacialware.r15k.model.retrofit.managers.ManagerPlayerRetrofit
 import com.glacialware.r15k.model.room.Player
 import com.glacialware.r15k.viewmodel.views.GenericDatabaseViewModel
 import org.jetbrains.anko.doAsync
@@ -17,7 +17,7 @@ class MainViewModel(app : Application) : GenericDatabaseViewModel(app), IPlayerR
     // ---- Attributes ----
 
     private var shouldFetch = true
-    private val mManagerPlayer = ManagerPlayer(this)
+    private val mManagerPlayer = ManagerPlayerRetrofit(this)
     private var mPlayersView: PlayersView? = null
 
     // ---- END Attributes ----
@@ -53,7 +53,7 @@ class MainViewModel(app : Application) : GenericDatabaseViewModel(app), IPlayerR
 
         doAsync {
             // Observe disk && dispatch value.
-            val lItems = mDatabaseManager.getAllPlayers()
+            val lItems = mDatabasePlayerManager.getAllPlayers()
             uiThread {
                 lPlayers.value = lItems
             }
@@ -100,12 +100,12 @@ class MainViewModel(app : Application) : GenericDatabaseViewModel(app), IPlayerR
     override fun successResponse(response: GenericGetAllResponse<com.glacialware.r15k.model.retrofit.Player>) {
         doAsync {
             // Clear local table.
-            mDatabaseManager.clearPlayers()
+            mDatabasePlayerManager.clearPlayers()
             // Save to disk.
             val lMissions = response.values
             lMissions.forEach { item ->
                 val player = item.exportRoom()
-                mDatabaseManager.insertPlayer(player)
+                mDatabasePlayerManager.insertPlayer(player)
             }
             // Reload.
             checkPlayers()

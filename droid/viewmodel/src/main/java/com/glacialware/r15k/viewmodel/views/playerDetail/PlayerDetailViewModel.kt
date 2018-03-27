@@ -15,7 +15,7 @@ class PlayerDetailViewModel(app: Application) : GenericDatabaseViewModel(app) {
     fun deletePlayer() {
         doAsync {
             if (player != null) {
-                mDatabaseManager.deletePlayer(player!!)
+                mDatabasePlayerManager.deletePlayer(player!!)
 
                 if (playerDetailView != null) {
                     playerDetailView?.finishDeletePlayer()

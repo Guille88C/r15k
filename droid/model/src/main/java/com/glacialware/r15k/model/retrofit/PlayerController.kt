@@ -3,6 +3,7 @@ package com.glacialware.r15k.model.retrofit
 import com.glacialware.r15k.model.retrofit.di.DaggerGeneralComponent
 import com.glacialware.r15k.model.retrofit.di.GeneralComponent
 import com.glacialware.r15k.model.retrofit.di.ServiceModule
+import com.glacialware.r15k.model.retrofit.response.IPlayerResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

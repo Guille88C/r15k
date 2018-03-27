@@ -25,7 +25,7 @@ class AddPlayerViewModel(app : Application) : GenericDatabaseViewModel(app) {
     fun onAddPlayerClick() {
         doAsync {
             if (namePlayer.get() != null) {
-                mDatabaseManager.insertPlayer(Player(namePlayer.get()!!, false))
+                mDatabasePlayerManager.insertPlayer(Player(namePlayer.get()!!, false))
                 uiThread {
                     if (iToast != null) {
                         iToast?.startToast(getApplication<Application>().applicationContext.getString(R.string.add_player_toast_text, namePlayer.get()))

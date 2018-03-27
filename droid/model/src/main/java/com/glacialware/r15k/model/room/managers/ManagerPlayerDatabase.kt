@@ -4,7 +4,7 @@ import android.content.Context
 import com.glacialware.r15k.model.room.AppDatabase
 import com.glacialware.r15k.model.room.Player
 
-class ManagerDatabase(private val mContext: Context) {
+class ManagerPlayerDatabase(private val mContext: Context) {
     // ---- Public ----
     fun getAllPlayers(): List<Player> {
         return AppDatabase.newInstance(mContext).playerDao().getAll()
