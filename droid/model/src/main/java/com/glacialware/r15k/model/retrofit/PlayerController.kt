@@ -12,12 +12,7 @@ import javax.inject.Inject
 /**
 * Created by Guille on 28/11/2017.
 */
-class PlayerController : Callback<GenericGetAllResponse<Player>> {
-    interface IPlayerResponse {
-        fun successResponse(response: GenericGetAllResponse<Player>)
-        fun errorResponse(error: String)
-    }
-
+class PlayerController(response: IPlayerResponse) : Callback<GenericGetAllResponse<Player>> {
     @field:[Inject]
     lateinit var retrofit: Retrofit
 
@@ -29,13 +24,7 @@ class PlayerController : Callback<GenericGetAllResponse<Player>> {
     }
 
     private val api: PlayerAPI
-    private var response: IPlayerResponse? = null
-
-    constructor(response: IPlayerResponse) {
-        this.response = response
-        this.serviceComponent.inject(this)
-        this.api = retrofit.create(PlayerAPI::class.java)
-    }
+    private var response: IPlayerResponse? = response
 
     fun start() {
         val call = this.api.getAll()
@@ -55,6 +44,11 @@ class PlayerController : Callback<GenericGetAllResponse<Player>> {
                 this.response?.errorResponse("__error")
             }
         }
+    }
+
+    init {
+        this.serviceComponent.inject(this)
+        this.api = retrofit.create(PlayerAPI::class.java)
     }
 
 }

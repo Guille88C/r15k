@@ -1,8 +1,7 @@
 package com.glacialware.r15k.viewmodel.model.di
 
-import android.arch.persistence.room.Room
 import android.content.Context
-import com.glacialware.r15k.model.room.AppDatabase
+import com.glacialware.r15k.model.room.managers.ManagerDatabase
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -11,5 +10,5 @@ import javax.inject.Singleton
 class AppDatabaseModule(private val context: Context) {
     @Singleton
     @Provides
-    fun provideDataBase() : AppDatabase = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "r15k_ddbb").build()
+    fun provideDataBase() = ManagerDatabase(context.applicationContext)
 }

@@ -24,8 +24,8 @@ class PlayerDetailActivityPresenter : GenericActivityPresenter() {
 
 //    override fun initViewModel() {
 //        this.viewModel = ViewModelProviders.of(view).get(PlayerDetailViewModel::class.java)
-//        if (this.viewModel != null && view.intent.getSerializableExtra(PLAYER) is Player) {
-//            val player = view.intent.getSerializableExtra(PLAYER) as Player
+//        if (this.viewModel != null && view.intent.getSerializableExtra(PLAYER) is PlayerVMModel) {
+//            val player = view.intent.getSerializableExtra(PLAYER) as PlayerVMModel
 //            this.viewModel?.player = player
 //        }
 //    }

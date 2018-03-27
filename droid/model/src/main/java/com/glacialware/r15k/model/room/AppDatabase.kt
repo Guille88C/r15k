@@ -1,7 +1,9 @@
 package com.glacialware.r15k.model.room
 
 import android.arch.persistence.room.Database
+import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
+import android.content.Context
 
 /**
 * Created by Guille on 14/11/2017.
@@ -12,11 +14,36 @@ import android.arch.persistence.room.RoomDatabase
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
+    // ---- Companion ----
+
+    // Note: You should follow the singleton design pattern when instantiating an AppDatabase object, as each RoomDatabase instance is fairly expensive,
+    // and you rarely need access to multiple instances.
+    //
+    // https://developer.android.com/training/data-storage/room/index.html
+    companion object {
+        private var dataBase: AppDatabase? = null
+
+        fun newInstance(context: Context): AppDatabase {
+            if (dataBase == null) {
+                dataBase = Room.databaseBuilder(context, AppDatabase::class.java, "r15k_ddbb").build()
+            }
+            return dataBase!!
+        }
+    }
+
+    // ---- END Companion ----
+
+    // ---- Abstract functions ----
+
     abstract fun missionDao() : MissionDao
     abstract fun playerDao() : PlayerDao
     abstract fun gameDao() : GameDao
     abstract fun playerMissionDao() : PlayerMissionDao
     abstract fun gamePlayerDao() : GamePlayerDao
+
+    // ---- END Abstract functions ----
+
+    // ---- Public ----
 
     fun clearAllTables() {
         gameDao().clear()
@@ -42,4 +69,6 @@ abstract class AppDatabase : RoomDatabase() {
         playerMissionDao().insert(playerMission1)
         playerMissionDao().insert(playerMission2)
     }
+
+    // ---- END Public ----
 }

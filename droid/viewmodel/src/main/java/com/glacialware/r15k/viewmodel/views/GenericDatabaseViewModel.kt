@@ -1,7 +1,7 @@
 package com.glacialware.r15k.viewmodel.views
 
 import android.app.Application
-import com.glacialware.r15k.model.room.AppDatabase
+import com.glacialware.r15k.model.room.managers.ManagerDatabase
 import com.glacialware.r15k.viewmodel.model.di.AppDatabaseComponent
 import com.glacialware.r15k.viewmodel.model.di.AppDatabaseModule
 import com.glacialware.r15k.viewmodel.model.di.DaggerAppDatabaseComponent
@@ -13,7 +13,7 @@ import javax.inject.Inject
 */
 abstract class GenericDatabaseViewModel(app: Application) : GenericViewModel(app) {
     @field:[Inject]
-    protected lateinit var database: AppDatabase
+    protected lateinit var mDatabaseManager: ManagerDatabase
 
     private val serviceComponent: AppDatabaseComponent by lazy {
         DaggerAppDatabaseComponent
