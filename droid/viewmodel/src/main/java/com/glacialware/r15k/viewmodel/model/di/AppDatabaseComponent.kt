@@ -11,6 +11,6 @@ import javax.inject.Singleton
 @Component (
     modules = [(AppDatabaseModule::class)]
 )
-interface GeneralComponent {
+interface AppDatabaseComponent {
     fun inject(databaseVM: GenericDatabaseViewModel)
 }

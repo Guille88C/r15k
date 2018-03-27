@@ -68,7 +68,9 @@ class MainViewModel(app : Application) : GenericDatabaseViewModel(app), PlayerCo
 
     // ---- Public ----
 
-    private fun setView()
+    fun setPlayersView(view: PlayersView) {
+        mPlayersView = view
+    }
 
     // ---- END Public ----
 
@@ -83,7 +85,7 @@ class MainViewModel(app : Application) : GenericDatabaseViewModel(app), PlayerCo
     // ---- Events ----
 
     fun onPlayerClick(player: Player) {
-        mPlayersView?.showPlayerDetail()
+        mPlayersView?.showPlayerDetail(player)
     }
 
     // ---- END Events ----

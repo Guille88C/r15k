@@ -54,18 +54,18 @@ class PlayersAdapter(private val mViewModel: MainViewModel)
 
     // ---- Adapter ----
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PlayersAdapter.PlayersVH {
-        val inflater = LayoutInflater.from(parent?.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayersAdapter.PlayersVH {
+        val inflater = LayoutInflater.from(parent.context)
         val itemBinding = ViewMainPlayersItemBinding.inflate(inflater, parent, false)
         return PlayersVH(mViewModel, itemBinding)
     }
 
     override fun getItemCount(): Int = lPlayers.size
 
-    override fun onBindViewHolder(holder: PlayersAdapter.PlayersVH?, position: Int) {
+    override fun onBindViewHolder(holder: PlayersAdapter.PlayersVH, position: Int) {
         val player = mViewModel.lPlayers.value?.get(position)
         if (player != null) {
-            holder?.bind(player)
+            holder.bind(player)
         }
     }
 

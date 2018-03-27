@@ -24,12 +24,14 @@ class AddPlayerViewModel(app : Application) : GenericDatabaseViewModel(app) {
 
     fun onAddPlayerClick() {
         doAsync {
-            database.playerDao().insert(Player(namePlayer.get(), false))
-            uiThread {
-                if (iToast != null) {
-                    iToast?.startToast(getApplication<Application>().applicationContext.getString(R.string.add_player_toast_text, namePlayer.get()))
+            if (namePlayer.get() != null) {
+                database.playerDao().insert(Player(namePlayer.get()!!, false))
+                uiThread {
+                    if (iToast != null) {
+                        iToast?.startToast(getApplication<Application>().applicationContext.getString(R.string.add_player_toast_text, namePlayer.get()))
+                    }
+                    namePlayer.set("")
                 }
-                namePlayer.set("")
             }
         }
     }

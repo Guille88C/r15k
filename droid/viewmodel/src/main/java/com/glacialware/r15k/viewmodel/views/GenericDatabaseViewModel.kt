@@ -1,12 +1,10 @@
 package com.glacialware.r15k.viewmodel.views
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.LifecycleObserver
 import com.glacialware.r15k.model.room.AppDatabase
+import com.glacialware.r15k.viewmodel.model.di.AppDatabaseComponent
 import com.glacialware.r15k.viewmodel.model.di.AppDatabaseModule
-import com.glacialware.r15k.viewmodel.model.di.DaggerGeneralComponent
-import com.glacialware.r15k.viewmodel.model.di.GeneralComponent
+import com.glacialware.r15k.viewmodel.model.di.DaggerAppDatabaseComponent
 import com.glacialware.r15k.viewmodel.views.generic.GenericViewModel
 import javax.inject.Inject
 
@@ -17,8 +15,8 @@ abstract class GenericDatabaseViewModel(app: Application) : GenericViewModel(app
     @field:[Inject]
     protected lateinit var database: AppDatabase
 
-    private val serviceComponent: GeneralComponent by lazy {
-        DaggerGeneralComponent
+    private val serviceComponent: AppDatabaseComponent by lazy {
+        DaggerAppDatabaseComponent
                 .builder()
                 .appDatabaseModule(AppDatabaseModule(getApplication<Application>().applicationContext))
                 .build()

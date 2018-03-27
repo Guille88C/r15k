@@ -7,12 +7,9 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-/**
-* Created by Guille on 14/11/2017.
-*/
 @Module
 class AppDatabaseModule(private val context: Context) {
     @Singleton
     @Provides
-    fun databaseInstance() : AppDatabase = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "r15k_ddbb").build()
+    fun provideDataBase() : AppDatabase = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "r15k_ddbb").build()
 }

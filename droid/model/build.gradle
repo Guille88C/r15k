@@ -24,10 +24,6 @@ android {
 
 }
 
-kapt {
-    generateStubs = true
-}
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -42,7 +38,7 @@ dependencies {
     // ----
 
     // room
-    compile "android.arch.persistence.room:runtime:1.0.0"
+    api "android.arch.persistence.room:runtime:1.0.0"
     kapt "android.arch.persistence.room:compiler:1.0.0"
 //    androidTestImplementation "android.arch.persistence.room:testing:$roomVersion"
     // ----

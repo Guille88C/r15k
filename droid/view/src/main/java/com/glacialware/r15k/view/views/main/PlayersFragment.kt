@@ -7,17 +7,19 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.glacialware.r15k.model.room.Player
 import com.glacialware.r15k.view.databinding.FragmentPlayersBinding
 import com.glacialware.r15k.view.presenters.main.PlayersFragmentPresenter
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
 import com.glacialware.r15k.view.wireframes.main.PlayersFragmentWireframe
 import com.glacialware.r15k.viewmodel.views.main.MainViewModel
+import com.glacialware.r15k.viewmodel.views.main.PlayersView
 import kotlinx.android.synthetic.main.fragment_players.*
 
 /**
 * Created by Guille on 09/07/2017.
 */
-class PlayersFragment : GenericRootFragment() {
+class PlayersFragment : GenericRootFragment(), PlayersView {
 
     // ---- Companion ----
 
@@ -53,6 +55,7 @@ class PlayersFragment : GenericRootFragment() {
     override fun initViewModel() {
         if (activity != null) {
             mViewModel = ViewModelProviders.of(activity!!).get(MainViewModel::class.java)
+            (mViewModel as MainViewModel).setPlayersView(this)
         }
     }
 
@@ -99,4 +102,13 @@ class PlayersFragment : GenericRootFragment() {
 
     // ---- END GenericRootFragment ----
 
+    // ---- PlayersView ----
+
+    override fun showPlayerDetail(player: Player) {
+        if (mWireframe is PlayersFragmentWireframe) {
+            (mWireframe as PlayersFragmentWireframe).goToPlayerDetail(player)
+        }
+    }
+
+    // ---- END PlayersView ----
 }
