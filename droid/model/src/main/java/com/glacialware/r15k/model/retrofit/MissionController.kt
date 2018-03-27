@@ -1,8 +1,8 @@
 package com.glacialware.r15k.model.retrofit
 
-import com.glacialware.r15k.model.retrofit.di.DaggerGeneralComponent
-import com.glacialware.r15k.model.retrofit.di.ServiceModule
-import com.glacialware.r15k.model.retrofit.di.GeneralComponent
+import com.glacialware.r15k.model.retrofit.di.DaggerRetrofitComponent
+import com.glacialware.r15k.model.retrofit.di.RetrofitModule
+import com.glacialware.r15k.model.retrofit.di.RetrofitComponent
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,10 +21,10 @@ class MissionController : Callback<GenericGetAllResponse<Mission>> {
     @field:[Inject]
     lateinit var retrofit: Retrofit
 
-    private val serviceComponent: GeneralComponent by lazy {
-        DaggerGeneralComponent
+    private val serviceComponent: RetrofitComponent by lazy {
+        DaggerRetrofitComponent
                 .builder()
-                .serviceModule(ServiceModule())
+                .retrofitModule(RetrofitModule())
                 .build()
     }
 

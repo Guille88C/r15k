@@ -12,7 +12,7 @@ import javax.inject.Singleton
 * Created by Guille on 28/11/2017.
 */
 @Module
-class ServiceModule {
+class RetrofitModule {
     companion object {
         private const val BASE_URL = "http://192.168.1.35/r15k/"
     }

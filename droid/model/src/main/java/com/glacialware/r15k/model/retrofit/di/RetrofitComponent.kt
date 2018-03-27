@@ -10,9 +10,9 @@ import javax.inject.Singleton
 */
 @Singleton
 @Component (
-    modules = [(ServiceModule::class)]
+    modules = [(RetrofitModule::class)]
 )
-interface GeneralComponent {
+interface RetrofitComponent {
     fun inject(controller: MissionController)
     fun inject(controller: PlayerController)
 }
