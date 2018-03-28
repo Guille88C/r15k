@@ -3,7 +3,7 @@ package com.glacialware.r15k.viewmodel.views.main
 import android.app.Application
 import android.arch.lifecycle.*
 import com.glacialware.r15k.viewmodel.model.Player
-import com.glacialware.r15k.viewmodel.views.GenericDatabaseViewModel
+import com.glacialware.r15k.viewmodel.views.generic.GenericDatabaseViewModel
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import java.util.ArrayList

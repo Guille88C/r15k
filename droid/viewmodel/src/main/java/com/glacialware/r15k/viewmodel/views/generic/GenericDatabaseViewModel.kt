@@ -1,11 +1,10 @@
-package com.glacialware.r15k.viewmodel.views
+package com.glacialware.r15k.viewmodel.views.generic
 
 import android.app.Application
 import com.glacialware.r15k.model.room.managers.ManagerPlayerDatabase
-import com.glacialware.r15k.viewmodel.di.AppDatabaseComponent
-import com.glacialware.r15k.viewmodel.di.AppDatabaseModule
-import com.glacialware.r15k.viewmodel.di.DaggerAppDatabaseComponent
-import com.glacialware.r15k.viewmodel.views.generic.GenericViewModel
+import com.glacialware.r15k.viewmodel.views.di.DaggerGenericDatabaseViewModelComponent
+import com.glacialware.r15k.viewmodel.views.di.GenericDatabaseViewModelComponent
+import com.glacialware.r15k.viewmodel.views.di.GenericDatabaseViewModelModule
 import javax.inject.Inject
 
 /**
@@ -16,10 +15,10 @@ abstract class GenericDatabaseViewModel(app: Application) : GenericViewModel(app
     @field:[Inject]
     protected lateinit var mDatabasePlayerManager: ManagerPlayerDatabase
 
-    private val serviceComponent: AppDatabaseComponent by lazy {
-        DaggerAppDatabaseComponent
+    private val mComponent: GenericDatabaseViewModelComponent by lazy {
+        DaggerGenericDatabaseViewModelComponent
                 .builder()
-                .appDatabaseModule(AppDatabaseModule(getApplication<Application>().applicationContext))
+                .genericDatabaseViewModelModule(GenericDatabaseViewModelModule(getApplication<Application>().applicationContext))
                 .build()
     }
     // ---- END Dagger attributes ----
@@ -32,7 +31,7 @@ abstract class GenericDatabaseViewModel(app: Application) : GenericViewModel(app
 
     // ---- Private ----
     private fun initDaggerComponent() {
-        serviceComponent.inject(this)
+        mComponent.inject(this)
     }
     // ---- END Private ----
 }

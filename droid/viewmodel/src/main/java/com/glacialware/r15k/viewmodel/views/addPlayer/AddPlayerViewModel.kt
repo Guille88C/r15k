@@ -5,7 +5,7 @@ import android.databinding.ObservableField
 import com.glacialware.r15k.model.room.Player
 import com.glacialware.r15k.viewmodel.interfaces.ICustomToast
 import com.glacialware.r15k.viewmodel.R
-import com.glacialware.r15k.viewmodel.views.GenericDatabaseViewModel
+import com.glacialware.r15k.viewmodel.views.generic.GenericDatabaseViewModel
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 

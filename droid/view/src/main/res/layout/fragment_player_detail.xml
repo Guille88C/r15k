@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable
-            name="player"
-            type="com.glacialware.r15k.viewmodel.model.Player" />
-
         <variable
             name="view_model"
             type="com.glacialware.r15k.viewmodel.views.playerDetail.PlayerDetailViewModel" />
@@ -42,7 +37,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:fontFamily="monospace"
-            android:text="@{player.nick, default=@string/player_detail_nick_default}"
+            android:text="@{view_model.player.nick, default=@string/player_detail_nick_default}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvNickTitle" />
@@ -81,7 +76,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:fontFamily="monospace"
-            android:text="@{player.isDead ? @string/player_detail_status_dead : @string/player_detail_status_alive, default=@string/player_detail_status_alive}"
+            android:text="@{view_model.player.isDead ? @string/player_detail_status_dead : @string/player_detail_status_alive, default=@string/player_detail_status_alive}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvStatusTitle" />

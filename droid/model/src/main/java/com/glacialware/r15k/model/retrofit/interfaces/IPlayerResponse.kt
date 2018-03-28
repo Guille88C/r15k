@@ -1,4 +1,4 @@
-package com.glacialware.r15k.model.retrofit.response
+package com.glacialware.r15k.model.retrofit.interfaces
 
 import com.glacialware.r15k.model.retrofit.GenericGetAllResponse
 import com.glacialware.r15k.model.retrofit.Player

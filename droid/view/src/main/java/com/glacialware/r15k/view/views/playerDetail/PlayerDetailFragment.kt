@@ -47,6 +47,7 @@ class PlayerDetailFragment : GenericRootFragment(), IPlayerDetailView {
     override fun initViewModel() {
         if (activity != null) {
             mViewModel = ViewModelProviders.of(activity!!).get(PlayerDetailViewModel::class.java)
+            (mViewModel as PlayerDetailViewModel).playerDetailView = this
         }
     }
 

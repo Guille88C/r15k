@@ -1,8 +1,8 @@
 package com.glacialware.r15k.viewmodel.views.playerDetail
 
 import android.app.Application
-import com.glacialware.r15k.model.room.Player
-import com.glacialware.r15k.viewmodel.views.GenericDatabaseViewModel
+import com.glacialware.r15k.viewmodel.model.Player
+import com.glacialware.r15k.viewmodel.views.generic.GenericDatabaseViewModel
 import org.jetbrains.anko.doAsync
 
 /**
@@ -15,7 +15,7 @@ class PlayerDetailViewModel(app: Application) : GenericDatabaseViewModel(app) {
     fun deletePlayer() {
         doAsync {
             if (player != null) {
-                mDatabasePlayerManager.deletePlayer(player!!)
+                mDatabasePlayerManager.deletePlayer(player!!.toRoom())
 
                 if (playerDetailView != null) {
                     playerDetailView?.finishDeletePlayer()

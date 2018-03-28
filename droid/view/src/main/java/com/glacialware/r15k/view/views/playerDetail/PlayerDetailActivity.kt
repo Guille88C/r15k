@@ -7,7 +7,9 @@ import android.view.MenuItem
 import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.presenters.playerDetail.PlayerDetailActivityPresenter
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
+import com.glacialware.r15k.view.wireframes.PLAYER
 import com.glacialware.r15k.view.wireframes.playerDetail.PlayerDetailActivityWireframe
+import com.glacialware.r15k.viewmodel.model.Player
 import com.glacialware.r15k.viewmodel.views.playerDetail.PlayerDetailViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -24,10 +26,13 @@ class PlayerDetailActivity : GenericRootActivity(true) {
     }
 
     override fun initFragment() {
+        mWireFrame.initFragment()
     }
 
     override fun initViewModel() {
         mViewModel = ViewModelProviders.of(this).get(PlayerDetailViewModel::class.java)
+        val player = intent.getParcelableExtra<Player>(PLAYER)
+        (mViewModel as PlayerDetailViewModel).player = player
     }
 
     override fun initView() {
