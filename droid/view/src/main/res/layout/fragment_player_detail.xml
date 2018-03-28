@@ -7,7 +7,7 @@
     <data>
         <variable
             name="player"
-            type="com.glacialware.r15k.model.room.Player" />
+            type="com.glacialware.r15k.viewmodel.model.Player" />
 
         <variable
             name="view_model"

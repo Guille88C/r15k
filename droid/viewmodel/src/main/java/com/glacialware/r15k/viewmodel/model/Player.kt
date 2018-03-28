@@ -8,14 +8,17 @@ import android.os.Parcelable
  */
 data class Player(
         var id : Int = 0,
-        val nick : String = "",
-        val isDead : Boolean = false
+        var nick : String = "",
+        var isDead : Boolean = false
 ) : Parcelable {
+    // ---- Builder ----
     constructor(parcel: Parcel) : this(
             parcel.readInt(),
             parcel.readString(),
             parcel.readByte() != 0.toByte())
+    // ---- END Builder ----
 
+    // ---- Parcelable ----
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
         parcel.writeString(nick)
@@ -35,4 +38,20 @@ data class Player(
             return arrayOfNulls(size)
         }
     }
+    // ---- END Parcelable ----
+
+    // ---- Public ----
+    fun fromRoom(player: com.glacialware.r15k.model.room.Player) {
+        id = player.id
+        nick = player.nick
+        isDead = player.isDead
+    }
+
+    fun toRoom(): com.glacialware.r15k.model.room.Player {
+        val player = com.glacialware.r15k.model.room.Player(nick, isDead)
+        player.id = id
+
+        return player
+    }
+    // ---- END Public ----
 }

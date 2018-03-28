@@ -1,4 +1,4 @@
-package com.glacialware.r15k.viewmodel.model.di
+package com.glacialware.r15k.viewmodel.di
 
 import com.glacialware.r15k.viewmodel.views.GenericDatabaseViewModel
 import dagger.Component

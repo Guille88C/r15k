@@ -1,4 +1,4 @@
-package com.glacialware.r15k.viewmodel.model.di
+package com.glacialware.r15k.viewmodel.di
 
 import android.content.Context
 import com.glacialware.r15k.model.room.managers.ManagerPlayerDatabase

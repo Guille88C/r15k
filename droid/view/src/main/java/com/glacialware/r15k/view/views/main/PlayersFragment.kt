@@ -7,11 +7,11 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.glacialware.r15k.model.room.Player
 import com.glacialware.r15k.view.databinding.FragmentPlayersBinding
 import com.glacialware.r15k.view.presenters.main.PlayersFragmentPresenter
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
 import com.glacialware.r15k.view.wireframes.main.PlayersFragmentWireframe
+import com.glacialware.r15k.viewmodel.model.Player
 import com.glacialware.r15k.viewmodel.views.main.MainViewModel
 import com.glacialware.r15k.viewmodel.views.main.PlayersView
 import kotlinx.android.synthetic.main.fragment_players.*

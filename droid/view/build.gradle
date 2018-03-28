@@ -52,7 +52,7 @@ dependencies {
     implementation project(':viewmodel')
     // ----
     // model
-    implementation project(':model')
+//    implementation project(':model')
     // ----
 
     // dagger 2

@@ -10,7 +10,7 @@
 
         <variable
             name="player"
-            type="com.glacialware.r15k.model.room.Player" />
+            type="com.glacialware.r15k.viewmodel.model.Player" />
     </data>
 
     <android.support.v7.widget.CardView
