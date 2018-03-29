@@ -5,7 +5,6 @@ import android.support.v7.app.ActionBar
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.glacialware.r15k.view.R
-import com.glacialware.r15k.view.presenters.editCard.EditCardActivityPresenter
 import com.glacialware.r15k.view.wireframes.navigateTo
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import com.glacialware.r15k.view.wireframes.editCard.EditCardActivityWireframe
@@ -42,7 +41,6 @@ class EditCardActivity : GenericRootActivity(true) {
     }
 
     override fun initPresenter() {
-        mPresenter = EditCardActivityPresenter()
     }
 
     override fun initWireframe() {

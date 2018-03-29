@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.glacialware.r15k.view.databinding.FragmentAddPlayerBinding
-import com.glacialware.r15k.view.presenters.addPlayer.AddPlayerFragmentPresenter
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
 import com.glacialware.r15k.view.wireframes.addPlayer.AddPlayerFragmentWireframe
 import com.glacialware.r15k.viewmodel.interfaces.ICustomToast
@@ -15,7 +14,7 @@ import com.glacialware.r15k.viewmodel.views.addPlayer.AddPlayerViewModel
 /**
 * Created by Guille on 10/07/2017.
 */
-class AddPlayerFragment : GenericRootFragment(), ICustomToast {
+class AddPlayerFragment : GenericRootFragment<AddPlayerFragmentWireframe, AddPlayerViewModel, FragmentAddPlayerBinding>(), ICustomToast {
 
     // ---- Companion ----
 
@@ -34,10 +33,6 @@ class AddPlayerFragment : GenericRootFragment(), ICustomToast {
 
     // ---- GenericRootFragment ----
 
-    override fun initPresenter() {
-        mPresenter = AddPlayerFragmentPresenter()
-    }
-
     override fun initWireframe() {
         mWireframe = AddPlayerFragmentWireframe(this)
     }
@@ -50,7 +45,7 @@ class AddPlayerFragment : GenericRootFragment(), ICustomToast {
 
     override fun initView(inflater: LayoutInflater, container: ViewGroup?): View? {
         mBinding = FragmentAddPlayerBinding.inflate(inflater, container, false)
-        (mBinding as FragmentAddPlayerBinding).viewModel = mViewModel as AddPlayerViewModel
+        mBinding.viewModel = mViewModel
         return mBinding.root
     }
 
@@ -59,7 +54,7 @@ class AddPlayerFragment : GenericRootFragment(), ICustomToast {
     }
 
     override fun initComponents() {
-        (mViewModel as AddPlayerViewModel).iToast = this
+        mViewModel?.iToast = this
     }
 
     // ---- END GenericRootFragment ----

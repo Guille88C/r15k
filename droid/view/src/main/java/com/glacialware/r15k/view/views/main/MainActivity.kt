@@ -16,7 +16,6 @@ import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import com.crashlytics.android.Crashlytics
-import com.glacialware.r15k.view.presenters.main.MainActivityPresenter
 import com.glacialware.r15k.view.wireframes.main.MainActivityWireframe
 import com.glacialware.r15k.viewmodel.views.main.MainViewModel
 import io.fabric.sdk.android.Fabric
@@ -50,7 +49,6 @@ class MainActivity : GenericRootActivity() {
     }
 
     override fun initPresenter() {
-        mPresenter = MainActivityPresenter()
     }
 
     override fun initFragment() {

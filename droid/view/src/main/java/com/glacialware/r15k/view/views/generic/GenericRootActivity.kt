@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.glacialware.r15k.view.RiskApplication
 import com.glacialware.r15k.view.R
-import com.glacialware.r15k.view.presenters.GenericActivityPresenter
 import com.glacialware.r15k.view.views.di.GenericActivityComponent
 import com.glacialware.r15k.view.views.di.GenericActivityModule
 import com.glacialware.r15k.view.wireframes.generic.GenericActivityWireframe
@@ -18,7 +17,6 @@ abstract class GenericRootActivity constructor(private var anim: Boolean = false
 
     // ---- Attributes ----
 
-    protected lateinit var mPresenter: GenericActivityPresenter
     protected lateinit var mWireFrame: GenericActivityWireframe
     protected lateinit var mViewModel: GenericViewModel
     var mComponent: GenericActivityComponent? = null

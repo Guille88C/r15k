@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.glacialware.r15k.view.components.CustomToast
-import com.glacialware.r15k.view.presenters.GenericFragmentPresenter
 import com.glacialware.r15k.view.views.di.GenericFragmentComponent
 import com.glacialware.r15k.view.views.di.GenericFragmentModule
 import com.glacialware.r15k.view.wireframes.generic.GenericFragmentWireframe
@@ -17,7 +16,7 @@ import javax.inject.Inject
 /**
 * Created by Guille on 09/07/2017.
 */
-abstract class GenericRootFragment: Fragment()  {
+abstract class GenericRootFragment<T, Y, U>: Fragment() where T: GenericFragmentWireframe, Y: GenericViewModel, U: ViewDataBinding {
 
     // ---- Dagger attributes ----
 
@@ -28,11 +27,10 @@ abstract class GenericRootFragment: Fragment()  {
 
     // ---- Attributes ----
 
-    protected lateinit var mBinding: ViewDataBinding
-    protected lateinit var mPresenter: GenericFragmentPresenter
-    protected lateinit var mWireframe: GenericFragmentWireframe
-    protected var mViewModel: GenericViewModel? = null
-    var mComponent: GenericFragmentComponent? = null
+    protected lateinit var mBinding: U
+    protected lateinit var mWireframe: T
+    protected var mViewModel: Y? = null
+    private var mComponent: GenericFragmentComponent? = null
 
     // ---- END Attributes ----
 
@@ -46,7 +44,6 @@ abstract class GenericRootFragment: Fragment()  {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initDI()
-        initPresenter()
         initWireframe()
         initComponents()
     }
@@ -60,9 +57,10 @@ abstract class GenericRootFragment: Fragment()  {
 
     // ---- Private ----
 
+    @Suppress("UNCHECKED_CAST")
     private fun initDI() {
-        mComponent = (activity as GenericRootActivity?)?.mComponent?.with(GenericFragmentModule(context))
-        mComponent?.inject(this)
+        mComponent = (activity as? GenericRootActivity)?.mComponent?.with(GenericFragmentModule(context))
+        mComponent?.inject(this as GenericRootFragment<GenericFragmentWireframe, GenericViewModel, ViewDataBinding>)
     }
 
     // ---- END Private ----
@@ -70,7 +68,6 @@ abstract class GenericRootFragment: Fragment()  {
     // ---- Abstract ----
 
     abstract fun initWireframe()
-    abstract fun initPresenter()
     abstract fun initViewModel()
     abstract fun initView(inflater: LayoutInflater, container: ViewGroup?): View?
     abstract fun clear()

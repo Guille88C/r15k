@@ -1,7 +1,10 @@
 package com.glacialware.r15k.view.views.di
 
+import android.databinding.ViewDataBinding
 import com.glacialware.r15k.view.scopes.PerFragment
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
+import com.glacialware.r15k.view.wireframes.generic.GenericFragmentWireframe
+import com.glacialware.r15k.viewmodel.views.generic.GenericViewModel
 import dagger.Subcomponent
 
 /**
@@ -10,5 +13,5 @@ import dagger.Subcomponent
 @PerFragment
 @Subcomponent(modules = [(GenericFragmentModule::class)])
 interface GenericFragmentComponent {
-    fun inject(fragment: GenericRootFragment)
+    fun inject(fragment: GenericRootFragment<GenericFragmentWireframe, GenericViewModel, ViewDataBinding>)
 }

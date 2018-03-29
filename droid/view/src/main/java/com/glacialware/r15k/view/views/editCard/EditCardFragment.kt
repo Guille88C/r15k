@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.glacialware.r15k.view.databinding.FragmentEditCardBinding
-import com.glacialware.r15k.view.presenters.editCard.EditCardFragmentPresenter
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
 import com.glacialware.r15k.view.wireframes.editCard.EditCardFragmentWireframe
 import com.glacialware.r15k.viewmodel.views.editCard.EditCardViewModel
@@ -14,7 +13,7 @@ import com.glacialware.r15k.viewmodel.views.editCard.EditCardViewModel
 /**
 * Created by Guille on 10/07/2017.
 */
-class EditCardFragment : GenericRootFragment() {
+class EditCardFragment : GenericRootFragment<EditCardFragmentWireframe, EditCardViewModel, FragmentEditCardBinding>() {
 
     // ---- Companion ----
     companion object {
@@ -36,10 +35,6 @@ class EditCardFragment : GenericRootFragment() {
         mWireframe = EditCardFragmentWireframe(this)
     }
 
-    override fun initPresenter() {
-        mPresenter = EditCardFragmentPresenter()
-    }
-
     override fun initViewModel() {
         if (activity != null) {
             mViewModel = ViewModelProviders.of(activity!!).get(EditCardViewModel::class.java)
@@ -49,7 +44,7 @@ class EditCardFragment : GenericRootFragment() {
     override fun initView(inflater: LayoutInflater, container: ViewGroup?): View? {
         mBinding = FragmentEditCardBinding.inflate(inflater, container, false)
         if (mViewModel != null) {
-            (mBinding as FragmentEditCardBinding).viewModel = mViewModel as EditCardViewModel
+            mBinding.viewModel = mViewModel
         }
         return mBinding.root
     }

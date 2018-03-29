@@ -5,7 +5,6 @@ import android.support.v7.app.ActionBar
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.glacialware.r15k.view.R
-import com.glacialware.r15k.view.presenters.playerDetail.PlayerDetailActivityPresenter
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import com.glacialware.r15k.view.wireframes.PLAYER
 import com.glacialware.r15k.view.wireframes.playerDetail.PlayerDetailActivityWireframe
@@ -18,7 +17,6 @@ class PlayerDetailActivity : GenericRootActivity(true) {
     // ---- GenericRootActivity ----
 
     override fun initPresenter() {
-        mPresenter = PlayerDetailActivityPresenter()
     }
 
     override fun initWireframe() {

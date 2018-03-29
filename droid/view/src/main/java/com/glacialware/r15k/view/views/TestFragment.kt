@@ -1,6 +1,7 @@
 package com.glacialware.r15k.view.views
 
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import com.glacialware.r15k.view.views.generic.GenericRootFragment
 /**
 * Created by Guille on 10/07/2017.
 */
-class TestFragment : GenericRootFragment() {
+class TestFragment : Fragment() {
 
     // ---- Companion ----
 
@@ -31,28 +32,8 @@ class TestFragment : GenericRootFragment() {
 
     // ---- Fragment ----
 
-    override fun initViewModel() {
-
-    }
-
-    override fun initPresenter() {
-
-    }
-
-    override fun initWireframe() {
-
-    }
-
-    override fun initView(inflater: LayoutInflater, container: ViewGroup?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_test, container, false)
-    }
-
-    override fun clear() {
-
-    }
-
-    override fun initComponents() {
-
     }
 
     // ---- END Fragment ----

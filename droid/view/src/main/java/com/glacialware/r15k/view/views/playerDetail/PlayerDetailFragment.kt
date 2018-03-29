@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.glacialware.r15k.view.databinding.FragmentPlayerDetailBinding
-import com.glacialware.r15k.view.presenters.playerDetail.PlayerDetailFragmentPresenter
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
 import com.glacialware.r15k.view.wireframes.playerDetail.PlayerDetailFragmentWireframe
 import com.glacialware.r15k.viewmodel.views.playerDetail.IPlayerDetailView
@@ -15,7 +14,7 @@ import com.glacialware.r15k.viewmodel.views.playerDetail.PlayerDetailViewModel
 /**
  * A placeholder fragment containing a simple view.
  */
-class PlayerDetailFragment : GenericRootFragment(), IPlayerDetailView {
+class PlayerDetailFragment : GenericRootFragment<PlayerDetailFragmentWireframe, PlayerDetailViewModel, FragmentPlayerDetailBinding>(), IPlayerDetailView {
 
     // ---- Companion ----
 
@@ -40,21 +39,17 @@ class PlayerDetailFragment : GenericRootFragment(), IPlayerDetailView {
         mWireframe = PlayerDetailFragmentWireframe(this)
     }
 
-    override fun initPresenter() {
-        mPresenter = PlayerDetailFragmentPresenter()
-    }
-
     override fun initViewModel() {
         if (activity != null) {
             mViewModel = ViewModelProviders.of(activity!!).get(PlayerDetailViewModel::class.java)
-            (mViewModel as PlayerDetailViewModel).playerDetailView = this
+            mViewModel?.playerDetailView = this
         }
     }
 
     override fun initView(inflater: LayoutInflater, container: ViewGroup?): View? {
         mBinding = FragmentPlayerDetailBinding.inflate(inflater, container, false)
         if (mViewModel != null) {
-            (mBinding as FragmentPlayerDetailBinding).viewModel = mViewModel as PlayerDetailViewModel
+            mBinding.viewModel = mViewModel as PlayerDetailViewModel
         }
         return mBinding.root
     }
