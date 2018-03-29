@@ -1,6 +1,6 @@
 package com.glacialware.r15k.view.views.di
 
-import com.glacialware.r15k.scopes.PerFragment
+import com.glacialware.r15k.view.scopes.PerFragment
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
 import dagger.Subcomponent
 

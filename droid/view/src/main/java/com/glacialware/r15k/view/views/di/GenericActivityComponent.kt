@@ -1,6 +1,6 @@
 package com.glacialware.r15k.view.views.di
 
-import com.glacialware.r15k.scopes.PerActivity
+import com.glacialware.r15k.view.scopes.PerActivity
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import dagger.Subcomponent
 

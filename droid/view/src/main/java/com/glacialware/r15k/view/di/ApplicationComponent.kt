@@ -1,6 +1,6 @@
-package com.glacialware.r15k.di
+package com.glacialware.r15k.view.di
 
-import com.glacialware.r15k.RiskApplication
+import com.glacialware.r15k.view.RiskApplication
 import com.glacialware.r15k.view.views.di.GenericActivityComponent
 import com.glacialware.r15k.view.views.di.GenericActivityModule
 import dagger.Component

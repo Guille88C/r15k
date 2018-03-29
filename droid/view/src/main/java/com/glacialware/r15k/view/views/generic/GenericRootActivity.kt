@@ -2,7 +2,7 @@ package com.glacialware.r15k.view.views.generic
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.glacialware.r15k.RiskApplication
+import com.glacialware.r15k.view.RiskApplication
 import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.presenters.GenericActivityPresenter
 import com.glacialware.r15k.view.views.di.GenericActivityComponent

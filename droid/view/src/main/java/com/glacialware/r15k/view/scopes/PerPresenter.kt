@@ -1,4 +1,4 @@
-package com.glacialware.r15k.scopes
+package com.glacialware.r15k.view.scopes
 
 import javax.inject.Scope
 
@@ -8,4 +8,4 @@ import javax.inject.Scope
 
 @Retention(AnnotationRetention.RUNTIME)
 @Scope
-annotation class PerComponent
+annotation class PerPresenter
