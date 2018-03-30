@@ -32,7 +32,7 @@ class EditCardFragment : GenericRootFragment<EditCardViewModel, FragmentEditCard
 
     // ---- Dagger attributes ----
     @field:[Inject]
-    lateinit var mWireframe: EditCardFragmentWireframe
+    protected lateinit var mWireframe: EditCardFragmentWireframe
     // ---- END Dagger attributes ----
 
     // ---- GenericRootFragment ----

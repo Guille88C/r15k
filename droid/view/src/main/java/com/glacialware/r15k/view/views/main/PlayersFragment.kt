@@ -44,7 +44,7 @@ class PlayersFragment : GenericRootFragment<MainViewModel, FragmentPlayersBindin
 
     // ---- Dagger attributes ----
     @field:[Inject]
-    lateinit var mWireframe: PlayersFragmentWireframe
+    protected lateinit var mWireframe: PlayersFragmentWireframe
     // ---- END Dagger attributes ----
 
     // ---- GenericRootFragment ----

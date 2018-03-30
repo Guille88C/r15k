@@ -40,7 +40,7 @@ class MainActivity : GenericRootActivity<MainViewModel>() {
 
     // ---- Dagger attributes ----
     @field:[Inject]
-    lateinit var mWireFrame: MainActivityWireframe
+    protected lateinit var mWireFrame: MainActivityWireframe
     // ---- END Dagger attributes ----
 
     // ---- Attributes ----

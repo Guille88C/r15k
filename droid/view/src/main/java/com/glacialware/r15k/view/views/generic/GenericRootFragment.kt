@@ -20,7 +20,7 @@ abstract class GenericRootFragment<T: GenericViewModel, Y: ViewDataBinding>: Fra
     // ---- Dagger attributes ----
 
     @field:[Inject]
-    lateinit var mToast: CustomToast
+    protected lateinit var mToast: CustomToast
 
     // ---- END Dagger attributes ----
 

@@ -19,7 +19,7 @@ class MissionController : Callback<GenericGetAllResponse<Mission>> {
     }
 
     @field:[Inject]
-    lateinit var retrofit: Retrofit
+    protected lateinit var retrofit: Retrofit
 
     private val serviceComponent: RetrofitComponent by lazy {
         DaggerRetrofitComponent

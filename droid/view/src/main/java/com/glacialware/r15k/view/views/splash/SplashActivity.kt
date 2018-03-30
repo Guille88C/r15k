@@ -14,7 +14,7 @@ class SplashActivity : AppCompatActivity() {
 
     // ---- Dagger attributes ----
     @field:[Inject]
-    lateinit var mWireframe: SplashActivityWireframe
+    protected lateinit var mWireframe: SplashActivityWireframe
     // ---- END Dagger attributes ----
 
     // ---- Activity ----

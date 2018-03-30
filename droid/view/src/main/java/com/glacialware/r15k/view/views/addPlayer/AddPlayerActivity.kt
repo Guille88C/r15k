@@ -18,7 +18,7 @@ class AddPlayerActivity : GenericRootActivity<AddPlayerViewModel>(true) {
 
     // ---- Dagger attributes ----
     @field:[Inject]
-    lateinit var mWireFrame: AddPlayerActivityWireframe
+    protected lateinit var mWireFrame: AddPlayerActivityWireframe
     // ---- END Dagger attributes ----
 
     // ---- GenericRootActivity ----

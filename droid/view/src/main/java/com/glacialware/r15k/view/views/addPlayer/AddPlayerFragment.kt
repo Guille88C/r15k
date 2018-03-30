@@ -34,7 +34,7 @@ class AddPlayerFragment : GenericRootFragment<AddPlayerViewModel, FragmentAddPla
 
     // ---- Dagger attributes ----
     @field:[Inject]
-    lateinit var mWireframe: AddPlayerFragmentWireframe
+    protected lateinit var mWireframe: AddPlayerFragmentWireframe
     // ---- END Dagger attributes ----
 
     // ---- GenericRootFragment ----

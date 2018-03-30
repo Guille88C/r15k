@@ -15,7 +15,7 @@ import javax.inject.Inject
 */
 class PlayerController(response: IPlayerResponse) : Callback<GenericGetAllResponse<Player>> {
     @field:[Inject]
-    lateinit var retrofit: Retrofit
+    protected lateinit var retrofit: Retrofit
 
     private val serviceComponent: RetrofitComponent by lazy {
         DaggerRetrofitComponent

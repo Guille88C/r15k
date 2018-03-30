@@ -19,7 +19,7 @@ class EditCardActivity : GenericRootActivity<EditCardViewModel>(true) {
 
     // ---- Dagger attributes ----
     @field:[Inject]
-    lateinit var mWireFrame: EditCardActivityWireframe
+    protected lateinit var mWireFrame: EditCardActivityWireframe
     // ---- END Dagger attributes ----
 
     // ---- GenericRootActivity ----
