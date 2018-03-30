@@ -16,9 +16,11 @@ import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import com.crashlytics.android.Crashlytics
+import com.glacialware.r15k.view.views.di.ActivityModule
 import com.glacialware.r15k.view.wireframes.main.MainActivityWireframe
 import com.glacialware.r15k.viewmodel.views.main.MainViewModel
 import io.fabric.sdk.android.Fabric
+import javax.inject.Inject
 
 /**
 * Created by Guille on 01/07/2017.
@@ -36,6 +38,11 @@ class MainActivity : GenericRootActivity() {
 
     // ---- END Companion ----
 
+    // ---- Dagger attributes ----
+    @field:[Inject]
+    lateinit var mWireFrame: MainActivityWireframe
+    // ---- END Dagger attributes ----
+
     // ---- Attributes ----
 
     private lateinit var mDrawerToggle : ActionBarDrawerToggle
@@ -44,11 +51,8 @@ class MainActivity : GenericRootActivity() {
 
     // ---- GenericRootActivity ----
 
-    override fun initWireframe() {
-        mWireFrame = MainActivityWireframe(this)
-    }
-
-    override fun initPresenter() {
+    override fun initDI() {
+        mActivityComponent.inject(this)
     }
 
     override fun initFragment() {
@@ -60,7 +64,7 @@ class MainActivity : GenericRootActivity() {
     }
 
     override fun initView() {
-        Fabric.with(this, Crashlytics())
+//        Fabric.with(this, Crashlytics())
         setContentView(com.glacialware.r15k.view.R.layout.activity_main)
 
         initDrawerStrings(R.array.text_menu_items)
@@ -125,10 +129,10 @@ class MainActivity : GenericRootActivity() {
 
                 override fun onDrawerClosed(drawerView: View) {
                     when (pos) {
-                        ADD_PLAYER -> (mWireFrame as MainActivityWireframe).goToAddPlayer()
-                        EDIT_CARD -> (mWireFrame as MainActivityWireframe).goToEditCard()
+                        ADD_PLAYER -> mWireFrame.goToAddPlayer()
+                        EDIT_CARD -> mWireFrame.goToEditCard()
                         START_GAME -> {}
-                        TEST_ACTIVITY -> (mWireFrame as MainActivityWireframe).goToTestActivity()
+                        TEST_ACTIVITY -> mWireFrame.goToTestActivity()
                     }
                     removeDrawerListener(this)
                 }
@@ -149,38 +153,38 @@ class MainActivity : GenericRootActivity() {
         }
     }
 
-    // ---- END Private ----
-
-    // ---- Pubic ----
-
-    fun closeDrawer() {
+    private fun closeDrawer() {
         if (isCreated()) {
             drawerLayout.closeDrawer(Gravity.START)
         }
     }
 
-    fun isDrawerOpen() : Boolean {
+    private fun isDrawerOpen() : Boolean {
         if (isCreated()) {
             return drawerLayout.isDrawerOpen(Gravity.START)
         }
         return false
     }
 
-    fun addDrawerListener(listener : DrawerLayout.DrawerListener) {
+    private fun addDrawerListener(listener : DrawerLayout.DrawerListener) {
         if (isCreated()) {
             drawerLayout.addDrawerListener(listener)
         }
     }
 
-    fun removeDrawerListener(listener : DrawerLayout.DrawerListener) {
+    private fun superOnBackPressed() {
         if (isCreated()) {
-            drawerLayout.removeDrawerListener(listener)
+            super.onBackPressed()
         }
     }
 
-    fun superOnBackPressed() {
+    // ---- END Private ----
+
+    // ---- Pubic ----
+
+    fun removeDrawerListener(listener : DrawerLayout.DrawerListener) {
         if (isCreated()) {
-            super.onBackPressed()
+            drawerLayout.removeDrawerListener(listener)
         }
     }
 

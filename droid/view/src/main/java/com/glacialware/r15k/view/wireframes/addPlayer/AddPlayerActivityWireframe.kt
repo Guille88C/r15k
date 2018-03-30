@@ -1,5 +1,6 @@
 package com.glacialware.r15k.view.wireframes.addPlayer
 
+import android.support.v7.app.AppCompatActivity
 import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.views.addPlayer.AddPlayerActivity
 import com.glacialware.r15k.view.views.addPlayer.AddPlayerFragment
@@ -9,7 +10,7 @@ import com.glacialware.r15k.view.wireframes.navigateTo
 /**
 * Created by Guille on 20/11/2017.
 */
-class AddPlayerActivityWireframe(view: AddPlayerActivity) : GenericActivityWireframe(view) {
+class AddPlayerActivityWireframe(view: AppCompatActivity) : GenericActivityWireframe(view) {
 
     // ---- ActivityWireframe ----
 

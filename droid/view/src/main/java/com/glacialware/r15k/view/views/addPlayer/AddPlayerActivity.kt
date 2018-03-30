@@ -9,11 +9,17 @@ import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import com.glacialware.r15k.view.wireframes.addPlayer.AddPlayerActivityWireframe
 import com.glacialware.r15k.viewmodel.views.addPlayer.AddPlayerViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 /**
 * Created by Guille on 09/07/2017.
 */
 class AddPlayerActivity : GenericRootActivity(true) {
+
+    // ---- Dagger attributes ----
+    @field:[Inject]
+    lateinit var mWireFrame: AddPlayerActivityWireframe
+    // ---- END Dagger attributes ----
 
     // ---- GenericRootActivity ----
 
@@ -27,6 +33,10 @@ class AddPlayerActivity : GenericRootActivity(true) {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun initDI() {
+        mActivityComponent.inject(this)
+    }
+
     override fun initViewModel() {
         mViewModel = ViewModelProviders.of(this).get(AddPlayerViewModel::class.java)
     }
@@ -34,13 +44,6 @@ class AddPlayerActivity : GenericRootActivity(true) {
     override fun initView() {
         this.setContentView(R.layout.activity_generic_toolbar)
         this.initToolbar()
-    }
-
-    override fun initPresenter() {
-    }
-
-    override fun initWireframe() {
-        mWireFrame = AddPlayerActivityWireframe(this)
     }
 
     override fun initFragment() {

@@ -1,6 +1,7 @@
 package com.glacialware.r15k.view.wireframes.main
 
 import android.content.Intent
+import android.support.v7.app.AppCompatActivity
 import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.views.test.TestActivity
 import com.glacialware.r15k.view.views.addPlayer.AddPlayerActivity
@@ -12,7 +13,7 @@ import com.glacialware.r15k.view.wireframes.generic.GenericActivityWireframe
 /**
 * Created by maric on 11/08/2017.
 */
-class MainActivityWireframe(view : GenericRootActivity) : GenericActivityWireframe(view) {
+class MainActivityWireframe(view : AppCompatActivity) : GenericActivityWireframe(view) {
 
     override fun initFragment() {
         mActivity.supportFragmentManager?.beginTransaction()

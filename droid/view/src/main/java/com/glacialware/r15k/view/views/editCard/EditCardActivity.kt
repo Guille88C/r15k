@@ -10,13 +10,23 @@ import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import com.glacialware.r15k.view.wireframes.editCard.EditCardActivityWireframe
 import com.glacialware.r15k.viewmodel.views.editCard.EditCardViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 /**
 * Created by Guille on 09/07/2017.
 */
 class EditCardActivity : GenericRootActivity(true) {
 
+    // ---- Dagger attributes ----
+    @field:[Inject]
+    lateinit var mWireFrame: EditCardActivityWireframe
+    // ---- END Dagger attributes ----
+
     // ---- GenericRootActivity ----
+
+    override fun initDI() {
+        mActivityComponent.inject(this)
+    }
 
     override fun initViewModel() {
         mViewModel = ViewModelProviders.of(this).get(EditCardViewModel::class.java)
@@ -38,13 +48,6 @@ class EditCardActivity : GenericRootActivity(true) {
         }
 
         return super.onOptionsItemSelected(item)
-    }
-
-    override fun initPresenter() {
-    }
-
-    override fun initWireframe() {
-        mWireFrame = EditCardActivityWireframe(this)
     }
 
     // ---- END GenericRootActivity ----

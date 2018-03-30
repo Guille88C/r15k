@@ -17,10 +17,12 @@ abstract class GenericRootActivity constructor(private var anim: Boolean = false
 
     // ---- Attributes ----
 
-    protected lateinit var mWireFrame: GenericActivityWireframe
     protected lateinit var mViewModel: GenericViewModel
+
     var mComponent: ActivityComponent? = null
     private set
+
+    protected lateinit var mActivityComponent: ActivityComponent
 
     // ---- END Attributes ----
 
@@ -33,17 +35,15 @@ abstract class GenericRootActivity constructor(private var anim: Boolean = false
             this.overridePendingTransition(R.anim.slide_in_enter, R.anim.slide_out_enter)
         }
 
-        // 0. Init dagger.
-        // 1. View model.
-        // 2. View.
-        // 3. Presenter.
-        // 4. Wireframe
-        // 5. Fragment.
+        mActivityComponent = (application as RiskApplication).applicationComponent.with(ActivityModule(this))
+
+        // - Init dagger.
+        // - View model.
+        // - View.
+        // - Fragment.
         initDI()
         initViewModel()
         initView()
-        initPresenter()
-        initWireframe()
         initFragment()
     }
 
@@ -59,11 +59,10 @@ abstract class GenericRootActivity constructor(private var anim: Boolean = false
 
     // ---- Abstract ----
 
+    abstract fun initDI()
     abstract fun initFragment()
     abstract fun initViewModel()
     abstract fun initView()
-    abstract fun initPresenter()
-    abstract fun initWireframe()
 
     // ---- END Abstract ----
 
@@ -72,13 +71,4 @@ abstract class GenericRootActivity constructor(private var anim: Boolean = false
     protected fun isCreated() : Boolean = !isFinishing && !isDestroyed
 
     // ---- END Protected ----
-
-    // ---- Private ----
-
-    private fun initDI() {
-        mComponent = (application as RiskApplication?)?.applicationComponent?.with(ActivityModule())
-        mComponent?.inject(this)
-    }
-
-    // ---- END Private ----
 }

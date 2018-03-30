@@ -11,16 +11,19 @@ import com.glacialware.r15k.view.wireframes.playerDetail.PlayerDetailActivityWir
 import com.glacialware.r15k.viewmodel.model.Player
 import com.glacialware.r15k.viewmodel.views.playerDetail.PlayerDetailViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class PlayerDetailActivity : GenericRootActivity(true) {
 
+    // ---- Dagger attributes ----
+    @field:[Inject]
+    lateinit var mWireFrame: PlayerDetailActivityWireframe
+    // ---- END Dagger attributes ----
+
     // ---- GenericRootActivity ----
 
-    override fun initPresenter() {
-    }
-
-    override fun initWireframe() {
-        mWireFrame = PlayerDetailActivityWireframe(this)
+    override fun initDI() {
+        mActivityComponent.inject(this)
     }
 
     override fun initFragment() {
