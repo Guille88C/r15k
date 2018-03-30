@@ -2,7 +2,7 @@ package com.glacialware.r15k.view.wireframes.main
 
 import android.content.Intent
 import com.glacialware.r15k.view.R
-import com.glacialware.r15k.view.views.TestActivity
+import com.glacialware.r15k.view.views.test.TestActivity
 import com.glacialware.r15k.view.views.addPlayer.AddPlayerActivity
 import com.glacialware.r15k.view.views.editCard.EditCardActivity
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
@@ -25,7 +25,7 @@ class MainActivityWireframe(view : GenericRootActivity) : GenericActivityWirefra
     }
 
     fun goToTest() {
-        val intent = Intent(mActivity, TestActivity ::class.java)
+        val intent = Intent(mActivity, TestActivity::class.java)
         mActivity.startActivity(intent)
     }
 
@@ -40,7 +40,7 @@ class MainActivityWireframe(view : GenericRootActivity) : GenericActivityWirefra
     }
 
     fun goToTestActivity() {
-        val intent = Intent(mActivity, TestActivity :: class.java)
+        val intent = Intent(mActivity, TestActivity:: class.java)
         mActivity.startActivity(intent)
     }
 

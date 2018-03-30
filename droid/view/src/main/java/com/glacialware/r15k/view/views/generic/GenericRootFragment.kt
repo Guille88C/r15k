@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.glacialware.r15k.view.components.CustomToast
-import com.glacialware.r15k.view.views.di.GenericFragmentComponent
-import com.glacialware.r15k.view.views.di.GenericFragmentModule
+import com.glacialware.r15k.view.views.generic.di.GenericFragmentComponent
+import com.glacialware.r15k.view.views.generic.di.GenericFragmentModule
 import com.glacialware.r15k.view.wireframes.generic.GenericFragmentWireframe
 import com.glacialware.r15k.viewmodel.views.generic.GenericViewModel
 import javax.inject.Inject

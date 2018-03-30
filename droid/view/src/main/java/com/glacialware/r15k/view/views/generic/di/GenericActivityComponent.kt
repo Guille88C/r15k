@@ -1,10 +1,7 @@
-package com.glacialware.r15k.view.views.di
+package com.glacialware.r15k.view.views.generic.di
 
-import android.databinding.ViewDataBinding
 import com.glacialware.r15k.view.scopes.PerActivity
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
-import com.glacialware.r15k.view.wireframes.generic.GenericFragmentWireframe
-import com.glacialware.r15k.viewmodel.views.generic.GenericViewModel
 import dagger.Subcomponent
 
 /**

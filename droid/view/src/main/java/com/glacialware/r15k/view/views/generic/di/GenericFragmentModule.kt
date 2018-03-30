@@ -1,4 +1,4 @@
-package com.glacialware.r15k.view.views.di
+package com.glacialware.r15k.view.views.generic.di
 
 import android.content.Context
 import com.glacialware.r15k.view.scopes.PerFragment

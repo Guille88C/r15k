@@ -1,4 +1,4 @@
-package com.glacialware.r15k.view.views.di
+package com.glacialware.r15k.view.views.generic.di
 
 import dagger.Module
 

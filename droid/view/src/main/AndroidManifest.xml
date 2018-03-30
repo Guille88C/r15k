@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.TestActivity"
+            android:name=".views.test.TestActivity"
             android:label="Test" />
         <activity
             android:name=".views.addPlayer.AddPlayerActivity"

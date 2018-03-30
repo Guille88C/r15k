@@ -1,4 +1,4 @@
-package com.glacialware.r15k.view.views
+package com.glacialware.r15k.view.views.test
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.glacialware.r15k.view.R
-import com.glacialware.r15k.view.views.generic.GenericRootFragment
 
 /**
 * Created by Guille on 10/07/2017.

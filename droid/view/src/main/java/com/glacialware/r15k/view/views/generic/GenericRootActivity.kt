@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.glacialware.r15k.view.RiskApplication
 import com.glacialware.r15k.view.R
-import com.glacialware.r15k.view.views.di.GenericActivityComponent
-import com.glacialware.r15k.view.views.di.GenericActivityModule
+import com.glacialware.r15k.view.views.generic.di.GenericActivityComponent
+import com.glacialware.r15k.view.views.generic.di.GenericActivityModule
 import com.glacialware.r15k.view.wireframes.generic.GenericActivityWireframe
 import com.glacialware.r15k.view.wireframes.navigateBackAnimated
 import com.glacialware.r15k.viewmodel.views.generic.GenericViewModel

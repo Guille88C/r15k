@@ -1,4 +1,4 @@
-package com.glacialware.r15k.view.views
+package com.glacialware.r15k.view.views.test
 
 import android.util.Log
 import com.glacialware.r15k.view.R
