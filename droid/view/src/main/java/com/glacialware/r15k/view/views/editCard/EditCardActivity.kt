@@ -15,7 +15,7 @@ import javax.inject.Inject
 /**
 * Created by Guille on 09/07/2017.
 */
-class EditCardActivity : GenericRootActivity(true) {
+class EditCardActivity : GenericRootActivity<EditCardViewModel>(true) {
 
     // ---- Dagger attributes ----
     @field:[Inject]

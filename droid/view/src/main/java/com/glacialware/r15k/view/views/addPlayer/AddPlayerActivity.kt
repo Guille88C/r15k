@@ -14,7 +14,7 @@ import javax.inject.Inject
 /**
 * Created by Guille on 09/07/2017.
 */
-class AddPlayerActivity : GenericRootActivity(true) {
+class AddPlayerActivity : GenericRootActivity<AddPlayerViewModel>(true) {
 
     // ---- Dagger attributes ----
     @field:[Inject]

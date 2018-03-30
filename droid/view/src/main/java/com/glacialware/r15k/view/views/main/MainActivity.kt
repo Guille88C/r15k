@@ -25,7 +25,7 @@ import javax.inject.Inject
 /**
 * Created by Guille on 01/07/2017.
 */
-class MainActivity : GenericRootActivity() {
+class MainActivity : GenericRootActivity<MainViewModel>() {
 
     // ---- Companion ----
 
@@ -64,7 +64,7 @@ class MainActivity : GenericRootActivity() {
     }
 
     override fun initView() {
-//        Fabric.with(this, Crashlytics())
+        Fabric.with(this, Crashlytics())
         setContentView(com.glacialware.r15k.view.R.layout.activity_main)
 
         initDrawerStrings(R.array.text_menu_items)

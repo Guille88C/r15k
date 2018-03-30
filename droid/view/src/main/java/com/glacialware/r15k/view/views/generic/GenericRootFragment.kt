@@ -59,7 +59,7 @@ abstract class GenericRootFragment<T, Y, U>: Fragment() where T: GenericFragment
 
     @Suppress("UNCHECKED_CAST")
     private fun initDI() {
-        mComponent = (activity as? GenericRootActivity)?.mComponent?.with(FragmentModule(context))
+        mComponent = (activity as GenericRootActivity<GenericViewModel>).mActivityComponent.with(FragmentModule(context))
         mComponent?.inject(this as GenericRootFragment<GenericFragmentWireframe, GenericViewModel, ViewDataBinding>)
     }
 

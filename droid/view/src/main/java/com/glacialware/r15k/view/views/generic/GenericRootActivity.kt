@@ -13,16 +13,14 @@ import com.glacialware.r15k.viewmodel.views.generic.GenericViewModel
 /**
 * Created by Guille on 04/07/2017.
 */
-abstract class GenericRootActivity constructor(private var anim: Boolean = false) : AppCompatActivity() {
+abstract class GenericRootActivity<T: GenericViewModel> (private var anim: Boolean = false) : AppCompatActivity() {
 
     // ---- Attributes ----
 
-    protected lateinit var mViewModel: GenericViewModel
+    protected lateinit var mViewModel: T
 
-    var mComponent: ActivityComponent? = null
+    lateinit var mActivityComponent: ActivityComponent
     private set
-
-    protected lateinit var mActivityComponent: ActivityComponent
 
     // ---- END Attributes ----
 

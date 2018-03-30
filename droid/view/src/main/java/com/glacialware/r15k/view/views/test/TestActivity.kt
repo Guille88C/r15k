@@ -1,8 +1,9 @@
 package com.glacialware.r15k.view.views.test
 
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.glacialware.r15k.view.R
-import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_test.*
@@ -10,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_test.*
 /**
 * Created by Guille on 06/07/2017.
 */
-class TestActivity : GenericRootActivity(true) {
+class TestActivity : AppCompatActivity() {
 
     // ---- Companion ----
 
@@ -31,17 +32,9 @@ class TestActivity : GenericRootActivity(true) {
 
     // ---- Activity ----
 
-    override fun initDI() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    }
-
-    override fun initFragment() {
-    }
-
-    override fun initViewModel() {
-    }
-
-    override fun initView() {
         this.setContentView(R.layout.activity_test)
 
         this.initMissions()

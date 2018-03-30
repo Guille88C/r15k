@@ -13,7 +13,7 @@ import com.glacialware.r15k.viewmodel.views.playerDetail.PlayerDetailViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class PlayerDetailActivity : GenericRootActivity(true) {
+class PlayerDetailActivity : GenericRootActivity<PlayerDetailViewModel>(true) {
 
     // ---- Dagger attributes ----
     @field:[Inject]
@@ -33,7 +33,7 @@ class PlayerDetailActivity : GenericRootActivity(true) {
     override fun initViewModel() {
         mViewModel = ViewModelProviders.of(this).get(PlayerDetailViewModel::class.java)
         val player = intent.getParcelableExtra<Player>(PLAYER)
-        (mViewModel as PlayerDetailViewModel).player = player
+        mViewModel.player = player
     }
 
     override fun initView() {
