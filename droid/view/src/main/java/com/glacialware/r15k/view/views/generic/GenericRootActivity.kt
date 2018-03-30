@@ -20,6 +20,7 @@ abstract class GenericRootActivity constructor(private var anim: Boolean = false
     protected lateinit var mWireFrame: GenericActivityWireframe
     protected lateinit var mViewModel: GenericViewModel
     var mComponent: GenericActivityComponent? = null
+    private set
 
     // ---- END Attributes ----
 
