@@ -9,11 +9,12 @@ import com.glacialware.r15k.view.databinding.FragmentEditCardBinding
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
 import com.glacialware.r15k.view.wireframes.editCard.EditCardFragmentWireframe
 import com.glacialware.r15k.viewmodel.views.editCard.EditCardViewModel
+import javax.inject.Inject
 
 /**
 * Created by Guille on 10/07/2017.
 */
-class EditCardFragment : GenericRootFragment<EditCardFragmentWireframe, EditCardViewModel, FragmentEditCardBinding>() {
+class EditCardFragment : GenericRootFragment<EditCardViewModel, FragmentEditCardBinding>() {
 
     // ---- Companion ----
     companion object {
@@ -29,10 +30,15 @@ class EditCardFragment : GenericRootFragment<EditCardFragmentWireframe, EditCard
 
     // ---- END Companion ----
 
+    // ---- Dagger attributes ----
+    @field:[Inject]
+    lateinit var mWireframe: EditCardFragmentWireframe
+    // ---- END Dagger attributes ----
+
     // ---- GenericRootFragment ----
 
-    override fun initWireframe() {
-        mWireframe = EditCardFragmentWireframe(this)
+    override fun initDI() {
+        mFragmentComponent.inject(this)
     }
 
     override fun initViewModel() {
@@ -43,9 +49,7 @@ class EditCardFragment : GenericRootFragment<EditCardFragmentWireframe, EditCard
 
     override fun initView(inflater: LayoutInflater, container: ViewGroup?): View? {
         mBinding = FragmentEditCardBinding.inflate(inflater, container, false)
-        if (mViewModel != null) {
-            mBinding.viewModel = mViewModel
-        }
+        mBinding.viewModel = mViewModel
         return mBinding.root
     }
 

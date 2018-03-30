@@ -14,11 +14,12 @@ import com.glacialware.r15k.viewmodel.model.Player
 import com.glacialware.r15k.viewmodel.views.main.MainViewModel
 import com.glacialware.r15k.viewmodel.views.main.PlayersView
 import kotlinx.android.synthetic.main.fragment_players.*
+import javax.inject.Inject
 
 /**
 * Created by Guille on 09/07/2017.
 */
-class PlayersFragment : GenericRootFragment<PlayersFragmentWireframe, MainViewModel, FragmentPlayersBinding>(), PlayersView {
+class PlayersFragment : GenericRootFragment<MainViewModel, FragmentPlayersBinding>(), PlayersView {
 
     // ---- Companion ----
 
@@ -41,24 +42,27 @@ class PlayersFragment : GenericRootFragment<PlayersFragmentWireframe, MainViewMo
 
     // ---- END Attributes ----
 
+    // ---- Dagger attributes ----
+    @field:[Inject]
+    lateinit var mWireframe: PlayersFragmentWireframe
+    // ---- END Dagger attributes ----
+
     // ---- GenericRootFragment ----
 
-    override fun initWireframe() {
-        mWireframe = PlayersFragmentWireframe(this)
+    override fun initDI() {
+        mFragmentComponent.inject(this)
     }
 
     override fun initViewModel() {
         if (activity != null) {
             mViewModel = ViewModelProviders.of(activity!!).get(MainViewModel::class.java)
-            mViewModel?.setPlayersView(this)
+            mViewModel.setPlayersView(this)
         }
     }
 
     override fun initView(inflater: LayoutInflater, container: ViewGroup?): View? {
         mBinding = FragmentPlayersBinding.inflate(inflater, container, false)
-        if (mViewModel != null) {
-            mBinding.viewModel = mViewModel
-        }
+        mBinding.viewModel = mViewModel
         return mBinding.root
     }
 
@@ -68,29 +72,25 @@ class PlayersFragment : GenericRootFragment<PlayersFragmentWireframe, MainViewMo
     }
 
     override fun initComponents() {
-        if (mViewModel != null) {
-            if (mViewModel is LifecycleObserver) {
-                lifecycle.addObserver(mViewModel as LifecycleObserver)
-            }
+        lifecycle.addObserver(mViewModel as LifecycleObserver)
 
-            if (mPlayersAdapter == null && mViewModel != null) {
-                rvPlayers.layoutManager = LinearLayoutManager(activity)
-                this.mPlayersAdapter = PlayersAdapter(mViewModel!!)
-                rvPlayers.adapter = this.mPlayersAdapter
-            }
-            else {
-                mPlayersAdapter?.update()
-            }
-
-            mViewModel?.lPlayers?.observe(
-                    {
-                        lifecycle
-                    },
-                    { _ ->
-                        mPlayersAdapter?.update()
-                    }
-            )
+        if (mPlayersAdapter == null) {
+            rvPlayers.layoutManager = LinearLayoutManager(activity)
+            this.mPlayersAdapter = PlayersAdapter(mViewModel)
+            rvPlayers.adapter = this.mPlayersAdapter
         }
+        else {
+            mPlayersAdapter?.update()
+        }
+
+        mViewModel.lPlayers.observe(
+                {
+                    lifecycle
+                },
+                { _ ->
+                    mPlayersAdapter?.update()
+                }
+        )
     }
 
     // ---- END GenericRootFragment ----

@@ -10,19 +10,18 @@ import com.glacialware.r15k.view.views.generic.GenericRootFragment
 import com.glacialware.r15k.view.wireframes.playerDetail.PlayerDetailFragmentWireframe
 import com.glacialware.r15k.viewmodel.views.playerDetail.IPlayerDetailView
 import com.glacialware.r15k.viewmodel.views.playerDetail.PlayerDetailViewModel
+import javax.inject.Inject
 
 /**
  * A placeholder fragment containing a simple view.
  */
-class PlayerDetailFragment : GenericRootFragment<PlayerDetailFragmentWireframe, PlayerDetailViewModel, FragmentPlayerDetailBinding>(), IPlayerDetailView {
+class PlayerDetailFragment : GenericRootFragment<PlayerDetailViewModel, FragmentPlayerDetailBinding>(), IPlayerDetailView {
 
     // ---- Companion ----
 
     companion object {
-        @JvmStatic
         val TAG : String = this :: class.java.canonicalName
 
-        @JvmStatic
         fun newInstance() : PlayerDetailFragment {
             val f = PlayerDetailFragment()
             val args = Bundle()
@@ -33,24 +32,27 @@ class PlayerDetailFragment : GenericRootFragment<PlayerDetailFragmentWireframe, 
 
     // ---- END Companion ----
 
+    // ---- Dagger attributes ----
+    @field:[Inject]
+    lateinit var mWireframe: PlayerDetailFragmentWireframe
+    // ---- END Dagger attributes ----
+
     // ---- PlayerDetailFragment ----
 
-    override fun initWireframe() {
-        mWireframe = PlayerDetailFragmentWireframe(this)
+    override fun initDI() {
+        mFragmentComponent.inject(this)
     }
 
     override fun initViewModel() {
         if (activity != null) {
             mViewModel = ViewModelProviders.of(activity!!).get(PlayerDetailViewModel::class.java)
-            mViewModel?.playerDetailView = this
+            mViewModel.playerDetailView = this
         }
     }
 
     override fun initView(inflater: LayoutInflater, container: ViewGroup?): View? {
         mBinding = FragmentPlayerDetailBinding.inflate(inflater, container, false)
-        if (mViewModel != null) {
-            mBinding.viewModel = mViewModel as PlayerDetailViewModel
-        }
+        mBinding.viewModel = mViewModel
         return mBinding.root
     }
 

@@ -10,11 +10,12 @@ import com.glacialware.r15k.view.views.generic.GenericRootFragment
 import com.glacialware.r15k.view.wireframes.addPlayer.AddPlayerFragmentWireframe
 import com.glacialware.r15k.viewmodel.interfaces.ICustomToast
 import com.glacialware.r15k.viewmodel.views.addPlayer.AddPlayerViewModel
+import javax.inject.Inject
 
 /**
 * Created by Guille on 10/07/2017.
 */
-class AddPlayerFragment : GenericRootFragment<AddPlayerFragmentWireframe, AddPlayerViewModel, FragmentAddPlayerBinding>(), ICustomToast {
+class AddPlayerFragment : GenericRootFragment<AddPlayerViewModel, FragmentAddPlayerBinding>(), ICustomToast {
 
     // ---- Companion ----
 
@@ -31,10 +32,15 @@ class AddPlayerFragment : GenericRootFragment<AddPlayerFragmentWireframe, AddPla
 
     // ---- End Companion ----
 
+    // ---- Dagger attributes ----
+    @field:[Inject]
+    lateinit var mWireframe: AddPlayerFragmentWireframe
+    // ---- END Dagger attributes ----
+
     // ---- GenericRootFragment ----
 
-    override fun initWireframe() {
-        mWireframe = AddPlayerFragmentWireframe(this)
+    override fun initDI() {
+        mFragmentComponent.inject(this)
     }
 
     override fun initViewModel() {
@@ -54,7 +60,7 @@ class AddPlayerFragment : GenericRootFragment<AddPlayerFragmentWireframe, AddPla
     }
 
     override fun initComponents() {
-        mViewModel?.iToast = this
+        mViewModel.iToast = this
     }
 
     // ---- END GenericRootFragment ----
