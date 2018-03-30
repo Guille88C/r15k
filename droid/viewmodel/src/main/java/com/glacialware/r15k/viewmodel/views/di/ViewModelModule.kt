@@ -7,7 +7,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class GenericDatabaseViewModelModule(private val context: Context) {
+class ViewModelModule(private val context: Context) {
     @PerViewModel
     @Provides
     fun provideDataBase() = ManagerPlayerDatabase(context.applicationContext)

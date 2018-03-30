@@ -9,8 +9,8 @@ import dagger.Component
 */
 @PerViewModel
 @Component (
-    modules = [(GenericDatabaseViewModelModule::class)]
+    modules = [(ViewModelModule::class)]
 )
-interface GenericDatabaseViewModelComponent {
+interface ViewModelComponent {
     fun inject(databaseVM: GenericDatabaseViewModel)
 }
