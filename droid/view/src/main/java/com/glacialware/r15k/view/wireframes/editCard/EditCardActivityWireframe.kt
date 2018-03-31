@@ -1,7 +1,6 @@
 package com.glacialware.r15k.view.wireframes.editCard
 
 import android.support.v7.app.AppCompatActivity
-import com.glacialware.r15k.view.views.editCard.EditCardActivity
 import com.glacialware.r15k.view.wireframes.generic.GenericActivityWireframe
 
 /**

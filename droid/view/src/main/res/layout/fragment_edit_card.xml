@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.glacialware.r15k.viewmodel.views.editCard.EditCardViewModel"/>
+            type="com.glacialware.r15k.viewmodel.views.cardDetail.CardDetailViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

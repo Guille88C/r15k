@@ -1,4 +1,4 @@
-package com.glacialware.r15k.view.views.editCard
+package com.glacialware.r15k.view.views.cardDetail
 
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.ActionBar
@@ -8,14 +8,14 @@ import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.wireframes.navigateTo
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import com.glacialware.r15k.view.wireframes.editCard.EditCardActivityWireframe
-import com.glacialware.r15k.viewmodel.views.editCard.EditCardViewModel
+import com.glacialware.r15k.viewmodel.views.cardDetail.CardDetailViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 /**
 * Created by Guille on 09/07/2017.
 */
-class EditCardActivity : GenericRootActivity<EditCardViewModel>(true) {
+class CardDetailActivity : GenericRootActivity<CardDetailViewModel>(true) {
 
     // ---- Dagger attributes ----
     @field:[Inject]
@@ -29,7 +29,7 @@ class EditCardActivity : GenericRootActivity<EditCardViewModel>(true) {
     }
 
     override fun initViewModel() {
-        mViewModel = ViewModelProviders.of(this).get(EditCardViewModel::class.java)
+        mViewModel = ViewModelProviders.of(this).get(CardDetailViewModel::class.java)
     }
 
     override fun initView() {
@@ -39,7 +39,7 @@ class EditCardActivity : GenericRootActivity<EditCardViewModel>(true) {
     }
 
     override fun initFragment() {
-        navigateTo(supportFragmentManager, EditCardFragment.newInstance(), EditCardFragment.TAG, R.id.frame_content, true, false)
+        navigateTo(supportFragmentManager, CardDetailFragment.newInstance(), CardDetailFragment.TAG, R.id.frame_content, true, false)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

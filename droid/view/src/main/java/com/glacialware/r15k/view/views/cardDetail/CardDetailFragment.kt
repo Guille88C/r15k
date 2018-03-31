@@ -1,4 +1,4 @@
-package com.glacialware.r15k.view.views.editCard
+package com.glacialware.r15k.view.views.cardDetail
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -8,20 +8,20 @@ import android.view.ViewGroup
 import com.glacialware.r15k.view.databinding.FragmentEditCardBinding
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
 import com.glacialware.r15k.view.wireframes.editCard.EditCardFragmentWireframe
-import com.glacialware.r15k.viewmodel.views.editCard.EditCardViewModel
+import com.glacialware.r15k.viewmodel.views.cardDetail.CardDetailViewModel
 import javax.inject.Inject
 
 /**
 * Created by Guille on 10/07/2017.
 */
-class EditCardFragment : GenericRootFragment<EditCardViewModel, FragmentEditCardBinding>() {
+class CardDetailFragment : GenericRootFragment<CardDetailViewModel, FragmentEditCardBinding>() {
 
     // ---- Companion ----
     companion object {
         val TAG : String = this :: class.java.canonicalName
 
-        fun newInstance() : EditCardFragment {
-            val f = EditCardFragment()
+        fun newInstance() : CardDetailFragment {
+            val f = CardDetailFragment()
             val args = Bundle()
             f.arguments = args
             return f
@@ -43,7 +43,7 @@ class EditCardFragment : GenericRootFragment<EditCardViewModel, FragmentEditCard
 
     override fun initViewModel() {
         if (activity != null) {
-            mViewModel = ViewModelProviders.of(activity!!).get(EditCardViewModel::class.java)
+            mViewModel = ViewModelProviders.of(activity!!).get(CardDetailViewModel::class.java)
         }
     }
 

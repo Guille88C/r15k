@@ -36,7 +36,7 @@
             android:name=".views.addPlayer.AddPlayerActivity"
             android:label="@string/add_players" />
         <activity
-            android:name=".views.editCard.EditCardActivity"
+            android:name=".views.cardDetail.CardDetailActivity"
             android:label="@string/edit_cards" />
         <activity
             android:name=".views.playerDetail.PlayerDetailActivity"
