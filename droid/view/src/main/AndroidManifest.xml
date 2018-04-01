@@ -37,7 +37,7 @@
             android:label="@string/add_players" />
         <activity
             android:name=".views.cardDetail.CardDetailActivity"
-            android:label="@string/edit_cards" />
+            android:label="@string/title_activity_card_detail" />
         <activity
             android:name=".views.playerDetail.PlayerDetailActivity"
             android:label="@string/title_activity_player_detail"
