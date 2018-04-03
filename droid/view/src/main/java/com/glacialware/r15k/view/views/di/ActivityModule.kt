@@ -3,6 +3,7 @@ package com.glacialware.r15k.view.views.di
 import android.support.v7.app.AppCompatActivity
 import com.glacialware.r15k.view.scopes.PerActivity
 import com.glacialware.r15k.view.wireframes.addPlayer.AddPlayerActivityWireframe
+import com.glacialware.r15k.view.wireframes.cards.CardsActivityWireframe
 import com.glacialware.r15k.view.wireframes.editCard.EditCardActivityWireframe
 import com.glacialware.r15k.view.wireframes.main.MainActivityWireframe
 import com.glacialware.r15k.view.wireframes.playerDetail.PlayerDetailActivityWireframe
@@ -34,4 +35,8 @@ class ActivityModule(private val mActivity: AppCompatActivity) {
     @PerActivity
     @Provides
     fun provideSplashWireframe() = SplashActivityWireframe(mActivity)
+
+    @PerActivity
+    @Provides
+    fun provideCardsWireframe() = CardsActivityWireframe(mActivity)
 }

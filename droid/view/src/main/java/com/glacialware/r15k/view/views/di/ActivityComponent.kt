@@ -3,6 +3,7 @@ package com.glacialware.r15k.view.views.di
 import com.glacialware.r15k.view.scopes.PerActivity
 import com.glacialware.r15k.view.views.addPlayer.AddPlayerActivity
 import com.glacialware.r15k.view.views.cardDetail.CardDetailActivity
+import com.glacialware.r15k.view.views.cards.CardsActivity
 import com.glacialware.r15k.view.views.main.MainActivity
 import com.glacialware.r15k.view.views.playerDetail.PlayerDetailActivity
 import com.glacialware.r15k.view.views.splash.SplashActivity
@@ -19,6 +20,7 @@ interface ActivityComponent {
     fun inject(activity: MainActivity)
     fun inject(activity: PlayerDetailActivity)
     fun inject(activity: SplashActivity)
+    fun inject(activity: CardsActivity)
 
     fun with(module: FragmentModule): FragmentComponent
 }

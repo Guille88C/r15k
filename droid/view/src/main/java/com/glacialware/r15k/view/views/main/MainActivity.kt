@@ -31,7 +31,7 @@ class MainActivity : GenericRootActivity<MainViewModel>() {
 
     companion object {
         private const val ADD_PLAYER = 0
-        private const val EDIT_CARD = 1
+        private const val ALL_CARDS = 1
         private const val START_GAME = 2
         private const val TEST_ACTIVITY = 3
     }
@@ -68,7 +68,6 @@ class MainActivity : GenericRootActivity<MainViewModel>() {
         setContentView(com.glacialware.r15k.view.R.layout.activity_main)
 
         initDrawerStrings(R.array.text_menu_items)
-        initToolbar()
         initMenu()
     }
 
@@ -104,16 +103,6 @@ class MainActivity : GenericRootActivity<MainViewModel>() {
 
     // ---- Private ----
 
-    private fun initToolbar() {
-        if (myToolbar != null)
-            this.setSupportActionBar(myToolbar as Toolbar)
-
-        if (this.supportActionBar != null) {
-            (this.supportActionBar as ActionBar).setDisplayHomeAsUpEnabled(true)
-            (this.supportActionBar as ActionBar).setHomeButtonEnabled(true)
-        }
-    }
-
     private fun initMenu() {
         this.mDrawerToggle = ActionBarDrawerToggle(this, drawerLayout, 0, 0)
         drawerLayout.addDrawerListener(this.mDrawerToggle)
@@ -130,7 +119,7 @@ class MainActivity : GenericRootActivity<MainViewModel>() {
                 override fun onDrawerClosed(drawerView: View) {
                     when (pos) {
                         ADD_PLAYER -> mWireFrame.goToAddPlayer()
-                        EDIT_CARD -> mWireFrame.goToEditCard()
+                        ALL_CARDS -> mWireFrame.goToCards()
                         START_GAME -> {}
                         TEST_ACTIVITY -> mWireFrame.goToTestActivity()
                     }

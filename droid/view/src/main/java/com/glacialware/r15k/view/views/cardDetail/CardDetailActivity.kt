@@ -34,8 +34,6 @@ class CardDetailActivity : GenericRootActivity<CardDetailViewModel>(true) {
 
     override fun initView() {
         this.setContentView(R.layout.activity_generic_toolbar)
-
-        this.initToolbar()
     }
 
     override fun initFragment() {
@@ -51,18 +49,4 @@ class CardDetailActivity : GenericRootActivity<CardDetailViewModel>(true) {
     }
 
     // ---- END GenericRootActivity ----
-
-    // ---- Private ----
-
-    private fun initToolbar() {
-        if (myToolbar != null)
-            this.setSupportActionBar(myToolbar as Toolbar)
-
-        if (this.supportActionBar != null) {
-            (this.supportActionBar as ActionBar).setDisplayHomeAsUpEnabled(true)
-            (this.supportActionBar as ActionBar).setHomeButtonEnabled(true)
-        }
-    }
-
-    // ---- END Private ----
 }

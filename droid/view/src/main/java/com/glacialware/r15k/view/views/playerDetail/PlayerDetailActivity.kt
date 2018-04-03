@@ -38,7 +38,6 @@ class PlayerDetailActivity : GenericRootActivity<PlayerDetailViewModel>(true) {
 
     override fun initView() {
         setContentView(R.layout.activity_generic_toolbar)
-        this.initToolbar()
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -52,19 +51,5 @@ class PlayerDetailActivity : GenericRootActivity<PlayerDetailViewModel>(true) {
     }
 
     // ---- END GenericRootActivity ----
-
-    // ---- Private ----
-
-    private fun initToolbar() {
-        if (myToolbar != null)
-            this.setSupportActionBar(myToolbar as Toolbar)
-
-        if (this.supportActionBar != null) {
-            (this.supportActionBar as ActionBar).setDisplayHomeAsUpEnabled(true)
-            (this.supportActionBar as ActionBar).setHomeButtonEnabled(true)
-        }
-    }
-
-    // ---- END Private ----
 
 }

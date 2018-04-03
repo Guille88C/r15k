@@ -6,6 +6,7 @@ import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.views.test.TestActivity
 import com.glacialware.r15k.view.views.addPlayer.AddPlayerActivity
 import com.glacialware.r15k.view.views.cardDetail.CardDetailActivity
+import com.glacialware.r15k.view.views.cards.CardsActivity
 import com.glacialware.r15k.view.views.main.PlayersFragment
 import com.glacialware.r15k.view.wireframes.generic.GenericActivityWireframe
 
@@ -34,8 +35,8 @@ class MainActivityWireframe(view : AppCompatActivity) : GenericActivityWireframe
         mActivity.startActivity(intent)
     }
 
-    fun goToEditCard() {
-        val intent = Intent(mActivity, CardDetailActivity :: class.java)
+    fun goToCards() {
+        val intent = Intent(mActivity, CardsActivity :: class.java)
         mActivity.startActivity(intent)
     }
 
