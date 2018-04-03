@@ -1,15 +1,12 @@
 package com.glacialware.r15k.view.views.cardDetail
 
 import android.arch.lifecycle.ViewModelProviders
-import android.support.v7.app.ActionBar
-import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.wireframes.navigateTo
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
-import com.glacialware.r15k.view.wireframes.editCard.EditCardActivityWireframe
+import com.glacialware.r15k.view.wireframes.cardDetail.CardDetailActivityWireframe
 import com.glacialware.r15k.viewmodel.views.cardDetail.CardDetailViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 /**
@@ -19,7 +16,7 @@ class CardDetailActivity : GenericRootActivity<CardDetailViewModel>(true) {
 
     // ---- Dagger attributes ----
     @field:[Inject]
-    protected lateinit var mWireFrame: EditCardActivityWireframe
+    protected lateinit var mWireFrame: CardDetailActivityWireframe
     // ---- END Dagger attributes ----
 
     // ---- GenericRootActivity ----

@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import com.glacialware.r15k.view.scopes.PerActivity
 import com.glacialware.r15k.view.wireframes.addPlayer.AddPlayerActivityWireframe
 import com.glacialware.r15k.view.wireframes.cards.CardsActivityWireframe
-import com.glacialware.r15k.view.wireframes.editCard.EditCardActivityWireframe
+import com.glacialware.r15k.view.wireframes.cardDetail.CardDetailActivityWireframe
 import com.glacialware.r15k.view.wireframes.main.MainActivityWireframe
 import com.glacialware.r15k.view.wireframes.playerDetail.PlayerDetailActivityWireframe
 import com.glacialware.r15k.view.wireframes.splash.SplashActivityWireframe
@@ -22,7 +22,7 @@ class ActivityModule(private val mActivity: AppCompatActivity) {
 
     @PerActivity
     @Provides
-    fun provideEditCardWireframe() = EditCardActivityWireframe(mActivity)
+    fun provideEditCardWireframe() = CardDetailActivityWireframe(mActivity)
 
     @PerActivity
     @Provides

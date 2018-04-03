@@ -1,11 +1,10 @@
 package com.glacialware.r15k.view.views.di
 
-import android.content.Context
 import android.support.v4.app.Fragment
 import com.glacialware.r15k.view.scopes.PerFragment
 import com.glacialware.r15k.view.components.CustomToast
 import com.glacialware.r15k.view.wireframes.addPlayer.AddPlayerFragmentWireframe
-import com.glacialware.r15k.view.wireframes.editCard.EditCardFragmentWireframe
+import com.glacialware.r15k.view.wireframes.cardDetail.CardDetailFragmentWireframe
 import com.glacialware.r15k.view.wireframes.main.PlayersFragmentWireframe
 import com.glacialware.r15k.view.wireframes.playerDetail.PlayerDetailFragmentWireframe
 import dagger.Module
@@ -26,7 +25,7 @@ class FragmentModule(private val mFragment: Fragment) {
 
     @PerFragment
     @Provides
-    fun provideEditCardWireframe() = EditCardFragmentWireframe(mFragment)
+    fun provideEditCardWireframe() = CardDetailFragmentWireframe(mFragment)
 
     @PerFragment
     @Provides

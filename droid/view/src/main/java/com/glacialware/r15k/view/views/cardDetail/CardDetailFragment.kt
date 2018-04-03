@@ -5,16 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.glacialware.r15k.view.databinding.FragmentEditCardBinding
+import com.glacialware.r15k.view.databinding.FragmentCardDetailBinding
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
-import com.glacialware.r15k.view.wireframes.editCard.EditCardFragmentWireframe
+import com.glacialware.r15k.view.wireframes.cardDetail.CardDetailFragmentWireframe
 import com.glacialware.r15k.viewmodel.views.cardDetail.CardDetailViewModel
 import javax.inject.Inject
 
 /**
 * Created by Guille on 10/07/2017.
 */
-class CardDetailFragment : GenericRootFragment<CardDetailViewModel, FragmentEditCardBinding>() {
+class CardDetailFragment : GenericRootFragment<CardDetailViewModel, FragmentCardDetailBinding>() {
 
     // ---- Companion ----
     companion object {
@@ -32,7 +32,7 @@ class CardDetailFragment : GenericRootFragment<CardDetailViewModel, FragmentEdit
 
     // ---- Dagger attributes ----
     @field:[Inject]
-    protected lateinit var mWireframe: EditCardFragmentWireframe
+    protected lateinit var mWireframe: CardDetailFragmentWireframe
     // ---- END Dagger attributes ----
 
     // ---- GenericRootFragment ----
@@ -48,7 +48,7 @@ class CardDetailFragment : GenericRootFragment<CardDetailViewModel, FragmentEdit
     }
 
     override fun initView(inflater: LayoutInflater, container: ViewGroup?): View? {
-        mBinding = FragmentEditCardBinding.inflate(inflater, container, false)
+        mBinding = FragmentCardDetailBinding.inflate(inflater, container, false)
         mBinding.viewModel = mViewModel
         return mBinding.root
     }
