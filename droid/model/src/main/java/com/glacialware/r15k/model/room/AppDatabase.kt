@@ -35,8 +35,8 @@ abstract class AppDatabase : RoomDatabase() {
     }
 
     fun createFakeData() {
-        val mission1 = Mission(0, "mission title 1", "mission desc 1", "image 1", false)
-        val mission2 = Mission(1, "mission title 2", "mission desc 2", "image 2", false)
+        val mission1 = Mission("mission title 1", "mission desc 1", "image 1", false)
+        val mission2 = Mission("mission title 2", "mission desc 2", "image 2", false)
         missionDao().insert(mission1)
         missionDao().insert(mission2)
 

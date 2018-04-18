@@ -5,9 +5,7 @@ import android.content.res.Configuration
 import android.content.res.TypedArray
 import android.os.Bundle
 import android.support.v4.widget.DrawerLayout
-import android.support.v7.app.ActionBar
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.widget.Toolbar
 import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
@@ -16,7 +14,6 @@ import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import com.crashlytics.android.Crashlytics
-import com.glacialware.r15k.view.views.di.ActivityModule
 import com.glacialware.r15k.view.wireframes.main.MainActivityWireframe
 import com.glacialware.r15k.viewmodel.views.main.MainViewModel
 import io.fabric.sdk.android.Fabric

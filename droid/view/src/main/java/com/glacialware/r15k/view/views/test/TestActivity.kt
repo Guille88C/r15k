@@ -51,7 +51,7 @@ class TestActivity : AppCompatActivity() {
                 var text = ""
                 val lDocuments = task.result.documents
                 for (document : DocumentSnapshot in lDocuments) {
-                    text += String.format("id = %s :: title = %s :: description = %s \n", document.id, document.data["title"], document.data["description"])
+                    text += String.format("id = %s :: title = %s :: description = %s \n", document.id, document.data?.get("title"), document.data?.get("description"))
                 }
                 this.textViewTitles.text = text
             }
@@ -103,7 +103,7 @@ class TestActivity : AppCompatActivity() {
 
     private fun addSnapshotSampledata() {
         this.mDocRef.addSnapshotListener(this, { documentSnapshot, e ->
-            if (documentSnapshot.exists()) {
+            if (documentSnapshot != null && documentSnapshot.exists()) {
                 val titleText = documentSnapshot.getString(TITLE_KEY)
                 val authorText = documentSnapshot.getString(AUTHOR_KEY)
 

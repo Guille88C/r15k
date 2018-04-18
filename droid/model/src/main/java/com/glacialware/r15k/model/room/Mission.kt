@@ -9,10 +9,6 @@ import android.arch.persistence.room.*
     tableName = "mission"
 )
 data class Mission (
-    @PrimaryKey
-    @ColumnInfo(name="id")
-    val id : Int,
-
     @ColumnInfo(name = "title")
     val title : String,
 
@@ -24,4 +20,8 @@ data class Mission (
 
     @ColumnInfo(name = "completed")
     val completed : Boolean
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    var id : Int = 0
+}

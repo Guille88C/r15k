@@ -13,7 +13,6 @@ data class Mission(
 
     fun exportRoom(): com.glacialware.r15k.model.room.Mission {
         return com.glacialware.r15k.model.room.Mission(
-                this.id,
                 this.title,
                 this.description,
                 this.image,
