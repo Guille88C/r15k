@@ -76,12 +76,12 @@ class PlayersFragment : GenericRootFragment<MainViewModel, FragmentPlayersBindin
 
     override fun clear() {
         mBinding.unbind()
-        lifecycle.removeObserver(mViewModel as LifecycleObserver)
+        lifecycle.removeObserver(mViewModel)
         mViewModel.lPlayers.removeObserver(mObserver)
     }
 
     override fun initComponents() {
-        lifecycle.addObserver(mViewModel as LifecycleObserver)
+        lifecycle.addObserver(mViewModel)
 
         if (mPlayersAdapter == null) {
             rvPlayers.layoutManager = LinearLayoutManager(activity)

@@ -1,9 +1,7 @@
 package com.glacialware.r15k.viewmodel.views.cards
 
 import android.app.Application
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Observer
+import android.arch.lifecycle.*
 import com.glacialware.r15k.model.firebase.FirebaseMission
 import com.glacialware.r15k.viewmodel.model.Mission
 import com.glacialware.r15k.viewmodel.views.generic.GenericDatabaseViewModel
@@ -42,4 +40,10 @@ class CardsViewModel(app: Application): GenericDatabaseViewModel(app) {
         field = value
     }
     // ---- END Properties
+
+    // ---- Public  ----
+    fun clear() {
+        mFirebaseMissionManager.ldListMissions.removeObserver(mObserver)
+    }
+    // ---- END Public
 }

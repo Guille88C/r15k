@@ -1,5 +1,7 @@
 package com.glacialware.r15k.view.views.cards
 
+import android.arch.lifecycle.LifecycleObserver
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -8,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.glacialware.r15k.view.databinding.FragmentCardsBinding
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
+import com.glacialware.r15k.viewmodel.model.Mission
 import com.glacialware.r15k.viewmodel.views.cards.CardsViewModel
 import kotlinx.android.synthetic.main.fragment_cards.*
 
@@ -26,8 +29,14 @@ class CardsFragment: GenericRootFragment<CardsViewModel, FragmentCardsBinding>()
             return f
         }
     }
-
     // ---- END Companion ----
+
+    // ---- Observer ----
+    val mObserver = Observer<MutableList<Mission>> {
+        _ ->
+        mAdapter?.notifyDataSetChanged()
+    }
+    // ---- END Observer ----
 
     // ---- Attributes ----
     private var mAdapter: CardsAdapter? = null
@@ -54,16 +63,16 @@ class CardsFragment: GenericRootFragment<CardsViewModel, FragmentCardsBinding>()
     override fun clear() {
         mBinding.unbind()
         mAdapter?.clear()
+
+        lifecycle.removeObserver(mViewModel)
+        mViewModel.ldMissions.removeObserver(mObserver)
+        mViewModel.clear()
     }
 
     override fun initComponents() {
-        mViewModel.ldMissions.observe(
-                {
-                    lifecycle
-                },
-                { _ ->
-                    mAdapter?.notifyDataSetChanged()
-                })
+        lifecycle.addObserver(mViewModel)
+        mViewModel.ldMissions.observe(this, mObserver)
+
         mAdapter = CardsAdapter(mViewModel)
         rv_cards?.adapter = mAdapter
         rv_cards?.layoutManager = LinearLayoutManager(context)
