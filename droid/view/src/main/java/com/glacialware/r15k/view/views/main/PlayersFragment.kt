@@ -1,6 +1,8 @@
 package com.glacialware.r15k.view.views.main
 
+import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LifecycleObserver
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -42,6 +44,12 @@ class PlayersFragment : GenericRootFragment<MainViewModel, FragmentPlayersBindin
 
     // ---- END Attributes ----
 
+    // ---- Observer ----
+    private val mObserver = Observer<MutableList<Player>> {
+        mPlayersAdapter?.notifyDataSetChanged()
+    }
+    // ---- END Observer ----
+
     // ---- Dagger attributes ----
     @field:[Inject]
     protected lateinit var mWireframe: PlayersFragmentWireframe
@@ -69,6 +77,7 @@ class PlayersFragment : GenericRootFragment<MainViewModel, FragmentPlayersBindin
     override fun clear() {
         mBinding.unbind()
         lifecycle.removeObserver(mViewModel as LifecycleObserver)
+        mViewModel.lPlayers.removeObserver(mObserver)
     }
 
     override fun initComponents() {
@@ -83,14 +92,8 @@ class PlayersFragment : GenericRootFragment<MainViewModel, FragmentPlayersBindin
             mPlayersAdapter?.update()
         }
 
-        mViewModel.lPlayers.observe(
-                {
-                    lifecycle
-                },
-                { _ ->
-                    mPlayersAdapter?.update()
-                }
-        )
+
+        mViewModel.lPlayers.observe(this, mObserver)
     }
 
     // ---- END GenericRootFragment ----

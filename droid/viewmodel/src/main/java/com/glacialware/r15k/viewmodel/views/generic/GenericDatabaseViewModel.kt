@@ -1,6 +1,7 @@
 package com.glacialware.r15k.viewmodel.views.generic
 
 import android.app.Application
+import com.glacialware.r15k.model.firebase.FirebaseMissionManager
 import com.glacialware.r15k.model.room.managers.ManagerPlayerDatabase
 import com.glacialware.r15k.viewmodel.views.di.DaggerViewModelComponent
 import com.glacialware.r15k.viewmodel.views.di.ViewModelComponent
@@ -14,6 +15,9 @@ abstract class GenericDatabaseViewModel(app: Application) : GenericViewModel(app
     // ---- Dagger attributes ----
     @field:[Inject]
     protected lateinit var mDatabasePlayerManager: ManagerPlayerDatabase
+
+    @Inject
+    protected lateinit var mFirebaseMissionManager: FirebaseMissionManager
 
     private val mComponent: ViewModelComponent by lazy {
         DaggerViewModelComponent

@@ -37,10 +37,10 @@ class CardsAdapter(private val mCardsViewModel: CardsViewModel): RecyclerView.Ad
     }
 
     override fun onBindViewHolder(holder: CardsViewHolder, position: Int) {
-        holder.bind(mCardsViewModel.lMissions.value?.get(position))
+        holder.bind(mCardsViewModel.ldMissions.value?.get(position))
     }
 
-    override fun getItemCount() = mCardsViewModel.lMissions.value?.size ?: 0
+    override fun getItemCount() = mCardsViewModel.ldMissions.value?.size ?: 0
     // ---- END RecyclerView.Adapter ----
 
     // ---- Public ----

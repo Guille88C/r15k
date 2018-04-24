@@ -2,6 +2,7 @@ package com.glacialware.r15k.viewmodel.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.glacialware.r15k.model.firebase.FirebaseMission
 
 data class Mission(
     var id : Int = 0,
@@ -58,5 +59,15 @@ data class Mission(
 
         return mission
     }
+
+    fun fromFirebase(mission: FirebaseMission) {
+        id = mission.id
+        title = mission.title
+        description = mission.description
+        image = mission.image
+        completed = mission.completed
+    }
+
+    fun toFirebase() = FirebaseMission(id, title, description, image, completed)
     // ---- END Public ----
 }

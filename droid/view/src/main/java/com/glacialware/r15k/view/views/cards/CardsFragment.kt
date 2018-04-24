@@ -57,7 +57,7 @@ class CardsFragment: GenericRootFragment<CardsViewModel, FragmentCardsBinding>()
     }
 
     override fun initComponents() {
-        mViewModel.lMissions.observe(
+        mViewModel.ldMissions.observe(
                 {
                     lifecycle
                 },
@@ -67,6 +67,8 @@ class CardsFragment: GenericRootFragment<CardsViewModel, FragmentCardsBinding>()
         mAdapter = CardsAdapter(mViewModel)
         rv_cards?.adapter = mAdapter
         rv_cards?.layoutManager = LinearLayoutManager(context)
+
+        mViewModel.lifecycleVM = this
     }
 
     // ---- END GenericRootFragment ----
