@@ -5,45 +5,47 @@ import android.arch.lifecycle.*
 import com.glacialware.r15k.model.firebase.FirebaseMission
 import com.glacialware.r15k.viewmodel.model.Mission
 import com.glacialware.r15k.viewmodel.views.generic.GenericDatabaseViewModel
+import io.reactivex.disposables.Disposable
+import io.reactivex.rxkotlin.subscribeBy
 
 /**
  * Created by gcuestab on 2/4/18.
  */
 class CardsViewModel(app: Application): GenericDatabaseViewModel(app) {
-    // ---- Observer ----
-    private val mObserver = Observer<MutableList<FirebaseMission>> {
-        list ->
-        val listMissions = ArrayList<Mission>()
-        list?.forEach { item ->
-            val mission = Mission()
-            mission.fromFirebase(item)
-            listMissions.add(mission)
-        }
-        if (ldMissions.value == null) {
-            ldMissions.value = listMissions
-        } else {
-            ldMissions.value?.clear()
-            ldMissions.postValue(listMissions)
-        }
-    }
-    // ---- END Observer ----
+    // ---- Attributes ----
+    private val mListMission = ArrayList<Mission>()
+    private var mObserverDisposable: Disposable? = null
+    // ---- END Attributes ----
 
     // ---- Properties ----
-    var ldMissions: MutableLiveData<MutableList<Mission>> = MutableLiveData()
-
-    var lifecycleVM: LifecycleOwner? = null
-    set(value) {
-        if (value != null && !mFirebaseMissionManager.ldListMissions.hasObservers()) {
-            mFirebaseMissionManager.ldListMissions.observe(value, mObserver)
-            mFirebaseMissionManager.getMissions()
-        }
-        field = value
-    }
+    val ldMissions: MutableLiveData<MutableList<Mission>> = MutableLiveData()
     // ---- END Properties
+
+    // ---- Builder ----
+    init {
+        mObserverDisposable = mFirebaseMissionManager.oMissions.subscribeBy (
+                onNext = {
+                    item ->
+                    val mission = Mission()
+                    mission.fromFirebase(item)
+                    mListMission.add(mission)
+                },
+                onComplete = {
+                    if (ldMissions.value == null) {
+                        ldMissions.value = mListMission
+                    }
+                    else {
+                        ldMissions.value?.clear()
+                        ldMissions.postValue(mListMission)
+                    }
+                }
+        )
+    }
+    // ---- END Builder ----
 
     // ---- Public  ----
     fun clear() {
-        mFirebaseMissionManager.ldListMissions.removeObserver(mObserver)
+        mObserverDisposable?.dispose()
     }
-    // ---- END Public
+    // ---- END Public ----
 }

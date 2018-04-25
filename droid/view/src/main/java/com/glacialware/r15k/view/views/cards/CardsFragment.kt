@@ -32,7 +32,7 @@ class CardsFragment: GenericRootFragment<CardsViewModel, FragmentCardsBinding>()
     // ---- END Companion ----
 
     // ---- Observer ----
-    val mObserver = Observer<MutableList<Mission>> {
+    private val mObserver = Observer<MutableList<Mission>> {
         _ ->
         mAdapter?.notifyDataSetChanged()
     }
@@ -76,8 +76,6 @@ class CardsFragment: GenericRootFragment<CardsViewModel, FragmentCardsBinding>()
         mAdapter = CardsAdapter(mViewModel)
         rv_cards?.adapter = mAdapter
         rv_cards?.layoutManager = LinearLayoutManager(context)
-
-        mViewModel.lifecycleVM = this
     }
 
     // ---- END GenericRootFragment ----

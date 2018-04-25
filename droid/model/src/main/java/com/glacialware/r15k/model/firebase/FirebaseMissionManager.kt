@@ -1,18 +1,19 @@
 package com.glacialware.r15k.model.firebase
 
-import android.arch.lifecycle.MutableLiveData
 import com.glacialware.r15k.model.firebase.di.DaggerFirebaseComponent
 import com.glacialware.r15k.model.firebase.di.FirebaseComponent
 import com.glacialware.r15k.model.firebase.di.FirebaseModule
 import com.google.firebase.firestore.FirebaseFirestore
+import io.reactivex.Observable
+import io.reactivex.ObservableEmitter
 import javax.inject.Inject
 
 class FirebaseMissionManager {
 
     // ---- Attributes ----
-    val ldListMissions = MutableLiveData<MutableList<FirebaseMission>>()
-
-//    val oListMissions = PublishSubject.fromArray(lMissions).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
+    val oMissions: Observable<FirebaseMission> = Observable.create<FirebaseMission> { emitter ->
+        getMissions(emitter)
+    }
     // ---- END Attributes ----
 
     // ---- Dagger attributes ----
@@ -32,28 +33,21 @@ class FirebaseMissionManager {
     }
     // ---- END Builder ----
 
-    // ---- Public ----
-    fun getMissions() {
+    // ---- Private ----
+    private fun getMissions(emitter: ObservableEmitter<FirebaseMission>) {
         mFirestore.collection("missions").get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                val lMissions = ArrayList<FirebaseMission>()
+//                val lMissions = ArrayList<FirebaseMission>()
                 val lDocuments = task.result.documents
                 lDocuments.forEach { document ->
                     val title = document.data?.get("title") as String? ?: ""
                     val desc = document.data?.get("description") as String? ?: ""
                     val completed = document.data?.get("completed") as Boolean? ?: false
-                    lMissions.add(FirebaseMission(title = title, description = desc, completed = completed))
-                }
-
-                if (ldListMissions.value == null) {
-                    ldListMissions.value = lMissions
-                }
-                else {
-                    ldListMissions.value?.clear()
-                    ldListMissions.postValue(lMissions)
+                    emitter.onNext(FirebaseMission(title = title, description = desc, completed = completed))
                 }
             }
+            emitter.onComplete()
         }
     }
-    // ---- END Public ----
+    // ---- END Private ----
 }
