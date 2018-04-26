@@ -2,7 +2,6 @@ package com.glacialware.r15k.viewmodel.views.cards
 
 import android.app.Application
 import android.arch.lifecycle.*
-import com.glacialware.r15k.model.firebase.FirebaseMission
 import com.glacialware.r15k.viewmodel.model.Mission
 import com.glacialware.r15k.viewmodel.views.generic.GenericDatabaseViewModel
 import io.reactivex.disposables.Disposable

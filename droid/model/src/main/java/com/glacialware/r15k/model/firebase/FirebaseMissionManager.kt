@@ -9,6 +9,14 @@ import io.reactivex.ObservableEmitter
 import javax.inject.Inject
 
 class FirebaseMissionManager {
+    // ---- Companion ----
+    companion object {
+        const val FIRESTORE_COLLECTION = "missions"
+        const val FIRESTORE_FIELD_TITLE = "title"
+        const val FIRESTORE_FIELD_DESCRIPTION = "description"
+        const val FIRESTORE_FIELD_COMPLETED = "completed"
+    }
+    // ---- END Companion ----
 
     // ---- Attributes ----
     val oMissions: Observable<FirebaseMission> = Observable.create<FirebaseMission> { emitter ->
@@ -35,14 +43,13 @@ class FirebaseMissionManager {
 
     // ---- Private ----
     private fun getMissions(emitter: ObservableEmitter<FirebaseMission>) {
-        mFirestore.collection("missions").get().addOnCompleteListener { task ->
+        mFirestore.collection(FIRESTORE_COLLECTION).get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
-//                val lMissions = ArrayList<FirebaseMission>()
                 val lDocuments = task.result.documents
                 lDocuments.forEach { document ->
-                    val title = document.data?.get("title") as String? ?: ""
-                    val desc = document.data?.get("description") as String? ?: ""
-                    val completed = document.data?.get("completed") as Boolean? ?: false
+                    val title = document.data?.get(FIRESTORE_FIELD_TITLE) as String? ?: ""
+                    val desc = document.data?.get(FIRESTORE_FIELD_DESCRIPTION) as String? ?: ""
+                    val completed = document.data?.get(FIRESTORE_FIELD_COMPLETED) as Boolean? ?: false
                     emitter.onNext(FirebaseMission(title = title, description = desc, completed = completed))
                 }
             }
