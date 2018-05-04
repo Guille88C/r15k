@@ -27,6 +27,7 @@ class CardsAdapter(private val mCardsViewModel: CardsViewModel): RecyclerView.Ad
     // ---- RecyclerView.Adapter ----
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardsViewHolder {
         mBinding = ViewCardsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        mBinding?.viewModel = mCardsViewModel
         return if (mBinding != null) {
             CardsViewHolder(mBinding!!.root)
         }

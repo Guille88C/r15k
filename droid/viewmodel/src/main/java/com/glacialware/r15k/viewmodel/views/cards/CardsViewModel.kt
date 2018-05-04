@@ -47,4 +47,10 @@ class CardsViewModel(app: Application): GenericDatabaseViewModel(app) {
         mObserverDisposable?.dispose()
     }
     // ---- END Public ----
+
+    // ---- Events ----
+    fun onMissionClick(mission: Mission) {
+
+    }
+    // ---- END Events ----
 }

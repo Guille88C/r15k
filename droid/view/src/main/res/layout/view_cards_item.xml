@@ -6,32 +6,49 @@
         <variable
             name="mission"
             type="com.glacialware.r15k.viewmodel.model.Mission"/>
+
+        <variable
+            name="viewModel"
+            type="com.glacialware.r15k.viewmodel.views.cards.CardsViewModel" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:onClick="@{()->viewModel.onMissionClick(mission)}"
+        app:cardBackgroundColor="@android:color/white">
 
-        <TextView
-            android:id="@+id/tv_cards_item_title"
-            android:layout_width="0dp"
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{mission.title}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-        <TextView
-            android:id="@+id/tv_cards_item_desc"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@{mission.description}"
-            app:layout_constraintTop_toBottomOf="@+id/tv_cards_item_title"
-            app:layout_constraintStart_toStartOf="parent"/>
-        <TextView
-            android:id="@+id/tv_cards_item_completed"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@{mission.completed ? @string/cards_mission_complete : @string/cards_mission_not_complete}"
-            app:layout_constraintTop_toBottomOf="@+id/tv_cards_item_desc"/>
+            android:layout_margin="8dp">
 
-    </android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_cards_item_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{mission.title}"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <TextView
+                android:id="@+id/tv_cards_item_desc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{mission.description}"
+                android:textColor="#000000"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cards_item_title"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/tv_cards_item_completed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{mission.completed ? @string/cards_mission_complete : @string/cards_mission_not_complete}"
+                android:textColor="#000000"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cards_item_desc"/>
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
 </layout>
