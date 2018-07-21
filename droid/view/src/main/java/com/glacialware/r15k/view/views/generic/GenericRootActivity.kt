@@ -4,12 +4,8 @@ import android.os.Bundle
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import com.glacialware.r15k.view.RiskApplication
 import com.glacialware.r15k.view.R
-import com.glacialware.r15k.view.views.di.ActivityComponent
-import com.glacialware.r15k.view.views.di.ActivityModule
-import com.glacialware.r15k.view.wireframes.generic.GenericActivityWireframe
-import com.glacialware.r15k.view.wireframes.navigateBackAnimated
+import com.glacialware.r15k.view.wireframes.Wireframe
 import com.glacialware.r15k.viewmodel.views.generic.GenericViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -22,9 +18,6 @@ abstract class GenericRootActivity<T: GenericViewModel> (private var anim: Boole
 
     protected lateinit var mViewModel: T
 
-    lateinit var mActivityComponent: ActivityComponent
-    private set
-
     // ---- END Attributes ----
 
     // ---- Activity -----
@@ -35,8 +28,6 @@ abstract class GenericRootActivity<T: GenericViewModel> (private var anim: Boole
         if (anim) {
             this.overridePendingTransition(R.anim.slide_in_enter, R.anim.slide_out_enter)
         }
-
-        mActivityComponent = (application as RiskApplication).applicationComponent.with(ActivityModule(this))
 
         // - Init dagger.
         // - View model.
@@ -54,7 +45,7 @@ abstract class GenericRootActivity<T: GenericViewModel> (private var anim: Boole
         super.onBackPressed()
 
         if (anim && this.supportFragmentManager.backStackEntryCount == 0) {
-            navigateBackAnimated(this)
+            Wireframe.navigateBackAnimated(this)
         }
     }
 

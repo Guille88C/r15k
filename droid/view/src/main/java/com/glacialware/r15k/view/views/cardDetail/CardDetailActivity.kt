@@ -3,26 +3,23 @@ package com.glacialware.r15k.view.views.cardDetail
 import android.arch.lifecycle.ViewModelProviders
 import android.view.MenuItem
 import com.glacialware.r15k.view.R
-import com.glacialware.r15k.view.wireframes.navigateTo
+import com.glacialware.r15k.view.views.di.ActivityDependency
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
-import com.glacialware.r15k.view.wireframes.cardDetail.CardDetailActivityWireframe
+import com.glacialware.r15k.view.wireframes.Wireframe
 import com.glacialware.r15k.viewmodel.views.cardDetail.CardDetailViewModel
-import javax.inject.Inject
 
 /**
 * Created by Guille on 09/07/2017.
 */
 class CardDetailActivity : GenericRootActivity<CardDetailViewModel>(true) {
 
-    // ---- Dagger attributes ----
-    @field:[Inject]
-    protected lateinit var mWireFrame: CardDetailActivityWireframe
-    // ---- END Dagger attributes ----
+    // ---- Attributes ----
+    private val mWireFrame = ActivityDependency.provideEditCardWireframe(this)
+    // ---- END Attributes ----
 
     // ---- GenericRootActivity ----
 
     override fun initDI() {
-        mActivityComponent.inject(this)
     }
 
     override fun initViewModel() {
@@ -34,7 +31,7 @@ class CardDetailActivity : GenericRootActivity<CardDetailViewModel>(true) {
     }
 
     override fun initFragment() {
-        navigateTo(supportFragmentManager, CardDetailFragment.newInstance(), CardDetailFragment.TAG, R.id.frame_content, true, false)
+        Wireframe.navigateTo(supportFragmentManager, CardDetailFragment.newInstance(), CardDetailFragment.TAG, R.id.frame_content, true, false)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

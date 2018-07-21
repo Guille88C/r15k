@@ -1,25 +1,20 @@
 package com.glacialware.r15k.view.views.addPlayer
 
 import android.arch.lifecycle.ViewModelProviders
-import android.support.v7.app.ActionBar
-import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.glacialware.r15k.view.R
+import com.glacialware.r15k.view.views.di.ActivityDependency
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
-import com.glacialware.r15k.view.wireframes.addPlayer.AddPlayerActivityWireframe
 import com.glacialware.r15k.viewmodel.views.addPlayer.AddPlayerViewModel
-import kotlinx.android.synthetic.main.activity_main.*
-import javax.inject.Inject
 
 /**
 * Created by Guille on 09/07/2017.
 */
 class AddPlayerActivity : GenericRootActivity<AddPlayerViewModel>(true) {
 
-    // ---- Dagger attributes ----
-    @field:[Inject]
-    protected lateinit var mWireFrame: AddPlayerActivityWireframe
-    // ---- END Dagger attributes ----
+    // ---- Attributes ----
+    private val mWireFrame = ActivityDependency.provideAddPlayerWireframe(this)
+    // ---- END Attributes ----
 
     // ---- GenericRootActivity ----
 
@@ -34,7 +29,6 @@ class AddPlayerActivity : GenericRootActivity<AddPlayerViewModel>(true) {
     }
 
     override fun initDI() {
-        mActivityComponent.inject(this)
     }
 
     override fun initViewModel() {

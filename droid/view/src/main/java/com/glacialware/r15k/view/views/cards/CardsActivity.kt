@@ -3,24 +3,21 @@ package com.glacialware.r15k.view.views.cards
 import android.arch.lifecycle.ViewModelProviders
 import android.view.MenuItem
 import com.glacialware.r15k.view.R
+import com.glacialware.r15k.view.views.di.ActivityDependency
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
-import com.glacialware.r15k.view.wireframes.cards.CardsActivityWireframe
 import com.glacialware.r15k.viewmodel.views.cards.CardsViewModel
-import javax.inject.Inject
 
 /**
  * Created by gcuestab on 2/4/18.
  */
 class CardsActivity: GenericRootActivity<CardsViewModel>(true) {
 
-    // ---- Dagger attributes ----
-    @field:[Inject]
-    protected lateinit var mWireframe: CardsActivityWireframe
-    // ---- END Dagger attributes ----
+    // ---- Attributes ----
+    private val mWireframe = ActivityDependency.provideCardsWireframe(this)
+    // ---- END Attributes ----
 
     // ---- GenericRootActivity ----
     override fun initDI() {
-        mActivityComponent.inject(this)
     }
 
     override fun initFragment() {

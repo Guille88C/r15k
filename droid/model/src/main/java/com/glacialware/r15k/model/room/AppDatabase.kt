@@ -1,9 +1,7 @@
 package com.glacialware.r15k.model.room
 
 import android.arch.persistence.room.Database
-import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
-import android.content.Context
 
 /**
 * Created by Guille on 14/11/2017.
@@ -26,7 +24,7 @@ abstract class AppDatabase : RoomDatabase() {
 
     // ---- Public ----
 
-    fun clearAllTables() {
+    fun clearTables() {
         gameDao().clear()
         playerDao().clear()
         missionDao().clear()

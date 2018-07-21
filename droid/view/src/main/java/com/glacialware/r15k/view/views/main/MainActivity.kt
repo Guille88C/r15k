@@ -14,10 +14,9 @@ import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.views.generic.GenericRootActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import com.crashlytics.android.Crashlytics
-import com.glacialware.r15k.view.wireframes.main.MainActivityWireframe
+import com.glacialware.r15k.view.views.di.ActivityDependency
 import com.glacialware.r15k.viewmodel.views.main.MainViewModel
 import io.fabric.sdk.android.Fabric
-import javax.inject.Inject
 
 /**
 * Created by Guille on 01/07/2017.
@@ -35,21 +34,14 @@ class MainActivity : GenericRootActivity<MainViewModel>() {
 
     // ---- END Companion ----
 
-    // ---- Dagger attributes ----
-    @field:[Inject]
-    protected lateinit var mWireFrame: MainActivityWireframe
-    // ---- END Dagger attributes ----
-
     // ---- Attributes ----
-
+    private val mWireFrame = ActivityDependency.provideMainWireframe(this)
     private lateinit var mDrawerToggle : ActionBarDrawerToggle
-
     // ---- END Attributes ----
 
     // ---- GenericRootActivity ----
 
     override fun initDI() {
-        mActivityComponent.inject(this)
     }
 
     override fun initFragment() {
@@ -133,7 +125,7 @@ class MainActivity : GenericRootActivity<MainViewModel>() {
         if (isCreated()) {
             val textItems : Array<String> = resources.getStringArray(res)
             val drawableItems : TypedArray = resources.obtainTypedArray(R.array.drawable_menu_items)
-            val menuAdapter = MenuAdapter(this@MainActivity, Array(textItems.size, { i -> MenuItem(textItems[i], drawableItems.getResourceId(0, R.drawable.default_menu_item))}))
+            val menuAdapter = MenuAdapter(this@MainActivity, Array(textItems.size) { i -> MenuItem(textItems[i], drawableItems.getResourceId(0, R.drawable.default_menu_item))})
             drawableItems.recycle()
             leftDrawer.adapter = menuAdapter
         }

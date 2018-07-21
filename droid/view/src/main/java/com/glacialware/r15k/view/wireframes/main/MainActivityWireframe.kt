@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity
 import com.glacialware.r15k.view.R
 import com.glacialware.r15k.view.views.test.TestActivity
 import com.glacialware.r15k.view.views.addPlayer.AddPlayerActivity
-import com.glacialware.r15k.view.views.cardDetail.CardDetailActivity
 import com.glacialware.r15k.view.views.cards.CardsActivity
 import com.glacialware.r15k.view.views.main.PlayersFragment
 import com.glacialware.r15k.view.wireframes.generic.GenericActivityWireframe

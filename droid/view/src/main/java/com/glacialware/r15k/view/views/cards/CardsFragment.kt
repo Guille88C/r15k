@@ -1,6 +1,5 @@
 package com.glacialware.r15k.view.views.cards
 
-import android.arch.lifecycle.LifecycleObserver
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle

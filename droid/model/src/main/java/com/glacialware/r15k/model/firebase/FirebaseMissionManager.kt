@@ -1,12 +1,9 @@
 package com.glacialware.r15k.model.firebase
 
-import com.glacialware.r15k.model.firebase.di.DaggerFirebaseComponent
-import com.glacialware.r15k.model.firebase.di.FirebaseComponent
-import com.glacialware.r15k.model.firebase.di.FirebaseModule
+import com.glacialware.r15k.model.firebase.di.FirebaseDependency
 import com.google.firebase.firestore.FirebaseFirestore
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
-import javax.inject.Inject
 
 class FirebaseMissionManager {
     // ---- Companion ----
@@ -22,24 +19,9 @@ class FirebaseMissionManager {
     val oMissions: Observable<FirebaseMission> = Observable.create<FirebaseMission> { emitter ->
         getMissions(emitter)
     }
+
+    private val mFirestore: FirebaseFirestore = FirebaseDependency.provideFirebaseFirestore()
     // ---- END Attributes ----
-
-    // ---- Dagger attributes ----
-    private val mComponent: FirebaseComponent by lazy {
-        DaggerFirebaseComponent.builder()
-                .firebaseModule(FirebaseModule())
-                .build()
-    }
-
-    @Inject
-    lateinit var mFirestore: FirebaseFirestore
-    // ---- END Dagger attributes ----
-
-    // ---- Builder ----
-    init {
-        mComponent.inject(this)
-    }
-    // ---- END Builder ----
 
     // ---- Private ----
     private fun getMissions(emitter: ObservableEmitter<FirebaseMission>) {

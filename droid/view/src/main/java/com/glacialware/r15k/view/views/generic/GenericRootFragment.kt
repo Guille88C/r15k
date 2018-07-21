@@ -7,10 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.glacialware.r15k.view.components.CustomToast
-import com.glacialware.r15k.view.views.di.FragmentComponent
-import com.glacialware.r15k.view.views.di.FragmentModule
+import com.glacialware.r15k.view.views.di.FragmentDependency
 import com.glacialware.r15k.viewmodel.views.generic.GenericViewModel
-import javax.inject.Inject
 
 /**
 * Created by Guille on 09/07/2017.
@@ -19,8 +17,7 @@ abstract class GenericRootFragment<T: GenericViewModel, Y: ViewDataBinding>: Fra
 
     // ---- Dagger attributes ----
 
-    @field:[Inject]
-    protected lateinit var mToast: CustomToast
+    protected var mToast: CustomToast? = null
 
     // ---- END Dagger attributes ----
 
@@ -28,7 +25,6 @@ abstract class GenericRootFragment<T: GenericViewModel, Y: ViewDataBinding>: Fra
 
     protected lateinit var mBinding: Y
     protected lateinit var mViewModel: T
-    protected lateinit var mFragmentComponent: FragmentComponent
 
     // ---- END Attributes ----
 
@@ -42,10 +38,9 @@ abstract class GenericRootFragment<T: GenericViewModel, Y: ViewDataBinding>: Fra
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mFragmentComponent = (activity as GenericRootActivity<*>).mActivityComponent.with(FragmentModule(this))
-        @Suppress("UNCHECKED_CAST")
-        mFragmentComponent.inject(this as GenericRootFragment<GenericViewModel, ViewDataBinding>)
-
+        if (context != null) {
+            mToast = FragmentDependency.provideCustomToastInstance(context!!)
+        }
         initDI()
         initComponents()
     }

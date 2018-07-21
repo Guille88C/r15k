@@ -10,25 +10,27 @@ import com.glacialware.r15k.view.R
 /**
 * Created by Guille on 06/07/2017.
 */
-fun navigateTo(activity : AppCompatActivity, cls : Class<*>) {
-    val intent = Intent(activity, cls)
-    activity.startActivity(intent)
-}
+object Wireframe {
+    fun navigateTo(activity: AppCompatActivity, cls: Class<*>) {
+        val intent = Intent(activity, cls)
+        activity.startActivity(intent)
+    }
 
-fun navigateBackAnimated(activity : AppCompatActivity) {
-    activity.overridePendingTransition(R.anim.slide_in_exit, R.anim.slide_out_exit)
-}
+    fun navigateBackAnimated(activity: AppCompatActivity) {
+        activity.overridePendingTransition(R.anim.slide_in_exit, R.anim.slide_out_exit)
+    }
 
-fun navigateTo(fm : FragmentManager, fragment : Fragment, fragmentTag : String, idContainer : Int, init : Boolean, animation : Boolean) {
-    val ft : FragmentTransaction = fm.beginTransaction()
+    fun navigateTo(fm: FragmentManager, fragment: Fragment, fragmentTag: String, idContainer: Int, init: Boolean, animation: Boolean) {
+        val ft: FragmentTransaction = fm.beginTransaction()
 
-    if (animation)
-        ft.setCustomAnimations(R.anim.slide_fragment_in_enter, R.anim.slide_fragment_out_enter, R.anim.slide_fragment_in_exit, R.anim.slide_fragment_out_exit)
+        if (animation)
+            ft.setCustomAnimations(R.anim.slide_fragment_in_enter, R.anim.slide_fragment_out_enter, R.anim.slide_fragment_in_exit, R.anim.slide_fragment_out_exit)
 
-    ft.replace(idContainer, fragment)
+        ft.replace(idContainer, fragment)
 
-    if (!init)
-        ft.addToBackStack(fragmentTag)
+        if (!init)
+            ft.addToBackStack(fragmentTag)
 
-    ft.commit()
+        ft.commit()
+    }
 }

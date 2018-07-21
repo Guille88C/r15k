@@ -1,7 +1,5 @@
 package com.glacialware.r15k.view.views.main
 
-import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.LifecycleObserver
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -10,13 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.glacialware.r15k.view.databinding.FragmentPlayersBinding
+import com.glacialware.r15k.view.views.di.FragmentDependency
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
-import com.glacialware.r15k.view.wireframes.main.PlayersFragmentWireframe
 import com.glacialware.r15k.viewmodel.model.Player
 import com.glacialware.r15k.viewmodel.views.main.MainViewModel
 import com.glacialware.r15k.viewmodel.views.main.PlayersView
 import kotlinx.android.synthetic.main.fragment_players.*
-import javax.inject.Inject
 
 /**
 * Created by Guille on 09/07/2017.
@@ -41,24 +38,19 @@ class PlayersFragment : GenericRootFragment<MainViewModel, FragmentPlayersBindin
     // ---- Attributes ----
 
     private var mPlayersAdapter : PlayersAdapter? = null
+    private val mWireframe = FragmentDependency.providePlayersWireframe(this)
 
     // ---- END Attributes ----
 
     // ---- Observer ----
     private val mObserver = Observer<MutableList<Player>> {
-        mPlayersAdapter?.notifyDataSetChanged()
+        mPlayersAdapter?.update()
     }
     // ---- END Observer ----
-
-    // ---- Dagger attributes ----
-    @field:[Inject]
-    protected lateinit var mWireframe: PlayersFragmentWireframe
-    // ---- END Dagger attributes ----
 
     // ---- GenericRootFragment ----
 
     override fun initDI() {
-        mFragmentComponent.inject(this)
     }
 
     override fun initViewModel() {
