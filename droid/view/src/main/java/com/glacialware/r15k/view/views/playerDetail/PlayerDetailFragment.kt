@@ -6,11 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.glacialware.r15k.view.databinding.FragmentPlayerDetailBinding
+import com.glacialware.r15k.view.views.di.FragmentDependency
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
-import com.glacialware.r15k.view.wireframes.playerDetail.PlayerDetailFragmentWireframe
 import com.glacialware.r15k.viewmodel.views.playerDetail.IPlayerDetailView
 import com.glacialware.r15k.viewmodel.views.playerDetail.PlayerDetailViewModel
-import javax.inject.Inject
 
 /**
  * A placeholder fragment containing a simple view.
@@ -32,15 +31,13 @@ class PlayerDetailFragment : GenericRootFragment<PlayerDetailViewModel, Fragment
 
     // ---- END Companion ----
 
-    // ---- Dagger attributes ----
-    @field:[Inject]
-    protected lateinit var mWireframe: PlayerDetailFragmentWireframe
-    // ---- END Dagger attributes ----
+    // ---- Attributes ----
+    private val mWireframe = FragmentDependency.providePlayerDetailWireframe(this)
+    // ---- END Attributes ----
 
     // ---- PlayerDetailFragment ----
 
     override fun initDI() {
-        mFragmentComponent.inject(this)
     }
 
     override fun initViewModel() {

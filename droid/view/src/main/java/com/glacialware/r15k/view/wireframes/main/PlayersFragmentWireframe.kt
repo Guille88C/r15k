@@ -2,9 +2,8 @@ package com.glacialware.r15k.view.wireframes.main
 
 import android.content.Intent
 import android.support.v4.app.Fragment
-import com.glacialware.r15k.view.views.main.PlayersFragment
 import com.glacialware.r15k.view.views.playerDetail.PlayerDetailActivity
-import com.glacialware.r15k.view.wireframes.PLAYER
+import com.glacialware.r15k.view.wireframes.Constants
 import com.glacialware.r15k.view.wireframes.generic.GenericFragmentWireframe
 import com.glacialware.r15k.viewmodel.model.Player
 
@@ -17,7 +16,7 @@ class PlayersFragmentWireframe(view : Fragment) : GenericFragmentWireframe(view)
 
     fun goToPlayerDetail(player: Player) {
         val intent = Intent(mFragment.activity, PlayerDetailActivity :: class.java)
-        intent.putExtra(PLAYER, player)
+        intent.putExtra(Constants.PLAYER, player)
         mFragment.startActivity(intent)
     }
 

@@ -6,11 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.glacialware.r15k.view.databinding.FragmentAddPlayerBinding
+import com.glacialware.r15k.view.views.di.FragmentDependency
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
-import com.glacialware.r15k.view.wireframes.addPlayer.AddPlayerFragmentWireframe
 import com.glacialware.r15k.viewmodel.interfaces.ICustomToast
 import com.glacialware.r15k.viewmodel.views.addPlayer.AddPlayerViewModel
-import javax.inject.Inject
 
 /**
 * Created by Guille on 10/07/2017.
@@ -32,15 +31,13 @@ class AddPlayerFragment : GenericRootFragment<AddPlayerViewModel, FragmentAddPla
 
     // ---- End Companion ----
 
-    // ---- Dagger attributes ----
-    @field:[Inject]
-    protected lateinit var mWireframe: AddPlayerFragmentWireframe
-    // ---- END Dagger attributes ----
+    // ---- Attributes ----
+    private val mWireframe = FragmentDependency.provideAddPlayerWireframe(this)
+    // ---- END Attributes ----
 
     // ---- GenericRootFragment ----
 
     override fun initDI() {
-        mFragmentComponent.inject(this)
     }
 
     override fun initViewModel() {
@@ -68,7 +65,7 @@ class AddPlayerFragment : GenericRootFragment<AddPlayerViewModel, FragmentAddPla
     // ---- ICustomToast ----
 
     override fun startToast(sText: String) {
-        mToast.startToast(sText)
+        mToast?.startToast(sText)
     }
 
     // ---- END ICustomToast ----

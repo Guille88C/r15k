@@ -1,6 +1,6 @@
 package com.glacialware.r15k.view.views.main
 
-import android.arch.lifecycle.LifecycleObserver
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -8,13 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.glacialware.r15k.view.databinding.FragmentPlayersBinding
+import com.glacialware.r15k.view.views.di.FragmentDependency
 import com.glacialware.r15k.view.views.generic.GenericRootFragment
-import com.glacialware.r15k.view.wireframes.main.PlayersFragmentWireframe
 import com.glacialware.r15k.viewmodel.model.Player
 import com.glacialware.r15k.viewmodel.views.main.MainViewModel
 import com.glacialware.r15k.viewmodel.views.main.PlayersView
 import kotlinx.android.synthetic.main.fragment_players.*
-import javax.inject.Inject
 
 /**
 * Created by Guille on 09/07/2017.
@@ -39,18 +38,19 @@ class PlayersFragment : GenericRootFragment<MainViewModel, FragmentPlayersBindin
     // ---- Attributes ----
 
     private var mPlayersAdapter : PlayersAdapter? = null
+    private val mWireframe = FragmentDependency.providePlayersWireframe(this)
 
     // ---- END Attributes ----
 
-    // ---- Dagger attributes ----
-    @field:[Inject]
-    protected lateinit var mWireframe: PlayersFragmentWireframe
-    // ---- END Dagger attributes ----
+    // ---- Observer ----
+    private val mObserver = Observer<MutableList<Player>> {
+        mPlayersAdapter?.update()
+    }
+    // ---- END Observer ----
 
     // ---- GenericRootFragment ----
 
     override fun initDI() {
-        mFragmentComponent.inject(this)
     }
 
     override fun initViewModel() {
@@ -68,11 +68,12 @@ class PlayersFragment : GenericRootFragment<MainViewModel, FragmentPlayersBindin
 
     override fun clear() {
         mBinding.unbind()
-        lifecycle.removeObserver(mViewModel as LifecycleObserver)
+        lifecycle.removeObserver(mViewModel)
+        mViewModel.lPlayers.removeObserver(mObserver)
     }
 
     override fun initComponents() {
-        lifecycle.addObserver(mViewModel as LifecycleObserver)
+        lifecycle.addObserver(mViewModel)
 
         if (mPlayersAdapter == null) {
             rvPlayers.layoutManager = LinearLayoutManager(activity)
@@ -83,14 +84,8 @@ class PlayersFragment : GenericRootFragment<MainViewModel, FragmentPlayersBindin
             mPlayersAdapter?.update()
         }
 
-        mViewModel.lPlayers.observe(
-                {
-                    lifecycle
-                },
-                { _ ->
-                    mPlayersAdapter?.update()
-                }
-        )
+
+        mViewModel.lPlayers.observe(this, mObserver)
     }
 
     // ---- END GenericRootFragment ----

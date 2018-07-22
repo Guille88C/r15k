@@ -1,14 +1,13 @@
 package com.glacialware.r15k.view.views.generic
 
 import android.os.Bundle
+import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
-import com.glacialware.r15k.view.RiskApplication
+import android.support.v7.widget.Toolbar
 import com.glacialware.r15k.view.R
-import com.glacialware.r15k.view.views.di.ActivityComponent
-import com.glacialware.r15k.view.views.di.ActivityModule
-import com.glacialware.r15k.view.wireframes.generic.GenericActivityWireframe
-import com.glacialware.r15k.view.wireframes.navigateBackAnimated
+import com.glacialware.r15k.view.wireframes.Wireframe
 import com.glacialware.r15k.viewmodel.views.generic.GenericViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
 * Created by Guille on 04/07/2017.
@@ -18,9 +17,6 @@ abstract class GenericRootActivity<T: GenericViewModel> (private var anim: Boole
     // ---- Attributes ----
 
     protected lateinit var mViewModel: T
-
-    lateinit var mActivityComponent: ActivityComponent
-    private set
 
     // ---- END Attributes ----
 
@@ -33,15 +29,15 @@ abstract class GenericRootActivity<T: GenericViewModel> (private var anim: Boole
             this.overridePendingTransition(R.anim.slide_in_enter, R.anim.slide_out_enter)
         }
 
-        mActivityComponent = (application as RiskApplication).applicationComponent.with(ActivityModule(this))
-
         // - Init dagger.
         // - View model.
         // - View.
+        // - Toolbar.
         // - Fragment.
         initDI()
         initViewModel()
         initView()
+        initToolbar()
         initFragment()
     }
 
@@ -49,7 +45,7 @@ abstract class GenericRootActivity<T: GenericViewModel> (private var anim: Boole
         super.onBackPressed()
 
         if (anim && this.supportFragmentManager.backStackEntryCount == 0) {
-            navigateBackAnimated(this)
+            Wireframe.navigateBackAnimated(this)
         }
     }
 
@@ -69,4 +65,18 @@ abstract class GenericRootActivity<T: GenericViewModel> (private var anim: Boole
     protected fun isCreated() : Boolean = !isFinishing && !isDestroyed
 
     // ---- END Protected ----
+
+    // ---- Private ----
+
+    private fun initToolbar() {
+        if (myToolbar != null)
+            this.setSupportActionBar(myToolbar as Toolbar)
+
+        if (this.supportActionBar != null) {
+            (this.supportActionBar as ActionBar).setDisplayHomeAsUpEnabled(true)
+            (this.supportActionBar as ActionBar).setHomeButtonEnabled(true)
+        }
+    }
+
+    // ---- END Private ----
 }

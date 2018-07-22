@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".RiskApplication"
         android:fullBackupContent="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -35,6 +34,8 @@
         <activity
             android:name=".views.addPlayer.AddPlayerActivity"
             android:label="@string/add_players" />
+        <activity android:name=".views.cards.CardsActivity"
+            android:label="@string/all_cards"/>
         <activity
             android:name=".views.cardDetail.CardDetailActivity"
             android:label="@string/title_activity_card_detail" />
