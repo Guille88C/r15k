@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "592378110156",
+    "firebase_url": "https://r15k-3b6c1.firebaseio.com",
+    "project_id": "r15k-3b6c1",
+    "storage_bucket": "r15k-3b6c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592378110156:android:4f4fabc92c4709b5",
+        "android_client_info": {
+          "package_name": "com.glacialware.r15k"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592378110156-jomkqfbilrjv84pbtgbl0mo7luhm5oas.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.glacialware.r15k",
+            "certificate_hash": "704b1906a862f854e71286cd137ae6c9d98dec1d"
+          }
+        },
+        {
+          "client_id": "592378110156-vv8b21t5ubl49at98tnis12u9abv9b83.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABRl1gyaBnlVnKYh1EM3u1qouYwe4m_cA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592378110156-vv8b21t5ubl49at98tnis12u9abv9b83.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
